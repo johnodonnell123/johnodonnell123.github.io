@@ -21,15 +21,50 @@ K-Means clustering is an unsupervised learning algorithm that attempts to uncove
 - Exploration: In many cases, the algorithm will find relationships that we didn't know existed, but make sense and can be very valuable once we are aware of them. 
 
 
-### Reading a wells log (.las file) into  Pandas DataFrame:
+### Reading a well log (.las file) into  Pandas DataFrame:
 We see that we have a DataFrame indexed by depth, with data every 0.5 feet. With 21543 rows that leaves us with ~ 10771' of data with 55 logs. 
-We won't be using 55 logs in our analysis, as most of them are either irrelevant for this study or are highly correlated with another log.
 
 <img src="images/Cluster/Las Import.PNG?raw=true"/>
 
 ## Trimming our DataFrame
-Dropping logs, only keeping the few most informative. We are also dropping the first 2000' of data as it is a homogenous unit, and is simply not interesting for this project!
+We won't be using 55 logs in our analysis, as most of them are either irrelevant for this study or are highly correlated with another log.
+The RHOZ log is trimmed to reasonable values, and fortunately this removes all of the other bad data. 
+We are also dropping the first 2000' of data as it is a homogenous unit, and is simply not interesting for this project!
+
 <img src="images/Cluster/DataFrame Clean.PNG?raw=true"/>
+
+## Viewing Logs with Matplotlib
+Credit here to [Andy Mcdonald](http://andymcdonald.scot/python-and-petrophysics) and all of the work he has done paving the way doing petrophysics in Python. 
+Here we have two tracks. The first has our Gamma Ray log that has been shaded to highlight variablility. The second track contains the NPHI & RHOB logs. They have
+been placed on the same track and their crossover relationship has been shaded (a common petrophysical technique).
+
+<img src="images/Cluster/Log Preview.PNG?raw=true"/>
+
+## Preparing Data for Clustering:
+We need to scale our data so that they are all on similar scaled for comparison. The algorithm will want to make these clusters more/less round in crossplot space, so if we have extremely different scales this will lead to the variables with smaller variance getting more weight. Our scales here aren't terribly different, but it never hurts to standardize and is considered good practice. 
+
+Scikit-Learn's StandardScaler will transform our distribution to have a mean of 0 and a standard deviation of 1.
+
+<img src="images/Cluster/StandardScaler.PNG?raw=true"/>
+
+# Create the model
+We create our model
+<img src="images/Cluster/model.PNG?raw=true"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
