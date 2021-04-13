@@ -64,19 +64,19 @@ There are a couple of ways to view results.
 These can be very interesting when we have clearly definable groups that separate out nicely, however when we are working with a medium such as a rock formation (highly variable combination of minerals), the log plot is more insightful.
 
 ### 2) Log Plot
-<img src="images/Cluster/Log Preview Cluster2.PNG?raw=true"/>
+<img src="images/Cluster/Log Preview Cluster2.PNG?raw=true" width="75%" height="75%">
 
 This is a much more intuitive view! We can see visually how some of our log responses are translating into different clusters. Lets zoom in on an area:
 
 ## Interpretation:
 Zooming in on the pink colored clusters, we can see that they have very low gamma readings, and our density log (green) is reading **very** low. This is a common response of salt, these are salt beds and they cause a host of issues for operators all around the world. One we can actually see here, note how our green RHOB log appears to read erratically around these beds, this is due to poor borehole conditions caused by these salts! 
 
-<img src="images/Cluster/Salt2.PNG?raw=true"/>
+<img src="images/Cluster/Salt2.PNG?raw=true" width="75%" height="75%">
 
 Moving further down section to the formation that produced the most oil in the basin, we see some interesteing trends. 
 This is the only section of the entire well in which we see this cluster represented in the black color. These are the upper and lower bakken shales, and they are the primary source for all of the oil in the bakken petroleum system. The blue cluster is interpreted to be carbonate rock, which has very low porosity and does not hold notable oil. The yellow cluster defines the primary reservoirs for the petroleum system, which are filled with oil and have produced millions upon millions of barrels. 
 
-<img src="images/Cluster/BPS Zoom In2.PNG?raw=true"/>
+<img src="images/Cluster/BPS Zoom In2.PNG?raw=true" width="75%" height="75%">
 
 
 
