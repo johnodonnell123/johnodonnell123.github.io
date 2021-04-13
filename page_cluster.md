@@ -40,7 +40,7 @@ Credit here to [Andy Mcdonald](http://andymcdonald.scot/python-and-petrophysics)
 Here we have two tracks. The first has our Gamma Ray log that has been shaded to highlight variablility. The second track contains the NPHI & RHOB logs. They have
 been placed on the same track and their crossover relationship has been shaded (a common petrophysical technique).
 
-<img src="images/Cluster/Log Preview.PNG?raw=true"/>
+<img src="images/Cluster/Log Preview2.PNG?raw=true"/>
 
 ## Preparing Data for Clustering:
 We need to scale our data so that they are all on similar scaled for comparison. The algorithm will want to make these clusters more/less round in crossplot space, so if we have extremely different scales this will lead to the variables with smaller variance getting more weight. Our scales here aren't terribly different, but it never hurts to standardize and is considered good practice. 
@@ -63,19 +63,19 @@ There are a couple of ways to view results.
 These can be very interesting when we have clearly definable groups that separate out nicely, however when we are working with a medium such as a rock (variable combination of minerals), the log plot is more insightful.
 
 ### 2) Log Plot
-<img src="images/Cluster/Log Preview Cluster.PNG?raw=true"/>
+<img src="images/Cluster/Log Preview Cluster2.PNG?raw=true"/>
 
 This is a much more intuitive view! We can see visually how some of our log responses are translating into different clusters. Lets zoom in on an area:
 
 ## Interpretation:
 Zooming in on the pink colored clusters, we can see that they not distinguishable with our GR log, however our density log (green) is reading very low, and our neutron log (blue) is more or less characterless. This is a common response of salt, these are salt beds and they cause a host of issues for operators all around the world!
 
-<img src="images/Cluster/Salt.PNG?raw=true"/>
+<img src="images/Cluster/Salt2.PNG?raw=true"/>
 
 Moving further down section to the formation that produced the most oil in the basin, we see some interesteing trends. 
 This is the only section of the entire well in which we see this cluster represented in this black color. These are the upper and lower bakken shales, and they are the primary source for all of the oil in the bakken petroleum system. The orange cluster is interpreted to be carbonate rock, which has very low porosity and does not hold notable oil. The yellow cluster defines the primary reservoirs for the petroleum system, which are filled with oil and have produced millions upon millions of barrels. 
 
-<img src="images/Cluster/BPS Zoom In.PNG?raw=true"/>
+<img src="images/Cluster/BPS Zoom In2.PNG?raw=true"/>
 
 
 
