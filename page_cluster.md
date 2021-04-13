@@ -13,6 +13,8 @@ some of the common logs found in North Dakotas Williston Basin.
 - Density (RHOB): Measures the electron density of the sample, which is closely tied to the bulk density
 - Neutron (NPHI): Measures the hydrogen content of the formation which is related to its porosity or mineralogy
 
+If you are interested in learning more, <a href="johnodonnell123.github.io/images/Cluster/Atlas_of_Log_Responses_Atlas_of_Log_Resp.pdf" target="_blank">here.</a> is a useful quick-look chart that shows many more logs and their typical response in different rock types!
+
 ### Machine Learning Context: What is K-Means Clustering?
 K-Means clustering is an unsupervised learning algorithm that attempts to uncover structures within the dataset it is provided. In one sentence: the algorithm will cross plot all of our variables against each other, and see if there are any obvious groups (clusters) in which the points can then be categorized. In the context of this project we will be looking to see if different rock types (sandstone, carbonate, salt) are easily discernable with this methodology. This is something that petrophysicists have been doing for decades manually and has proven incredibly valuable. Why use machine learning instead of doing this manually?
 
@@ -62,6 +64,11 @@ These can be very interesting when we have clearly definable groups that separat
 
 ### 2) Log Plot
 <img src="images/Cluster/Log Preview Cluster.PNG?raw=true"/>
+
+This is a much more intuitive view! We can see visually how some of our log responses are translating into different clusters. Lets zoom in on an area:
+
+# Interpretation:
+
 
 
 
