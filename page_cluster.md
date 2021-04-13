@@ -47,9 +47,12 @@ Scikit-Learn's StandardScaler will transform our distribution to have a mean of 
 
 <img src="images/Cluster/StandardScaler.PNG?raw=true"/>
 
-# Create the model
+## Create the model
 We create our model
-<img src="images/Cluster/model.PNG?raw=true"/>
+<img src="images/Cluster/model2.PNG?raw=true"/>
+
+## View Results
+
 
 
 
