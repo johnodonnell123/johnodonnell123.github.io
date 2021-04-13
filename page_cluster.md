@@ -68,7 +68,7 @@ These can be very interesting when we have clearly definable groups that separat
 This is a much more intuitive view! We can see visually how some of our log responses are translating into different clusters. Lets zoom in on an area:
 
 # Interpretation:
-Zooming in on the pink colored clusters, we can see that they not distinguishable with our GR log, however our density log is reading very low, and our neutron log is more or less characterless. This is a common response of salt! 
+Zooming in on the pink colored clusters, we can see that they not distinguishable with our GR log, however our density log (green) is reading very low, and our neutron log (blue) is more or less characterless. This is a common response of salt, these are salt beds and they cause a host of issues for operators all around the world!
 
 <img src="images/Cluster/Salt.PNG?raw=true"/>
 
