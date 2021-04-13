@@ -13,6 +13,16 @@ some of the common logs found in North Dakotas Williston Basin.
 - Density (RHOB): Measures the electron density of the sample, which is closely tied to the bulk density
 - Neutron (NPHI): Measures the hydrogen content of the formation which is related to its porosity or mineralogy
 
+### Reading a wells log (.las file) into  Pandas DataFrame:
+We see that we have a DataFrame indexed by depth, with data every 0.5 feet. With 21543 rows that leaves us with ~ 10771' of data with 55 logs. 
+We won't be using 55 logs in our analysis, as most of them are either irrelevant for this study or are highly correlated with another log.
+
+<img src="images/Cluster/Las Import.PNG?raw=true"/>
+
+## Trimming our DataFrame
+Dropping logs, only keeping the few most informative. We are also dropping the first 2000' of data as it is a homogenous unit, and is simply not interesting for this project!
+<img src="images/Cluster/DataFrame Clean.PNG?raw=true"/>
+
 
 
 
