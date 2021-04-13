@@ -2,7 +2,7 @@
 
 ---
 
-### [Oil Production Data EDA with SQL and Plotly!](/page_EDA.md)
+### [Oil Production Data EDA with SQL and Plotly](/page_EDA.md)
 <img src="/images/plotly thumbnail.PNG?raw=true" width="375" height="188">
 ---
 
