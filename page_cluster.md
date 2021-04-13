@@ -78,6 +78,9 @@ This is the only section of the entire well in which we see this cluster represe
 
 <img src="images/Cluster/BPS Zoom In2.PNG?raw=true" width="75%" height="75%">
 
+## Further Work / Extrapolation
+This workflow could be completed using all of the wells in the basin, a master DataFrame would be created with log data for all of the wells, and the cluster analysis ran. It would be easy to sum the amount of each cluster for each well, then map that data around the basin. This can be done for the entire depth of the well, or just for the different facies of a particular formation of interest. These maps would then be used to explain oil production performance deltas around the basin! 
+
 
 
 
