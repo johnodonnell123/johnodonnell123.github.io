@@ -15,7 +15,7 @@ some of the common logs found in North Dakotas Williston Basin.
 
 If you are interested in learning more, [here](/pdf/Atlas_of_Log_Responses_Atlas_of_Log_Resp.pdf) is a useful quick-look chart that shows many more logs and their typical response in different rock types!
 
-### Machine Learning Context: What is K-Means Clustering?
+### Machine Learning Context: What is K-Means Clustering? What is the value?
 K-Means clustering is an unsupervised learning algorithm that attempts to uncover structures within the dataset it is provided. In one sentence: the algorithm will cross plot all of our variables against each other, and see if there are any obvious groups (clusters) in which the points can then be categorized. In the context of this project we will be looking to see if different rock types (sandstone, carbonate, salt) are easily discernable with this methodology. This is something that petrophysicists have been doing for decades manually and has proven incredibly valuable. Why use machine learning instead of doing this manually?
 
 - Time: This process can be done for thousands of wells, millions of feet of data, in a matter of minutes. This type of projects would take weeks if not months traditionally.
@@ -68,6 +68,13 @@ These can be very interesting when we have clearly definable groups that separat
 This is a much more intuitive view! We can see visually how some of our log responses are translating into different clusters. Lets zoom in on an area:
 
 # Interpretation:
+Zooming in on the pink colored clusters, we can see that they not distinguishable with our GR log, however our density log is reading very low, and our neutron log is more or less characterless. This is a common response of salt! 
+
+<img src="images/Cluster/Salt.PNG?raw=true"/>
+
+Moving further down section to the formation that produced the most oil in the basin, we see some interesteing trends.
+
+<img src="images/Cluster/BPS Zoom In.PNG?raw=true"/>
 
 
 
