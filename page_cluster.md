@@ -43,14 +43,15 @@ been placed on the same track and their crossover relationship has been shaded (
 <img src="images/Cluster/Log Preview2.PNG?raw=true"/>
 
 ## Preparing Data for Clustering:
-We need to scale our data so that they are all on similar scaled for comparison. The algorithm will want to make these clusters more/less round in crossplot space, so if we have extremely different scales this will lead to the variables with smaller variance getting more weight. Our scales here aren't terribly different, but it never hurts to standardize and is considered good practice. 
+We need to scale our data so that they are all on similar scales for comparison. The algorithm will want to make these clusters more/less round in crossplot space, so if we have extremely different scales this will lead to the variables with smaller variance getting more weight. Our scales here aren't terribly different, but it never hurts to standardize and is considered good practice. 
 
-Scikit-Learn's StandardScaler will transform our distribution to have a mean of 0 and a standard deviation of 1.
+Scikit-Learn's StandardScaler will transform our distributions to have a mean of 0 and a standard deviation of 1.
 
 <img src="images/Cluster/StandardScaler.PNG?raw=true"/>
 
 ## Create the model
-We create our model
+We create our model, we specify how many clusters to find, and some other hyperparameters.
+There are methods to determine how many clusters we should look for, however when working with mixed mediums like rocks these methods are less useful.
 <img src="images/Cluster/Cluster Model.PNG?raw=true"/>
 
 ## View Results
@@ -60,7 +61,7 @@ There are a couple of ways to view results.
 <img src="images/Cluster/2D Crossplot.PNG?raw=true"/>
 <img src="images/Cluster/3D Crossplot.PNG?raw=true"/>
 
-These can be very interesting when we have clearly definable groups that separate out nicely, however when we are working with a medium such as a rock (variable combination of minerals), the log plot is more insightful.
+These can be very interesting when we have clearly definable groups that separate out nicely, however when we are working with a medium such as a rock formation (highly variable combination of minerals), the log plot is more insightful.
 
 ### 2) Log Plot
 <img src="images/Cluster/Log Preview Cluster2.PNG?raw=true"/>
@@ -68,12 +69,12 @@ These can be very interesting when we have clearly definable groups that separat
 This is a much more intuitive view! We can see visually how some of our log responses are translating into different clusters. Lets zoom in on an area:
 
 ## Interpretation:
-Zooming in on the pink colored clusters, we can see that they not distinguishable with our GR log, however our density log (green) is reading very low, and our neutron log (blue) is more or less characterless. This is a common response of salt, these are salt beds and they cause a host of issues for operators all around the world!
+Zooming in on the pink colored clusters, we can see that they have very low gamma readings, and our density log (green) is reading **very** low. This is a common response of salt, these are salt beds and they cause a host of issues for operators all around the world. One we can actually see here, note how our green RHOB log appears to read erratically around these beds, this is due to poor borehole conditions caused by these salts! 
 
 <img src="images/Cluster/Salt2.PNG?raw=true"/>
 
 Moving further down section to the formation that produced the most oil in the basin, we see some interesteing trends. 
-This is the only section of the entire well in which we see this cluster represented in this black color. These are the upper and lower bakken shales, and they are the primary source for all of the oil in the bakken petroleum system. The orange cluster is interpreted to be carbonate rock, which has very low porosity and does not hold notable oil. The yellow cluster defines the primary reservoirs for the petroleum system, which are filled with oil and have produced millions upon millions of barrels. 
+This is the only section of the entire well in which we see this cluster represented in the black color. These are the upper and lower bakken shales, and they are the primary source for all of the oil in the bakken petroleum system. The blue cluster is interpreted to be carbonate rock, which has very low porosity and does not hold notable oil. The yellow cluster defines the primary reservoirs for the petroleum system, which are filled with oil and have produced millions upon millions of barrels. 
 
 <img src="images/Cluster/BPS Zoom In2.PNG?raw=true"/>
 
