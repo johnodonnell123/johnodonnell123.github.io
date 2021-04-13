@@ -54,13 +54,13 @@ We create our model
 ## View Results
 There are a couple of ways to view results. 
 
-1) 2D and 3D Crossplots
+### 1) 2D and 3D Crossplots
 <img src="images/Cluster/2D Crossplot.PNG?raw=true"/>
 <img src="images/Cluster/3D Crossplot.PNG?raw=true"/>
 
 These can be very interesting when we have clearly definable groups that separate out nicely, however when we are working with a medium such as a rock (variable combination of minerals), the log plot is more insightful.
 
-2) Log Plot
+### 2) Log Plot
 <img src="images/Cluster/Log Preview Cluster.PNG?raw=true"/>
 
 
