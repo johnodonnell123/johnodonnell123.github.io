@@ -40,7 +40,7 @@ Credit here to [Andy Mcdonald](http://andymcdonald.scot/python-and-petrophysics)
 Here we have two tracks. The first has our Gamma Ray log that has been shaded to highlight variablility. The second track contains the NPHI & RHOB logs. They have
 been placed on the same track and their crossover relationship has been shaded (a common petrophysical technique).
 
-<img src="images/Cluster/Log Preview2.PNG?raw=true"/>
+<img src="images/Cluster/Log Preview2.PNG?raw=true" width="75%" height="75%">
 
 ## Preparing Data for Clustering:
 We need to scale our data so that they are all on similar scales for comparison. The algorithm will want to make these clusters more/less round in crossplot space, so if we have extremely different scales this will lead to the variables with smaller variance getting more weight. Our scales here aren't terribly different, but it never hurts to standardize and is considered good practice. 
