@@ -3,7 +3,7 @@
 **Description:** In this project I use Scrapy to retrieve and organize data for ~15,000 oil and gas wells. There are two structures of data that need to be scraped, one being the general information for each well, and the second being the production history of the well (time-series format). Two Scrapy Spiders are created as well as two pipelines to push this data into a local, lightweight SQLite 3 database making the data suitable for analysis. 
 
 ## Getting the URLs (start_urls)
-The links for each subsequent page are not found within the HTML of previous pages, so responses cannot be generated this way. URLs will need to be explicitly listed in the start_urls attribute. Inspecting the URL, the tail end has a query string parameter with a file number passed. The website allows for the export of these file number with some other useful metrics.The file numbers were exported and filtered as to only keep those for relevant wells, then imported into Python and used with a Python list comprehension to create this master list. 
+The links for each subsequent page are not found within the HTML of previous pages, so new responses cannot be generated this way. URLs will need to be explicitly listed in the start_urls attribute. Inspecting the URL, the tail end has a query string parameter with a file number. The website allows for the export of these file numbers with some other useful metrics.The file numbers were exported and filtered as to only keep those for relevant wells, then imported into Python and used with a Python list comprehension to create this master list. 
 
 <img src="images/scrapy/start_urls list comprehension.PNG?raw=true"/>
 
