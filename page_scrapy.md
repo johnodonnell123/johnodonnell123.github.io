@@ -5,7 +5,17 @@
 ## Getting the URLs (start_urls)
 The links for each subsequent page are not found within the HTML of previous pages, so new responses cannot be generated this way. URLs will need to be explicitly listed in the start_urls attribute. Inspecting the URL, the tail end has a query string parameter with a file number. The website allows for the export of these file numbers with some other useful metrics.The file numbers were exported and filtered as to only keep those for relevant wells, then imported into Python and used with a Python list comprehension to create this master list. 
 
-<img src="images/scrapy/start_urls list comprehension.PNG?raw=true"/>
+```javascript
+df = pd.read_csv(r'C:\Users\johno\Python\CSVs\file_numbers.csv')
+file_numbers = df['FileNo'].astype(str).tolist()
+
+base_url = 'https://www.dmr.nd.gov/oilgas/feeservices/getwellprod.asp?filenumber='
+
+class WellsSpider(scrapy.Spider):
+    name = 'wells'
+    allowed_domains = ['www.dmr.nd.gov']
+    start_urls = [base_url + file_number for file_number in file_numbers]
+```
 
 ## Getting Access
 The data scraped here comes from a webpage that requires a subscription, and therefore has sign-in credentials. Default request headers are overwritten in the settings.py file and basic credentials are provided with base64 encoding
