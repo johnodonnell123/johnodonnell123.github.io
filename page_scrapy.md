@@ -10,6 +10,12 @@ The links for each subsequent page are not found within the HTML of previous pag
 ## Getting Access
 The data scraped here comes from a webpage that requires a subscription, and therefore has sign-in credentials. Default request headers are overwritten in the settings.py file and basic credentials are provided with base64 encoding
 
+```javascript
+DEFAULT_REQUEST_HEADERS = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36',
+'Authorization': 'Basic asd7f6a9d6fad6fasdf6a9sdfadsf6d9fg='}
+}
+```
+
 <img src="images/scrapy/authorization headers.PNG?raw=true"/>
 
 ## Parse Method (for headers/general data)
