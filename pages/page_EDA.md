@@ -54,13 +54,17 @@ Here we are binning by average top perf depth, which is a proxy for depth of the
 ## What Areas have Produced the Most Oil?
 The basin is divided up into 6mi x 6mi squares called townships. Lets see what townships have produced the most oil.
 
-<img src="images/EDA/Code - Cum Oil Per Block Per Well.PNG?raw=true" width="75%" height="75%">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/images/EDA/Map - Cum Oil Per Block.PNG?raw=true" width="75%" height="75%">
+<img src="/images/EDA/Code - Cum Oil Per Block Per Well.PNG?raw=true" width="75%" height="75%">
+<p align="center">
+  <img src="/images/EDA/Map - Cum Oil Per Block.PNG?raw=true" width="75%" height="75%">
+</p>
 
 ## What Areas have Produced the Most Oil for their Well Count?
 Lets see what townships have produced the most oil for their well count. More oil with less wells is favorable. 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/images/EDA/Map - Cum Oil Per Block Per Well.PNG" width="50%" height="50%">
+<p align="center">
+  <img src="/images/EDA/Map - Cum Oil Per Block Per Well.PNG" width="50%" height="50%">
+</p>
 
 As you can see, this map looks notably different than the previous, showing that simply the number of wells in a township is a primary driver. Would we want an investment in a township that has produces the most oil, or the township that how produces the most oil per well drilled?
 
