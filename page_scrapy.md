@@ -34,7 +34,7 @@ def parse(self, response):
         yield {
             'File_Number': response.xpath("(//text()[contains(., 'NDIC File No: ')]//following-sibling::node()/text())[1]").get(),
             'Well_Name' : response.xpath("normalize-space((//text()[contains(., 'Current Well Name: ')]//following-sibling::node()/text())[1])").get(),
-                                                               ................
+                                                                         ...
             'Perf_Interval' : response.xpath("((//text()[contains(., 'Perf')])[1]//following-sibling::node()/text())[1]").get().replace("=","-"),
             'Cum_Oil' : response.xpath("((//text()[contains(.,'Oil')])[1]//following-sibling::node()/text())[1]").get(),
             'Cum_Gas' : response.xpath("((//text()[contains(.,'Gas')])[1]//following-sibling::node()/text())[1]").get(),
