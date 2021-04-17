@@ -7,22 +7,21 @@ The links for each subsequent page are not found within the HTML of previous pag
 
 ```javascript
 df = pd.read_csv(r'C:\Users\johno\Python\CSVs\file_numbers.csv')
-file_numbers = df['FileNo'].astype(str).tolist()
+file_nums = df['FileNo'].astype(str).tolist()
 
-base_url = 'https://www.dmr.nd.gov/oilgas/feeservices/getwellprod.asp?filenumber='
-
+url = 'https://www.dmr.nd.gov/oilgas/feeservices/getwellprod.asp?filenumber='
 
 class HeadersSpider(scrapy.Spider):
     name = 'headers'
-    start_urls = [base_url + file_number for file_number in file_numbers]
+    start_urls = [url + file_num for file_num in file_nums]
 ```
-
-<img src="images/scrapy/start_urls list comprehension.PNG?raw=true"/>
 
 ## Getting Access
 The data scraped here comes from a webpage that requires a subscription, and therefore has sign-in credentials. Default request headers are overwritten in the settings.py file and basic credentials are provided with base64 encoding
 
-<img src="images/scrapy/authorization headers.PNG?raw=true"/>
+```
+DEFAULT_REQUEST_HEADERS = {'Authorization': 'Basic am9obm9kb25uZWxsOiNIdW1ibGU0VFg='}
+```
 
 ## Parse Method (for headers/general data)
 Each page looks slighly different, fields are missing/out of order/etc. The structure of the HTML is irregular, and requeres some creativity. I needed to by very specific with queries on the response object, therefore xPath was used. I selected the node which contained some text (label), then selected the following sibling node to get the data we need.
