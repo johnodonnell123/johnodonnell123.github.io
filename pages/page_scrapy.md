@@ -61,7 +61,9 @@ def parse(self, response):
 
 ## Pipelines
 Two pipelines are defined allowing for the creation of two separate tables in our database. Below the Production pipeline, which is nearly identical to the Header pipeline but shorter (fewer fields). A new class is defined with 3 methods. 
+
 1) Open_spider creates the connection to our database (and creates the database if it does not exist), it creates the table with the specified fields and data types, then commits those changes. 
+
 2) close_spider is called at the very end and closes our connection to the database. 
 
 ```javascript
@@ -92,7 +94,7 @@ class SQLlitePipeline_Production(object):
         self.connection.close()
 ```
 
-3) Pocess_item uses our cursor object along with an INSERT statement and populates the table. The .get( ) method is used to avoid key errors. Changes are committed and the item is returned.
+3) Process_item uses our cursor object along with an INSERT statement and populates the table. The .get( ) method is used to avoid key errors. Changes are committed and the item is returned.
 
 ```javascript
 def process_item(self, item, spider):
@@ -123,6 +125,6 @@ ITEM_PIPELINES = {
 ## Result
 The SQLite database now has 2 tables, one for header data, the other with production/time-series data. Both tables are related by the UWI key and can be related with a simple SQL JOIN statement. Originally, this data was essentially useless due to its structure and lack of accessability and it is now is a structured, organized, and accessible database. 
 
-<img src="images/scrapy/database_result.PNG?raw=true"/>
+<img src="/images/scrapy/database_result.PNG?raw=true"/>
 
 
