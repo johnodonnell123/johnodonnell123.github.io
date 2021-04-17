@@ -17,5 +17,7 @@
 ### [SQL in Jupyter for Data Retrieval and Analysis](/page_sql.md)
 <img src="/images/collage_thumbnail_sql.PNG?raw=true" width="200" height="200">
 
+### [Test](/pages/scrapy_test_page.md)
+<img src="/images/collage_thumbnail_sql.PNG?raw=true" width="200" height="200">
 
 
