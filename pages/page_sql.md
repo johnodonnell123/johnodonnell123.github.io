@@ -3,7 +3,7 @@
 **Description:** Here I highlight some useful examples of SQL for general data querying and high level analysis. Some queries are converted into Pandas DataFrames allowing for further analysis, while others are left alone and are meant for summary purposes. To run the queries in Jupyter I use ipython-sql, which allows for a more simple and intuitive syntax. 
 
 ### Data Context: 
-The data we are working with here was scraped from a webpage and stored in a SQLite3 database, which I cover in [another project](/pages/page_scrapy.md). 
+The data we are working with here was scraped from a webpage and stored in a SQLite3 database, which I cover in [another project](https://johnodonnell123.github.io/pages/page_scrapy.html). 
 For those unfamiliar with these oil and gas data types, I hope to provide some context. We will be working with 2 tables:
 
 #### Header Table
