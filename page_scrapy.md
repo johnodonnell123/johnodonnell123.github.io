@@ -30,7 +30,6 @@ After some unsucessful tests in the Scrapy Shell, it was found that some <tbody>
 
 ```javascript
 def parse(self, response):
-        #  inspect_response(response, self)
         yield {
             'File_Number': response.xpath("(//text()[contains(., 'NDIC File No: ')]//following-sibling::node()/text())[1]").get(),
             'Well_Name' : response.xpath("normalize-space((//text()[contains(., 'Current Well Name: ')]//following-sibling::node()/text())[1])").get(),
@@ -47,7 +46,6 @@ This was more straightforward as this data is organized in a table and is consis
 
 ```javascript
 def parse(self, response):
-        # inspect_response(response, self)
         rows = response.xpath("//table[@id='largeTableOutput']//tr")
         for row in rows:
             yield {
