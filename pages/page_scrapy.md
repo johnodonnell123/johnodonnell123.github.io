@@ -3,7 +3,7 @@
 **Description:** In this project I use Scrapy to retrieve and organize data for ~15,000 oil and gas wells. There are two structures of data that need to be scraped, one being the general information for each well, and the second being the production history of the well (time-series format). Two Scrapy Spiders are created as well as two pipelines to push this data into a local, lightweight SQLite 3 database making the data suitable for analysis. 
 
 ## Getting the URLs (start_urls)
-The links for each subsequent page are not found within the HTML of previous pages, so new responses cannot be generated this way. URLs will need to be explicitly listed in the start_urls attribute. Inspecting the URL, the tail end has a query string parameter with a file number. The website allows for the export of these file numbers with some other useful metrics. The file numbers were exported and filtered as to only keep those for relevant wells, then imported into Python and used with a Python list comprehension to create this master list. 
+The links for each subsequent page are not found within the HTML of previous pages, so new responses cannot be generated teh traditional way. URLs will need to be explicitly defined in the start_urls attribute. Inspecting our URL, the tail end has a query string parameter with a file number. The website allows for the export of these file numbers with some other useful metrics. The file numbers were exported and filtered as to only keep those for relevant wells, then imported into Python and the master list is created using a list comprehension.
 
 ```javascript
 df = pd.read_csv(r'C:\Users\johno\Python\CSVs\file_numbers.csv')
@@ -17,14 +17,14 @@ class HeadersSpider(scrapy.Spider):
 ```
 
 ## Getting Access
-The data scraped here comes from a webpage that requires a subscription, and therefore has sign-in credentials. Default request headers are overwritten in the settings.py file and basic credentials are provided with base64 encoding
+The data scraped here comes from a webpage that requires a subscription, and therefore has sign-in credentials. Default request headers are overwritten in the settings.py file and basic credentials are provided with base64 encoding. These are not working credentials shown here, they have been altered. 
 
 ```javascript
 DEFAULT_REQUEST_HEADERS = {'Authorization': 'Basic am9obm9kb25uZWxsOiNIdW1ibGU0VFg='}
 ```
 
 ## Parse Method (for headers/general data)
-Each page looks slighly different, fields are missing/out of order/etc. The structure of the HTML is irregular, and requeres some creativity. I needed to by very specific with queries on the response object, therefore xPath was used. I selected the node which contained some text (label), then selected the following sibling node to get the data we need.
+Each page looks slighly different, fields are missing/out of order etc. The structure of the HTML is irregular, and requeres some creativity. Queries on the response object need to be very specific, therefore xPath was used. Each node containing some text (label) is selected, then the following sibling node to get the data needed.
 
 After some unsucessful tests in the Scrapy Shell, it was found that some <tbody> elements were left out by the developer, and were added in by Chrome. Replacing these elements with a forward slash was the remedy. 
 
@@ -42,7 +42,7 @@ def parse(self, response):
 ```
 
 ## Parse Method (for production/time-series data)
-This was more straightforward as this data is organized in a table and is consistent betweeen pages. A varaible is created for the collection of table rows, and is then looped through as data for each row is extracted. I chose to also grab another field from the page outside of the table to become my common key between these two datasets. 
+This was more straightforward as this data is organized in a table and is consistent betweeen pages. A varaible is created for the collection of table rows, and is then looped through as data for each row is extracted. Another field is scraped from the page outside of the table to become a common key between these two datasets. 
 
 ```javascript
 def parse(self, response):
@@ -60,7 +60,9 @@ def parse(self, response):
 ```
 
 ## Pipelines
-Two pipelines were created allowing for the creation of two separate but related tables in our database. I chose to use SQLite 3 due to its lightweight nature. Here I will show the Production pipeline, as it is short and essentially the same as the other. A new class is defined with 3 methods. The method open_spider creates the connection to our database (and creates the database if it does not exist), it creates the table with the specified fields and data types, then commits those changes. The close_spider is called at the very end and closes our connection to the database. 
+Two pipelines are defined allowing for the creation of two separate tables in our database. Below the Production pipeline, which is nearly identical to the Header pipeline but shorter (fewer fields). A new class is defined with 3 methods. 
+1) Open_spider creates the connection to our database (and creates the database if it does not exist), it creates the table with the specified fields and data types, then commits those changes. 
+2) close_spider is called at the very end and closes our connection to the database. 
 
 ```javascript
 import sqlite3
@@ -90,7 +92,7 @@ class SQLlitePipeline_Production(object):
         self.connection.close()
 ```
 
-In the process_item method we use our cursor object along with an INSERT statement to fill our table. I chose to use the .get( ) method instead of the usual indexing operator to avoid key errors. The changes are committed and we return our item. 
+3) Pocess_item uses our cursor object along with an INSERT statement and populates the table. The .get( ) method is used to avoid key errors. Changes are committed and the item is returned.
 
 ```javascript
 def process_item(self, item, spider):
@@ -109,7 +111,7 @@ def process_item(self, item, spider):
         return item
 ```
 
-The pipeilnes were activated by definition in the ITEM_PIPELINES dictionary with their priority numbers. 
+Pipelines are activated by definition in the ITEM_PIPELINES dictionary with their priority numbers. 
 
 ```javascript
 ITEM_PIPELINES = {
