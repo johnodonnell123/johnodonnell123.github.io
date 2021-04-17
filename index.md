@@ -6,7 +6,7 @@
 <img src="/images/plotly thumbnail.PNG?raw=true" width="375" height="188">
 
 
-### [Rock Typing with K-Means Clustering](/pages/page_cluster.md)
+### [Rock Typing Using K-Means Clustering](/pages/page_cluster.md)
 <img src="/images/cluster_thimbnail.PNG?raw=true" width="50%" height="50%">
 
 
