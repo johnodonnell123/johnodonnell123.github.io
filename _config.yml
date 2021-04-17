@@ -1,5 +1,5 @@
 title: John ODonnell  # your name (or website title) here
-logo: "johnodonnell123.github.io/images/Head_Shot.jpg" # your photo (or logo) here
+logo: "//images/Head_Shot.jpg" # your photo (or logo) here
 description: > # your text below (remove <br> elements if you don't need line breaks)
   A home page to expand on my data science projects. All source code can be found on my GitHub profile!
   <br><br>
