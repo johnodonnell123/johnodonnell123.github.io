@@ -66,7 +66,22 @@ STREAM_PLOT(dataframe = df9,
 ## Water / Oil Ratio Plot
 Wells that produce less water are more favorable from an economic standpoint, as the water is costly to dispose of. As you can see, over time operators have been producing more and more water!
 
-<img src="/images/EDA/WOR By Vintage.PNG?raw=true" width="75%" height="75%">
+```javascript
+df9 = df_header[df_header['Vintage_Year'] > 2008].sample(1500)
+df_prod = df_production[df_production['WOR'].between(0,10)]
+# ---------------------------------------------------------
+STREAM_PLOT(dataframe = df9, 
+            production_dataframe = df_prod, 
+            material = 'WOR', 
+            cumulative = 0, 
+            variable = 'Vintage_Year', 
+            variable_dict = {'2008-2012':'grey','2012-2014':'gold','2014-2016':'orange','2016-2018':'red','2018-2020':'blue'},
+            averages = 1,
+            all_streams = 0,
+            width = 800, height = 600 )
+```
+
+<img src="/images/EDA/Vintage WOR.PNG?raw=true" width="75%" height="75%">
 
 ## Oil Production Plot: Averaged by ~ Depth/Pressure
 Here we are binning by average top perf depth, which is a proxy for depth of the formation. The correlation between depth and pressure is pretty strong in this basin. Higher pressure normally leads to better wells. 
