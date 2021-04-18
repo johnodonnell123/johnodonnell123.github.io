@@ -81,12 +81,26 @@ STREAM_PLOT(dataframe = df9,
             width = 800, height = 600 )
 ```
 
-<img src="/images/EDA/Vintage WOR.PNG?raw=true" width="75%" height="75%">
+<img src="/images/EDA/Vintage WOR.PNG?raw=true" width="60%" height="60%">
 
 ## Oil Production Plot: Averaged by ~ Depth/Pressure
 Here we are binning by average top perf depth, which is a proxy for depth of the formation. The correlation between depth and pressure is pretty strong in this basin. Higher pressure normally leads to better wells. 
 
-<img src="/images/EDA/Average Stream Plot - Top Perf.PNG?raw=true" width="75%" height="75%">
+```javascript
+df9 = df_header.sample(5000)
+df_prod = df_production.copy()
+# ---------------------------------------------------------
+STREAM_PLOT(dataframe = df9, 
+            production_dataframe = df_prod, 
+            material = 'Oil', 
+            cumulative =10, 
+            variable = 'Top_Perf', 
+            variable_dict = {'0-9000':'grey','9000-1000':'gold','10000-11000':'orange','11000-12000':'red','12000-13000':'blue'},
+            averages = 1,
+            all_streams = 0,
+            width = 800, height = 600 )
+```
+<img src="/images/EDA/Depth Oil Plot.PNG?raw=true" width="75%" height="75%">
 
 ## What Areas have Produced the Most Oil?
 The basin is divided up into 6mi x 6mi squares called townships. Lets see what townships have produced the most oil.
