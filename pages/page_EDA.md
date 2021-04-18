@@ -120,7 +120,7 @@ print(len(df_block))
 df_block.head()
 ```
 
-<img src="/images/EDA/Oil Per Block.PNG?raw=true" width="75%" height="75%">
+<img src="/images/EDA/Oil Per Block.PNG?raw=true" width="50%" height="50%">
 <p align="center">
   <img src="/images/EDA/Map - Cum Oil Per Block.PNG?raw=true" width="50%" height="50%">
 </p>
