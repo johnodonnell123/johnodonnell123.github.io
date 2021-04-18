@@ -1,12 +1,12 @@
 # Exploratory Data Analysis for ~15,000 Oil & Gas Wells in the Williston Basin
 
-**Description:** SQL and Plotly are used to generate some high-level views on oil production. The performance of these wells are governed by two primary sets of factors:
+**Description:** Within Python, SQL and Plotly are used to generate high-level views on oil production from wells in the Williston Basin of North Dakota. The performance of these wells are governed by two primary sets of factors:
 
 1. Geologic: Factors outside of our control but measurable. Parameters such as pressure, thickness, porosity/permeability, saturations (oil/gas/water), stress, natural fracturing, etc. The primary geologic drivers change as you look around the basin and are very much a topic of interpretation. These variables are best viewed spatially on a map, not in tabular format.
 
 2. Engineering: Factors under our control. These include depth and length of the well, where we place the well in the reservoir, how we stimulate the well (pumping fluid and proppant in to create fractures), and how closely we place multiple wells together (too close and they compete with one another, too far and we leave resource behind). These features are best viewed in tabular format.
 
-- We don't have any traditional geologic varaibles to work with here, nor do we have the information on how the wells were stimulated. We will have to be creative and work with what we have to generate features that approximate these missing features. 
+- We don't have any traditional geologic varaibles to work with here, nor do we have the information on how the wells were stimulated. We will have to be creative and work with what we have to generate features that approximate this missing data. 
 
 ### Data Context: 
 The data we are working with here was scraped from a webpage and stored in a SQLite3 database, which I cover in [another project](/pages/page_scrapy.md). 
