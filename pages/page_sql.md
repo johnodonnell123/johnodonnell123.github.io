@@ -9,12 +9,12 @@ For those unfamiliar with these oil and gas data types, I hope to provide some c
 #### Header Table
 Contains general information about a well such as the name, the location, and depth. It also contains the UWI (unique well identifier).
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/images/SQL/header_table.png?raw=true">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/images/SQL/header_table.PNG?raw=true">
 
 #### Production Table
 Wells produce Oil, Water, and Gas over time. This is our time-series data, which is why it is held in a separate table. They typically have higher rates early time and decline throughout their life. This table contains the UWI, the time stamp, the number of days that well actually flowed for that month, and the coinciding volumes for oil/water/gas.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/<img src="/images/SQL/prod_table.png?raw=true"/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/<img src="/images/SQL/prod_table.PNG?raw=true"/>
 
 ## View Tables in DataBase
 ```javascript
