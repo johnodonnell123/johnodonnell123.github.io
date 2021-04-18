@@ -36,7 +36,7 @@ df = las.df()
 # Observe DataFrame
 df.info()
 ```
-<img src="/images/Cluster/Log Import.PNG?raw=true"/>
+<img src="/images/Cluster/Lasio Import Log.PNG?raw=true"/>
 
 
 ## Trimming our DataFrame
@@ -59,55 +59,84 @@ df2 = df2[df2.index > 2000]
 df2.dropna(inplace=True)
 
 # Inspect
-print(df.shape)
+print(df2.shape)
 df2.describe().transpose()
 ```
-<img src="/images/Cluster/Clean DataFrame Describe.PNG?raw=true"/>
+<img src="/images/Cluster/DF2 CLEAN.PNG?raw=true"/>
 
 ## Viewing Logs with Matplotlib
 Credit here to [Andy Mcdonald](http://andymcdonald.scot/python-and-petrophysics) and all of the work he has done paving the way doing petrophysics in Python. 
 Here we have two tracks. The first has our Gamma Ray log that has been shaded to highlight variablility. The second track contains the NPHI & RHOB logs. They have
-been placed on the same track and their crossover relationship has been shaded (a common petrophysical technique).
+been placed on the same track and their crossover relationship has been shaded (a common petrophysical technique). This plotting function can be found on my [GitHub](https://github.com/johnodonnell123/Personal_Projects).
 
 <p align="center">
   <img src="/images/Cluster/Log Preview2.PNG?raw=true" width="35%" height="35%">
 </p">
   
 ## Preparing Data for Clustering:
-We need to scale our data so that they are all on similar scales for comparison. The algorithm will want to make these clusters more/less round in crossplot space, so if we have extremely different scales this will lead to the variables with smaller variance getting more weight. Our scales here aren't terribly different, but it never hurts to standardize and is considered good practice. 
+We need to scale our data so that they are all on similar scales for comparison. The algorithm will want to make these clusters more/less round in crossplot space, so if we have extremely different scales this will lead to the variables with smaller variance getting more weight/being more influential. Our scales here aren't terribly different, but it never hurts to standardize and is considered good practice. 
 
 Scikit-Learn's StandardScaler will transform our distributions to have a mean of 0 and a standard deviation of 1.
 
-<img src="/images/Cluster/StandardScaler.PNG?raw=true"/>
+```javascript
+from sklearn.preprocessing import StandardScaler
+
+# Create the scaler and standardize the data
+scaler = StandardScaler()
+df2_std = scaler.fit_transform(df2)
+
+# Create DataFrame
+df2_std = pd.DataFrame(df2_std)
+df2_std.columns = df2.columns
+df2_std.head()
+```
+
+<img src="/images/Cluster/Standardized DF2.PNG?raw=true"/>
 
 ## Create the model
-We create our model, we specify how many clusters to find, and some other hyperparameters.
-There are methods to determine how many clusters we should look for, however when working with mixed mediums like rocks these methods are less useful.
-<img src="/images/Cluster/Cluster Model.PNG?raw=true"/>
+We create our model and specify how many clusters we want to create.There are methods to determine how many clusters we should look for, however when working with mixed mediums like rocks these methods are less useful. I have found it best to take an iterative approach, and err or the side of too many clusters. If we have too many we can always combine clusters together with simple addition. We can also specify other hyperparameters here but the defaults meet our needs in this case. 
+
+```javascript
+# Create model
+cluster_model = KMeans(n_clusters = 6)
+
+# Fit to our DataFrame
+cluster_model.fit(df2_std)
+
+# Get the cluster labels into our standardized and non-standardized DataFrames
+df2_std['Clusters'] = cluster_model.labels_
+df2['Clusters'] = cluster_model.labels_
+```
 
 ## View Results
-There are a couple of ways to view results. 
+There are two ways to view results. One is with crossplots, and the other on our log plot.
 
 ### 1) 2D and 3D Crossplots
 <img src="/images/Cluster/2D Crossplot.PNG?raw=true"/>
-<img src="/images/Cluster/3D Crossplot.PNG?raw=true"/>
-
+<p align = 'center'>
+  <img src="/images/Cluster/3D Crossplot.PNG?raw=true"/>
+</p>
 These can be very interesting when we have clearly definable groups that separate out nicely, however when we are working with a medium such as a rock formation (highly variable combination of minerals), the log plot is more insightful.
 
 ### 2) Log Plot
-<img src="/images/Cluster/Log Preview Cluster2.PNG?raw=true" width="75%" height="75%">
-
+<p align = 'center'>
+  <img src="/images/Cluster/Log Preview Cluster2.PNG?raw=true" width="35%" height="35%">
+</p>
 This is a much more intuitive view! We can see visually how some of our log responses are translating into different clusters. Lets zoom in on an area:
 
 ## Interpretation:
 Zooming in on the pink colored clusters, we can see that they have very low gamma readings, and our density log (green) is reading **very** low. This is a common response of salt, these are salt beds and they cause a host of issues for operators all around the world. One we can actually see here, note how our green RHOB log appears to read erratically around these beds, this is due to poor borehole conditions caused by these salts! 
 
-<img src="/images/Cluster/Salt2.PNG?raw=true" width="75%" height="75%">
+<p align = 'center'>
+  <img src="/images/Cluster/Salt2.PNG?raw=true" width="35%" height="35%">
+</p>
 
 Moving further down section to the formation that produced the most oil in the basin, we see some interesteing trends. 
-This is the only section of the entire well in which we see this cluster represented in the black color. These are the upper and lower bakken shales, and they are the primary source for all of the oil in the bakken petroleum system. The blue cluster is interpreted to be carbonate rock, which has very low porosity and does not hold notable oil. The yellow cluster defines the primary reservoirs for the petroleum system, which are filled with oil and have produced millions upon millions of barrels. 
+This is the only section of the entire well in which we see this cluster represented in the black color. These are the upper and lower bakken shales, and they are the primary source for all of the oil in the bakken petroleum system. The blue cluster is interpreted to be carbonate rock, which has very low porosity and does not hold notable oil. The yellow cluster defines the primary reservoirs for the petroleum system, which are filled with oil and have produced millions upon millions of barrels.
 
-<img src="/images/Cluster/BPS Zoom In2.PNG?raw=true" width="75%" height="75%">
+<p align = 'center'>
+  <img src="/images/Cluster/BPS Zoom In2.PNG?raw=true" width="35%" height="35%">
+</p>
 
 ## Further Work / Extrapolation
 This workflow could be completed using all of the wells in the basin, a master DataFrame would be created with log data for all of the wells, and the cluster analysis ran. It would be easy to sum the amount of each cluster for each well, then map that data around the basin. This can be done for the entire depth of the well, or just for the different facies of a particular formation of interest. These maps would then be used to explain oil production performance deltas around the basin! 
