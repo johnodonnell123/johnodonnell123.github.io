@@ -149,7 +149,7 @@ This was a gentle introduction of how k-means clustering adds value to the inter
 6) Export Results back to the wells
 7) Map the clusters (rock types) around the basin
 
-If our results look geologic/depositional in nature when mapped we would have confidence in our results, and use those maps to explain differential performance around the basin. 
+If our results look geologic/depositional in nature when mapped we can have confidence in our results, and use those maps to explain differential performance around the basin. 
 
 
 
