@@ -100,14 +100,29 @@ STREAM_PLOT(dataframe = df9,
             all_streams = 0,
             width = 800, height = 600 )
 ```
-<img src="/images/EDA/Depth Oil Plot.PNG?raw=true" width="75%" height="75%">
+<img src="/images/EDA/Depth Oil Plot.PNG?raw=true" width="60%" height="60%">
 
 ## What Areas have Produced the Most Oil?
 The basin is divided up into 6mi x 6mi squares called townships. Lets see what townships have produced the most oil.
 
-<img src="/images/EDA/Code - Cum Oil Per Block Per Well.PNG?raw=true" width="75%" height="75%">
+```javascript
+query = %sql SELECT p.UWI, h.Block, COUNT(DISTINCT p.UWI) AS 'Wells_Per_Block', SUM(p.Oil) AS 'Cumulative_Oil_Per_Block' 
+FROM prod_table_clean p 
+JOIN header_table_clean h ON p.UWI = h.UWI 
+GROUP BY Block 
+ORDER BY Cumulative_Oil_Per_Block desc
+
+df_block = query.DataFrame()
+df_block.drop(columns='UWI',inplace=True)
+df_block.set_index('Block',inplace=True)
+df_block['Cum_Oil_Per_Well_Block'] = df_block['Cumulative_Oil_Per_Block'] / df_block['Wells_Per_Block']
+print(len(df_block))
+df_block.head()
+```
+
+<img src="/images/EDA/Oil Per Block.PNG?raw=true" width="75%" height="75%">
 <p align="center">
-  <img src="/images/EDA/Map - Cum Oil Per Block.PNG?raw=true" width="75%" height="75%">
+  <img src="/images/EDA/Map - Cum Oil Per Block.PNG?raw=true" width="50%" height="50%">
 </p>
 
 ## What Areas have Produced the Most Oil for their Well Count?
@@ -117,7 +132,7 @@ Lets see what townships have produced the most oil for their well count. More oi
   <img src="/images/EDA/Map - Cum Oil Per Block Per Well.PNG" width="50%" height="50%">
 </p>
 
-As you can see, this map looks notably different than the previous, showing that simply the number of wells in a township is a primary driver. Would we want an investment in a township that has produces the most oil, or the township that how produces the most oil per well drilled?
+As you can see, this map looks notably different than the previous, showing that simply the number of wells in a township is a primary driver. Would we want an investment in a township that has produces the most oil, or the township that produces the most oil per well drilled?
 
 
 
