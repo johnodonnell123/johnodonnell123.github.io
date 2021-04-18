@@ -48,9 +48,20 @@ Producing more oil with less wells likely translates into better project level e
 <img src="/images/EDA/Oil Per Well by Operator.PNG?raw=true" width="50%" height="50%">
 
 ## Simple Oil Production Plot
-Here we choose 20 wells at random for a given operator, and plot their oil production streams. 
+Here we choose 8 wells at random for a given operator, and plot their oil production streams. 
 
-<img src="/images/EDA/Simple Production Plot by Operator.PNG?raw=true" width="75%" height="75%">
+```javascript
+df9 = df_header[df_header['Current_Operator'].str.contains('XTO')].sample(8)
+df_prod = df_production.copy()
+# ---------------------------------------------------------
+STREAM_PLOT(dataframe = df9, 
+            production_dataframe = df_prod, 
+            material = 'Oil', 
+            cumulative = 1, 
+            line_width = 2,
+            width = 700, height = 500 )
+```
+<img src="/images/EDA/Simple Oil Plot.PNG?raw=true" width="75%" height="75%">
 
 ## Water / Oil Ratio Plot
 Wells that produce less water are more favorable from an economic standpoint, as the water is costly to dispose of. As you can see, over time operators have been producing more and more water!
