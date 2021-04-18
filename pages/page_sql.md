@@ -59,7 +59,7 @@ df.sample(5)
 <br>
 
 ## Select Using Multiple Conditions
-Using the AND logical operator
+Using the logical AND operator
 ```javascript 
 query = %sql SELECT * FROM prod_table WHERE Days > 20 and Water < 100
 
@@ -71,7 +71,7 @@ df.sample(5)
 <br>
 
 ## Select Specific Wells
-Using hte IN logical operator
+Using the logical IN operator
 ```javascript
 query = %sql SELECT UWI, Days, Oil FROM prod_table WHERE UWI IN (33061042810000,33061005070000)
 
@@ -94,7 +94,7 @@ df.sample(5)
 <br>
 
 ## Group By: <br> What Operators/Companies have Produced the Most Oil to Date?
-It appears Continental Resources has produced 400 Million + Barrels of Oil and Drilled just over 1700 Wells!
+It appears Continental Resources has produced > 400 Million Barrels of Oil and Drilled just over 1700 Wells!
 ```javascript
 %%sql 
 
