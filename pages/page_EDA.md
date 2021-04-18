@@ -122,7 +122,7 @@ df_block.head()
 
 <img src="/images/EDA/Oil Per Block.PNG?raw=true" width="50%" height="50%">
 <p align="center">
-  <img src="/images/EDA/Map - Cum Oil Per Block.PNG?raw=true" width="50%" height="50%">
+  <img src="/images/EDA/Map - Cum Oil Per Block.PNG?raw=true" width="40%" height="40%">
 </p>
 
 ## What Areas have Produced the Most Oil for their Well Count?
