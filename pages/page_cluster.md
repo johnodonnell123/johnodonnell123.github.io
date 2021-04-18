@@ -112,8 +112,9 @@ df2['Clusters'] = cluster_model.labels_
 There are two ways to view results. One is with crossplots, and the other on our log plot.
 
 ### 1) 2D and 3D Crossplots
-<img src="/images/Cluster/2D Crossplot.PNG?raw=true" width="75%" height="75%">
 <p align = 'center'>
+  <img src="/images/Cluster/2D Crossplot.PNG?raw=true" width="75%" height="75%">
+
   <img src="/images/Cluster/3D Crossplot.PNG?raw=true"/>
 </p>
 
