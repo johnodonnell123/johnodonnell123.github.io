@@ -17,49 +17,141 @@ Wells produce Oil, Water, and Gas over time. This is our time-series data, which
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/<img src="/images/SQL/prod_table.PNG?raw=true"/>
 
 ## View Tables in DataBase
-<img src="/images/SQL/View Tables.PNG?raw=true"/>
+```javascript
+query = %sql SELECT name FROM sqlite_master WHERE type ='table'
+query
+```
+<img src="/images/SQL/View Tables2.PNG?raw=true"/>
 <br>
 
 ## Select Entire Table
-<img src="/images/SQL/Select all from table.PNG?raw=true"/>
+```javascript  
+query = %sql SELECT * FROM prod_table
+
+df = query.DataFrame()
+print(df.shape)
+df.iloc[:,:6].sample(5)
+```
+<img src="/images/SQL/Select all from table2.PNG?raw=true"/>
 <br>
 
 ## Select First 5 Rows
-<img src="/images/SQL/Select first 5 rows.PNG?raw=true"/>
+```javascript
+query = %sql SELECT * FROM header_table LIMIT 5
+
+df = query.DataFrame()
+print(df.shape)
+df.iloc[:,:6].sample(5)
+df.columns
+```
+<img src="/images/SQL/Select first 5 rows2.PNG?raw=true"/>
 <br>
 
 ## Select Using Single Condition
-<img src="/images/SQL/Single Condition.PNG?raw=true"/>
+```javascript
+query = %sql SELECT * FROM prod_table WHERE Days > 20 
+
+df = query.DataFrame()
+print(df.shape)
+df.sample(5)
+```
+<img src="/images/SQL/Single Condition2.PNG?raw=true"/>
 <br>
 
 ## Select Using Multiple Conditions
 Using the AND logical operator
-<img src="/images/SQL/Multiple Conditions.PNG?raw=true"/>
+```javascript 
+query = %sql SELECT * FROM prod_table WHERE Days > 20 and Water < 100
+
+df = query.DataFrame()
+print(df.shape)
+df.sample(5)
+```
+<img src="/images/SQL/Multiple Conditions2.PNG?raw=true"/>
 <br>
 
 ## Select Specific Wells
 Using hte IN logical operator
-<img src="/images/SQL/Specific Wells.PNG?raw=true"/>
+```javascript
+query = %sql SELECT UWI, Days, Oil FROM prod_table WHERE UWI IN (33061042810000,33061005070000)
+
+df = query.DataFrame()
+print(df.shape)
+df.sample(5)
+```
+<img src="/images/SQL/Specific Wells2.PNG?raw=true"/>
 <br>
 
 ## Join: <br> Select Columns from 2 Tables
-<img src="/images/SQL/Join Select Specific Columns.PNG?raw=true"/>
+```javascript
+query = %sql SELECT p.UWI,p.Days,p.Oil,h.Current_Operator FROM prod_table p JOIN header_table h ON p.UWI = h.UWI
+
+df = query.DataFrame()
+print(df.shape)
+df.sample(5)
+```
+<img src="/images/SQL/Join Select Specific Columns2.PNG?raw=true"/>
 <br>
 
 ## Group By: <br> What Operators/Companies have Produced the Most Oil to Date?
 It appears Continental Resources has produced 400 Million + Barrels of Oil and Drilled just over 1700 Wells!
-<img src="/images/SQL/Aggregate Operator Oil and Wells.PNG?raw=true"/>
+```javascript
+%%sql 
+
+SELECT p.UWI, COUNT(DISTINCT p.UWI) AS 'Wells', SUM(p.Oil) AS 'Cumulative_Oil', h.Current_Operator
+FROM prod_table p 
+JOIN header_table h 
+ON p.UWI = h.UWI 
+GROUP BY Current_Operator
+ORDER BY Cumulative_Oil desc
+LIMIT 5
+```
+
+<img src="/images/SQL/Aggregate Operator Oil and Wells2.PNG?raw=true"/>
 <br>
 
 ## Group By: <br> What Wells have Produced the Most Oil to Date? Who do they belong to? 
-<img src="/images/SQL/Top Producing Wells.PNG?raw=true"/>
+```javascript
+%%sql 
+
+SELECT p.UWI, sum(p.Oil) as 'Cumulative_Oil',h.Well_Name ,h.Current_Operator
+FROM prod_table p 
+JOIN header_table h 
+ON p.UWI = h.UWI 
+GROUP BY Well_Name 
+ORDER BY Cumulative_Oil desc
+LIMIT 5
+```
+<img src="/images/SQL/Top Producing Wells2.PNG?raw=true"/>
 <br>
 
 ## Group By: <br> What are the top producing wells for a particular operator? 
-<img src="/images/SQL/Top Wells by Operator.PNG?raw=true"/>
+```javascript
+%%sql
+
+SELECT p.UWI,h.Current_Operator, sum(p.Oil) as 'Cumulative_Oil',h.Well_Name 
+FROM prod_table p 
+JOIN header_table h ON p.UWI = h.UWI 
+GROUP BY Well_Name
+HAVING Current_Operator = 'MARATHON OIL COMPANY'
+ORDER BY Cumulative_Oil desc
+LIMIT 5
+```
+<img src="/images/SQL/Top Wells by Operator2.PNG?raw=true"/>
 <br>
 
 ## Group By: <br> Top Producing Wells with Cumulative Water Filter
 Wells that produce less water are more favorable, as the water is costly to dispose of. 
-<img src="/images/SQL/Top Producing Wells Water Filter.PNG?raw=true"/>
+```javascript
+%%sql
+
+SELECT p.UWI,h.Current_Operator, sum(p.Oil) as 'Cumulative_Oil',sum(p.Water) as 'Cumulative_Water',h.Well_Name 
+FROM prod_table p 
+JOIN header_table h ON p.UWI = h.UWI 
+GROUP BY Well_Name
+HAVING Cumulative_Water < 100000
+ORDER BY Cumulative_Oil desc
+LIMIT 5
+```
+<img src="/images/SQL/Top Producing Wells Water Filter2.PNG?raw=true"/>
 
