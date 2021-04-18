@@ -38,7 +38,6 @@ df.info()
 ```
 <img src="/images/Cluster/Lasio Import Log.PNG?raw=true"/>
 
-
 ## Trimming our DataFrame
 We won't be using 55 logs in our analysis, as most of them are either irrelevant for this study or are highly correlated with another log. We can achieve very good results with the 3 most fundamental logs that were mentioned earlier (GR, RHOZ, NPHI). The RHOZ log is trimmed to reasonable values, and fortunately this removes all of the other bad data as it occurs over the same interval. We are also dropping the first 2000' of data as it is a homogenous unit, and is simply not interesting for this project.
 
@@ -86,7 +85,10 @@ df2_std = scaler.fit_transform(df2)
 # Create DataFrame
 df2_std = pd.DataFrame(df2_std)
 df2_std.columns = df2.columns
-df2_std.head()
+
+# Inspect
+print(df2_std.shape)
+df2_std.describe().transpose()
 ```
 
 <img src="/images/Cluster/Standardized DF2.PNG?raw=true"/>
@@ -110,34 +112,44 @@ df2['Clusters'] = cluster_model.labels_
 There are two ways to view results. One is with crossplots, and the other on our log plot.
 
 ### 1) 2D and 3D Crossplots
-<img src="/images/Cluster/2D Crossplot.PNG?raw=true"/>
+<img src="/images/Cluster/2D Crossplot.PNG?raw=true" width="75%" height="75%">
 <p align = 'center'>
   <img src="/images/Cluster/3D Crossplot.PNG?raw=true"/>
 </p>
+
 These can be very interesting when we have clearly definable groups that separate out nicely, however when we are working with a medium such as a rock formation (highly variable combination of minerals), the log plot is more insightful.
 
 ### 2) Log Plot
 <p align = 'center'>
-  <img src="/images/Cluster/Log Preview Cluster2.PNG?raw=true" width="35%" height="35%">
+  <img src="/images/Cluster/Log Preview Cluster2.PNG?raw=true" width="50%" height="50%">
 </p>
 This is a much more intuitive view! We can see visually how some of our log responses are translating into different clusters. Lets zoom in on an area:
 
 ## Interpretation:
-Zooming in on the pink colored clusters, we can see that they have very low gamma readings, and our density log (green) is reading **very** low. This is a common response of salt, these are salt beds and they cause a host of issues for operators all around the world. One we can actually see here, note how our green RHOB log appears to read erratically around these beds, this is due to poor borehole conditions caused by these salts! 
+Zooming in on the pink colored clusters, we can see that they have very low gamma readings, and our density log (green) is reading **very** low. This is a common response of salt, these are salt beds and they cause a host of issues for operators all around the world. One we can actually see here, note how our green RHOB log appears to read erratically around these beds, this is due to poor borehole conditions caused by these salts.
 
 <p align = 'center'>
   <img src="/images/Cluster/Salt2.PNG?raw=true" width="35%" height="35%">
 </p>
 
-Moving further down section to the formation that produced the most oil in the basin, we see some interesteing trends. 
-This is the only section of the entire well in which we see this cluster represented in the black color. These are the upper and lower bakken shales, and they are the primary source for all of the oil in the bakken petroleum system. The blue cluster is interpreted to be carbonate rock, which has very low porosity and does not hold notable oil. The yellow cluster defines the primary reservoirs for the petroleum system, which are filled with oil and have produced millions upon millions of barrels.
+Moving further down section to the primary formation of interest in the basin (Bakken petroleum system), we see some interesting trends. This is the only section of the entire well in which we see this cluster represented by the color black. These are the upper and lower bakken shales, and they are the primary source for all of the oil in the bakken petroleum system. The blue cluster is interpreted to be carbonate rock, which has very low porosity and does not hold notable oil. The yellow cluster defines the primary reservoirs for the petroleum system, which are filled with oil and have produced millions upon millions of barrels.
 
 <p align = 'center'>
   <img src="/images/Cluster/BPS Zoom In2.PNG?raw=true" width="35%" height="35%">
 </p>
 
 ## Further Work / Extrapolation
-This workflow could be completed using all of the wells in the basin, a master DataFrame would be created with log data for all of the wells, and the cluster analysis ran. It would be easy to sum the amount of each cluster for each well, then map that data around the basin. This can be done for the entire depth of the well, or just for the different facies of a particular formation of interest. These maps would then be used to explain oil production performance deltas around the basin! 
+This was a gentle introduction of how k-means clustering adds value to the interpretation of rock types. This level of analysis is useful when moving into a new area to quickly get familiar with the different formations and their chracteristics. There are other applications to achieve a more granular result for a particular formation, which I may expand on with a future project. The general workflow would look like this:
+1) Import all quality logs in the basin into a master Pandas DataFrame
+2) Trim to only contain data for the relevant formation
+3) Clean the data for reasonable values
+4) Feature Engineering
+5) Run K-Means Clustering
+6) Export Results back to the wells
+7) Map the clusters (rock types) around the basin
+
+If our results look geologic/depositional in nature when mapped we would have confidence in our results, and use those maps to explain differential performance around the basin. 
+
 
 
 
