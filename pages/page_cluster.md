@@ -40,9 +40,7 @@ df.info()
 
 
 ## Trimming our DataFrame
-We won't be using 55 logs in our analysis, as most of them are either irrelevant for this study or are highly correlated with another log.
-The RHOZ log is trimmed to reasonable values, and fortunately this removes all of the other bad data. 
-We are also dropping the first 2000' of data as it is a homogenous unit, and is simply not interesting for this project!
+We won't be using 55 logs in our analysis, as most of them are either irrelevant for this study or are highly correlated with another log. We can achieve very good results with the 3 most fundamental logs that were mentioned earlier (GR, RHOZ, NPHI). The RHOZ log is trimmed to reasonable values, and fortunately this removes all of the other bad data as it occurs over the same interval. We are also dropping the first 2000' of data as it is a homogenous unit, and is simply not interesting for this project.
 
 ```javascript
 # Create a copy to manipulate
@@ -71,7 +69,7 @@ been placed on the same track and their crossover relationship has been shaded (
 
 <p align="center">
   <img src="/images/Cluster/Log Preview2.PNG?raw=true" width="35%" height="35%">
-</p">
+</p>
   
 ## Preparing Data for Clustering:
 We need to scale our data so that they are all on similar scales for comparison. The algorithm will want to make these clusters more/less round in crossplot space, so if we have extremely different scales this will lead to the variables with smaller variance getting more weight/being more influential. Our scales here aren't terribly different, but it never hurts to standardize and is considered good practice. 
