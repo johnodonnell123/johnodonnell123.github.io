@@ -141,13 +141,13 @@ Moving further down section to the primary formation of interest in the basin (B
 
 ## Further Work / Extrapolation
 This was a gentle introduction of how k-means clustering adds value to the interpretation of rock types. This level of analysis is useful when moving into a new area to quickly get familiar with the different formations and their chracteristics. There are other applications to achieve a more granular result for a particular formation, which I may expand on with a future project. The general workflow would look like this:
-1) Import all quality logs in the basin into a master Pandas DataFrame
-2) Trim to only contain data for the relevant formation
-3) Clean the data for reasonable values
-4) Feature Engineering
-5) Run K-Means Clustering
-6) Export Results back to the wells
-7) Map the clusters (rock types) around the basin
+- Import all quality logs in the basin into a master Pandas DataFrame
+- Trim to only contain data for the relevant formation
+- Clean the data for reasonable values
+- Feature Engineering
+- Run K-Means Clustering
+- Export Results back to the wells
+- Map the clusters (rock types) around the basin
 
 If our results look geologic/depositional in nature when mapped we can have confidence in our results, and use those maps to explain differential performance around the basin. 
 
