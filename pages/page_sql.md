@@ -18,42 +18,45 @@ Wells produce Oil, Water, and Gas over time. This is our time-series data, which
 
 ## View Tables in DataBase
 ```javascript
-query = %sql SELECT name FROM sqlite_master WHERE type ='table'
-query
+%%sql 
+
+SELECT name 
+FROM sqlite_master 
+WHERE type ='table'
 ```
 <img src="/images/SQL/View Tables2.png?raw=true"/>
 <br>
 
 ## Select Entire Table
+View shape of table and random sample
 ```javascript  
-query = %sql SELECT * FROM prod_table
-
-df = query.DataFrame()
-print(df.shape)
-df.iloc[:,:6].sample(5)
+%%sql 
+SELECT * 
+FROM prod_table
 ```
 <img src="/images/SQL/Select all from table2.png?raw=true"/>
 <br>
 
 ## Select First 5 Rows
+Showing shape of table and random sample
 ```javascript
-query = %sql SELECT * FROM header_table LIMIT 5
+%%sql 
 
-df = query.DataFrame()
-print(df.shape)
-df.iloc[:,:6].sample(5)
-df.columns
+SELECT * 
+FROM header_table 
+LIMIT 5
 ```
 <img src="/images/SQL/Select first 5 rows2.png?raw=true"/>
 <br>
 
 ## Select Using Single Condition
+Showing shape of table and random sample
 ```javascript
-query = %sql SELECT * FROM prod_table WHERE Days > 20 
+%%sql 
+SELECT * 
+FROM prod_table 
+WHERE Days > 20 
 
-df = query.DataFrame()
-print(df.shape)
-df.sample(5)
 ```
 <img src="/images/SQL/Single Condition2.png?raw=true"/>
 <br>
@@ -61,11 +64,11 @@ df.sample(5)
 ## Select Using Multiple Conditions
 Using the logical AND operator
 ```javascript 
-query = %sql SELECT * FROM prod_table WHERE Days > 20 and Water < 100
+%%sql 
 
-df = query.DataFrame()
-print(df.shape)
-df.sample(5)
+SELECT * 
+FROM prod_table 
+WHERE Days > 20 and Water < 100
 ```
 <img src="/images/SQL/Multiple Conditions2.png?raw=true"/>
 <br>
@@ -73,22 +76,24 @@ df.sample(5)
 ## Select Specific Wells
 Using the logical IN operator
 ```javascript
-query = %sql SELECT UWI, Days, Oil FROM prod_table WHERE UWI IN (33061042810000,33061005070000)
+%%sql 
 
-df = query.DataFrame()
-print(df.shape)
-df.sample(5)
+SELECT UWI, Days, Oil 
+FROM prod_table 
+WHERE UWI IN (33061042810000,33061005070000)
 ```
 <img src="/images/SQL/Specific Wells2.png?raw=true"/>
 <br>
 
 ## Join: <br> Select Columns from 2 Tables
+Showing shape of table and random sample
 ```javascript
-query = %sql SELECT p.UWI,p.Days,p.Oil,h.Current_Operator FROM prod_table p JOIN header_table h ON p.UWI = h.UWI
+%%sql 
 
-df = query.DataFrame()
-print(df.shape)
-df.sample(5)
+SELECT p.UWI,p.Days,p.Oil,h.Current_Operator 
+FROM prod_table p 
+JOIN header_table h 
+ON p.UWI = h.UWI
 ```
 <img src="/images/SQL/Join Select Specific Columns2.png?raw=true"/>
 <br>
