@@ -52,7 +52,7 @@ df2 = df.copy()
 df2 = df2[['GR','RHOZ','NPHI']]
 df2 = df2[df2['RHOZ'].between(1.8,3.2)]
 
-# Drop first 2000'
+# Drop first 2000 feet of data
 df2 = df2[df2.index > 2000]
 
 # Drop rows missing values
