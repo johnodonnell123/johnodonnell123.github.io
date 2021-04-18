@@ -9,19 +9,19 @@ For those unfamiliar with these oil and gas data types, I hope to provide some c
 #### Header Table
 Contains general information about a well such as the name, the location, and depth. It also contains the UWI (unique well identifier).
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/images/SQL/header_table.PNG?raw=true">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/images/SQL/header_table.png?raw=true">
 
 #### Production Table
 Wells produce Oil, Water, and Gas over time. This is our time-series data, which is why it is held in a separate table. They typically have higher rates early time and decline throughout their life. This table contains the UWI, the time stamp, the number of days that well actually flowed for that month, and the coinciding volumes for oil/water/gas.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/<img src="/images/SQL/prod_table.PNG?raw=true"/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/<img src="/images/SQL/prod_table.png?raw=true"/>
 
 ## View Tables in DataBase
 ```javascript
 query = %sql SELECT name FROM sqlite_master WHERE type ='table'
 query
 ```
-<img src="/images/SQL/View Tables2.PNG?raw=true"/>
+<img src="/images/SQL/View Tables2.png?raw=true"/>
 <br>
 
 ## Select Entire Table
@@ -32,7 +32,7 @@ df = query.DataFrame()
 print(df.shape)
 df.iloc[:,:6].sample(5)
 ```
-<img src="/images/SQL/Select all from table2.PNG?raw=true"/>
+<img src="/images/SQL/Select all from table2.png?raw=true"/>
 <br>
 
 ## Select First 5 Rows
@@ -44,7 +44,7 @@ print(df.shape)
 df.iloc[:,:6].sample(5)
 df.columns
 ```
-<img src="/images/SQL/Select first 5 rows2.PNG?raw=true"/>
+<img src="/images/SQL/Select first 5 rows2.png?raw=true"/>
 <br>
 
 ## Select Using Single Condition
@@ -55,7 +55,7 @@ df = query.DataFrame()
 print(df.shape)
 df.sample(5)
 ```
-<img src="/images/SQL/Single Condition2.PNG?raw=true"/>
+<img src="/images/SQL/Single Condition2.png?raw=true"/>
 <br>
 
 ## Select Using Multiple Conditions
@@ -67,7 +67,7 @@ df = query.DataFrame()
 print(df.shape)
 df.sample(5)
 ```
-<img src="/images/SQL/Multiple Conditions2.PNG?raw=true"/>
+<img src="/images/SQL/Multiple Conditions2.png?raw=true"/>
 <br>
 
 ## Select Specific Wells
@@ -79,7 +79,7 @@ df = query.DataFrame()
 print(df.shape)
 df.sample(5)
 ```
-<img src="/images/SQL/Specific Wells2.PNG?raw=true"/>
+<img src="/images/SQL/Specific Wells2.png?raw=true"/>
 <br>
 
 ## Join: <br> Select Columns from 2 Tables
@@ -90,7 +90,7 @@ df = query.DataFrame()
 print(df.shape)
 df.sample(5)
 ```
-<img src="/images/SQL/Join Select Specific Columns2.PNG?raw=true"/>
+<img src="/images/SQL/Join Select Specific Columns2.png?raw=true"/>
 <br>
 
 ## Group By: <br> What Operators/Companies have Produced the Most Oil to Date?
@@ -107,7 +107,7 @@ ORDER BY Cumulative_Oil desc
 LIMIT 5
 ```
 
-<img src="/images/SQL/Aggregate Operator Oil and Wells2.PNG?raw=true"/>
+<img src="/images/SQL/Aggregate Operator Oil and Wells2.png?raw=true"/>
 <br>
 
 ## Group By: <br> What Wells have Produced the Most Oil to Date? Who do they belong to? 
@@ -122,7 +122,7 @@ GROUP BY Well_Name
 ORDER BY Cumulative_Oil desc
 LIMIT 5
 ```
-<img src="/images/SQL/Top Producing Wells2.PNG?raw=true"/>
+<img src="/images/SQL/Top Producing Wells2.png?raw=true"/>
 <br>
 
 ## Group By: <br> What are the top producing wells for a particular operator? 
@@ -137,7 +137,7 @@ HAVING Current_Operator = 'MARATHON OIL COMPANY'
 ORDER BY Cumulative_Oil desc
 LIMIT 5
 ```
-<img src="/images/SQL/Top Wells by Operator2.PNG?raw=true"/>
+<img src="/images/SQL/Top Wells by Operator2.png?raw=true"/>
 <br>
 
 ## Group By: <br> Top Producing Wells with Cumulative Water Filter
@@ -153,5 +153,5 @@ HAVING Cumulative_Water < 100000
 ORDER BY Cumulative_Oil desc
 LIMIT 5
 ```
-<img src="/images/SQL/Top Producing Wells Water Filter2.PNG?raw=true"/>
+<img src="/images/SQL/Top Producing Wells Water Filter2.png?raw=true"/>
 
