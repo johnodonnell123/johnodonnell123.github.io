@@ -67,7 +67,7 @@ Here we have two tracks. The first has our Gamma Ray log that has been shaded to
 been placed on the same track and their crossover relationship has been shaded (a common petrophysical technique). This plotting function can be found on my [GitHub](https://github.com/johnodonnell123/Personal_Projects).
 
 <p align="center">
-  <img src="/images/Cluster/Log Preview2.PNG?raw=true" width="35%" height="35%">
+  <img src="/images/Cluster/Log Preview2.PNG?raw=true" width="30%" height="30%">
 </p>
   
 ## Preparing Data for Clustering:
