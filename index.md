@@ -15,6 +15,6 @@
 
 
 ### [SQL in Jupyter for Data Retrieval and Analysis](/pages/page_sql.md)
-<img src="/images/collage_thumbnail_sql.PNG?raw=true" width="200" height="200">
+<img src="/images/collage_thumbnail_sql.PNG?raw=true" width="300" height="300">
 
 
