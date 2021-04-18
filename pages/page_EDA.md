@@ -29,7 +29,18 @@ Here we have all 15,000 wells on a map, colored by the depth of the top perforat
 
 ## What Operator has Produced the Most Oil to Date?
 
-<img src="/images/EDA/Oil and Wells by Operator.PNG?raw=true" width="75%" height="75%">
+```javascript
+%%sql 
+
+SELECT p.UWI, COUNT(DISTINCT p.UWI) AS 'Wells', SUM(p.Oil) AS 'Cumulative_Oil', h.Current_Operator
+FROM prod_table p 
+JOIN header_table h 
+ON p.UWI = h.UWI 
+GROUP BY Current_Operator
+ORDER BY Cumulative_Oil desc
+LIMIT 8
+```
+<img src="/images/EDA/Oil and Wells by Operator Results.PNG?raw=true" width="75%" height="75%">
 
 ## What Operator has Produced the Most Oil for their Well Count?
 Producing more oil with less wells likely translates into better project level economics (and better investments). 
