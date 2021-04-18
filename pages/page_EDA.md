@@ -64,7 +64,7 @@ STREAM_PLOT(dataframe = df9,
 <img src="/images/EDA/Simple Oil Plot.PNG?raw=true" width="75%" height="75%">
 
 ## Water / Oil Ratio Plot
-Wells that produce less water are more favorable from an economic standpoint, as the water is costly to dispose of. As you can see, over time operators have been producing more and more water!
+Wells that produce less water are more favorable from an economic standpoint, as the water is costly to dispose of. Here we take a random sample of 1500 wells, bin them into groups defined by their Vintage Year, then average their production streams every month (30.4 days). As you can see, over time operators have been producing more and more water!
 
 ```javascript
 df9 = df_header[df_header['Vintage_Year'] > 2008].sample(1500)
@@ -84,7 +84,7 @@ STREAM_PLOT(dataframe = df9,
 <img src="/images/EDA/Vintage WOR.PNG?raw=true" width="60%" height="60%">
 
 ## Oil Production Plot: Averaged by ~ Depth/Pressure
-Here we are binning by average top perf depth, which is a proxy for depth of the formation. The correlation between depth and pressure is pretty strong in this basin. Higher pressure normally leads to better wells. 
+Here we are binning and averaging by the depth of the top perforation, which is a proxy for depth of the formation. The correlation between depth and pressure is pretty strong in this basin. Higher pressure normally leads to better wells. 
 
 ```javascript
 df9 = df_header.sample(5000)
@@ -103,7 +103,7 @@ STREAM_PLOT(dataframe = df9,
 <img src="/images/EDA/Depth Oil Plot.PNG?raw=true" width="60%" height="60%">
 
 ## What Areas have Produced the Most Oil?
-The basin is divided up into 6mi x 6mi squares called townships. Lets see what townships have produced the most oil.
+The basin is divided up into 6mi x 6mi squares called [townships](https://en.wikipedia.org/wiki/Township_(United_States)). This is a convinent way to represent the geologic impact of an area as the geology within a township is more/less the same, most measureable changes happen at a larger scale than 6 miles. Lets see what townships have produced the most oil.
 
 ```javascript
 query = %sql SELECT p.UWI, h.Block, COUNT(DISTINCT p.UWI) AS 'Wells_Per_Block', SUM(p.Oil) AS 'Cumulative_Oil_Per_Block' 
@@ -132,7 +132,10 @@ Lets see what townships have produced the most oil for their well count. More oi
   <img src="/images/EDA/Map - Cum Oil Per Block Per Well.PNG" width="50%" height="50%">
 </p>
 
-As you can see, this map looks notably different than the previous, showing that simply the number of wells in a township is a primary driver. Would we want an investment in a township that has produces the most oil, or the township that produces the most oil per well drilled?
+As you can see, this map looks notably different than the previous, showing that simply the number of wells in a township is a primary driver. Would we want an investment in a township that has produced the most oil, or the township that produces the most oil per well drilled?
+
+## Wrap Up:
+Here we have covered several tools that can be used data analysis using oil and gas production data. There is a wealth of information publicly avaliable for the Williston Basin that yields insight into performance (and investment) drivers around the basin. 
 
 
 
