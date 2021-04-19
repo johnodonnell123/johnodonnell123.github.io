@@ -50,7 +50,7 @@ SELECT *
 FROM header_table 
 LIMIT 5
 ```
-<img src="/images/SQL/Select first 5 rows2.png?raw=true" height='60%' width='60%'>
+<img src="/images/SQL/Select first 5 rows2.png?raw=true" height='70%' width='70%'>
 <br>
 
 ## Select Using Single Condition
@@ -62,7 +62,7 @@ FROM prod_table
 WHERE Days > 20 
 
 ```
-<img src="/images/SQL/Single Condition2.png?raw=true" height='60%' width='60%'>
+<img src="/images/SQL/Single Condition2.png?raw=true" height='50%' width='50%'>
 <br>
 
 ## Select Using Multiple Conditions
@@ -74,7 +74,7 @@ SELECT *
 FROM prod_table 
 WHERE Days > 20 and Water < 100
 ```
-<img src="/images/SQL/Multiple Conditions2.png?raw=true" height='60%' width='60%'>
+<img src="/images/SQL/Multiple Conditions2.png?raw=true" height='50%' width='50%'>
 <br>
 
 ## Select Specific Wells
@@ -86,7 +86,7 @@ SELECT UWI, Days, Oil
 FROM prod_table 
 WHERE UWI IN (33061042810000,33061005070000)
 ```
-<img src="/images/SQL/Specific Wells2.png?raw=true" height='60%' width='60%'>
+<img src="/images/SQL/Specific Wells2.png?raw=true" height='30%' width='30%'>
 <br>
 
 ## Join: <br> Select Columns from 2 Tables
@@ -116,7 +116,7 @@ ORDER BY Cumulative_Oil desc
 LIMIT 5
 ```
 
-<img src="/images/SQL/Aggregate Operator Oil and Wells2.png?raw=true" height='60%' width='60%'>
+<img src="/images/SQL/Aggregate Operator Oil and Wells2.png?raw=true" height='50%' width='50%'>
 <br>
 
 ## Group By: <br> What Wells have Produced the Most Oil to Date? Who do they belong to? 
@@ -131,7 +131,7 @@ GROUP BY Well_Name
 ORDER BY Cumulative_Oil desc
 LIMIT 5
 ```
-<img src="/images/SQL/Top Producing Wells2.png?raw=true" height='60%' width='60%'>
+<img src="/images/SQL/Top Producing Wells2.png?raw=true" height='70%' width='70%'>
 <br>
 
 ## Group By: <br> What are the top producing wells for a particular operator? 
@@ -162,5 +162,5 @@ HAVING Cumulative_Water < 100000
 ORDER BY Cumulative_Oil desc
 LIMIT 5
 ```
-<img src="/images/SQL/Top Producing Wells Water Filter2.png?raw=true" height='60%' width='60%'>
+<img src="/images/SQL/Top Producing Wells Water Filter2.png?raw=true" >
 
