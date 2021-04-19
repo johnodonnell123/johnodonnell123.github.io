@@ -64,7 +64,7 @@ Two pipelines are defined allowing for the creation of two separate tables in ou
 
 1) `open_spider` creates the connection to our database (and creates the database if it does not exist), it creates the table with the specified fields and data types, then commits those changes. 
 
-2) ``close_spider`` is called at the very end and closes our connection to the database. 
+2) `close_spider` is called at the very end and closes our connection to the database. 
 
 ```javascript
 import sqlite3
@@ -94,7 +94,7 @@ class SQLlitePipeline_Production(object):
         self.connection.close()
 ```
 
-3) Process_item uses our cursor object along with an INSERT statement and populates the table. The .get( ) method is used to avoid key errors. Changes are committed and the item is returned.
+3) `process_item` uses our cursor object along with an `INSERT` statement and populates the table. The `.get( )` method is used to avoid key errors. Changes are committed and the item is returned.
 
 ```javascript
 def process_item(self, item, spider):
@@ -113,7 +113,7 @@ def process_item(self, item, spider):
         return item
 ```
 
-Pipelines are activated by definition in the ITEM_PIPELINES dictionary with their priority numbers. 
+Pipelines are activated by definition in the `ITEM_PIPELINES` dictionary with their priority numbers. 
 
 ```javascript
 ITEM_PIPELINES = {
@@ -123,7 +123,7 @@ ITEM_PIPELINES = {
 ```
 
 ## Result
-The SQLite database now has 2 tables, one for header data, the other with production/time-series data. Both tables are related by the UWI key and can be related with a simple SQL JOIN statement. Originally, this data was essentially useless due to its structure and lack of accessability and it is now is a structured, organized, and accessible database. 
+The SQLite database now has 2 tables, one for header data, the other with production/time-series data. Both tables are related by the UWI key and can be combined with a simple SQL JOIN statement. Originally, this data was essentially useless due to its lack of accessability, now it is in a structured, organized, and accessible database. 
 
 <img src="/images/scrapy/database_result.PNG?raw=true"/>
 
