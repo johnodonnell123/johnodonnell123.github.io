@@ -1,6 +1,6 @@
 # SQL in Jupyter for Data Retrieval and Analysis
 
-**Description:** Here I highlight some useful examples of SQL for general data querying and high level analysis. Some queries are converted into Pandas DataFrames allowing for further analysis, while others are left alone and are meant for summary purposes. To run the queries in Jupyter I use ipython-sql, which allows for a more simple and intuitive syntax. 
+**Description:** Here I highlight some useful examples of SQL for general data querying and high level analysis. To run the queries in Jupyter I use ipython-sql, which allows for a more simple and intuitive syntax. 
 
 ### Data Context: 
 The data we are working with here was scraped from a webpage and stored in a SQLite3 database, which I cover in [another project](https://johnodonnell123.github.io/pages/page_scrapy.html). 
@@ -9,8 +9,9 @@ For those unfamiliar with these oil and gas data types, I hope to provide some c
 #### Header Table
 Contains general information about a well such as the name, the location, and depth. It also contains the UWI (unique well identifier).
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/images/SQL/header_table.PNG?raw=true">
-
+<p align='center'>
+  <img src="/images/SQL/header_table.PNG?raw=true" height='75%' width='75%'>
+</p>
 #### Production Table
 Wells produce Oil, Water, and Gas over time. This is our time-series data, which is why it is held in a separate table. They typically have higher rates early time and decline throughout their life. This table contains the UWI, the time stamp, the number of days that well actually flowed for that month, and the coinciding volumes for oil/water/gas.
 
