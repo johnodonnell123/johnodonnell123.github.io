@@ -28,6 +28,7 @@ Here we have all 15,000 wells on a map, colored by the depth of the top perforat
 </p>
 
 ## What Operator has Produced the Most Oil to Date?
+Using SQL to join and aggregate
 
 ```javascript
 %%sql 
@@ -49,6 +50,7 @@ Producing more oil with less wells likely translates into better project level e
 
 ## Simple Oil Production Plot
 Here we choose 8 wells at random for a given operator, and plot their oil production streams. 
+This is a pre-defined plotting function I have created, which can be found on in the notebook. 
 
 ```javascript
 df9 = df_header[df_header['Current_Operator'].str.contains('XTO')].sample(8)
@@ -65,6 +67,8 @@ STREAM_PLOT(dataframe = df9,
 
 ## Water / Oil Ratio Plot
 Wells that produce less water are more favorable from an economic standpoint, as the water is costly to dispose of. Here we take a random sample of 1500 wells, bin them into groups defined by their Vintage Year, then average their production streams every month (30.4 days). As you can see, over time operators have been producing more and more water!
+
+We also limit our production DataFrame to remove WOR's that aren't reasonable. 
 
 ```javascript
 df9 = df_header[df_header['Vintage_Year'] > 2008].sample(1500)
@@ -84,7 +88,7 @@ STREAM_PLOT(dataframe = df9,
 <img src="/images/EDA/Vintage WOR.PNG?raw=true" width="60%" height="60%">
 
 ## Oil Production Plot: Averaged by ~ Depth/Pressure
-Here we are binning and averaging by the depth of the top perforation, which is a proxy for depth of the formation. The correlation between depth and pressure is pretty strong in this basin. Higher pressure normally leads to better wells. 
+Here we are binning and averaging by the depth of the top perforation, which is a proxy for depth of the formation. The correlation between depth and pressure is pretty strong in this basin. Higher pressure normally leads to better wells, the relationship shows through clearly in the plot. 
 
 ```javascript
 df9 = df_header.sample(5000)
@@ -126,13 +130,13 @@ df_block.head()
 </p>
 
 ## What Areas have Produced the Most Oil for their Well Count?
-Lets see what townships have produced the most oil for their well count. More oil with less wells is favorable. 
+Lets see what townships have produced the most oil for their well count. More oil with less wells (all well costs the same) translates into better project economics. 
 
 <p align="center">
   <img src="/images/EDA/Map - Cum Oil Per Block Per Well.PNG" width="50%" height="50%">
 </p>
 
-As you can see, this map looks notably different than the previous, showing that simply the number of wells in a township is a primary driver. Would we want an investment in a township that has produced the most oil, or the township that produces the most oil per well drilled?
+As you can see, this map looks notably different than the previous, showing that simply the number of wells in a township is in fact a primary driver. Would we want an investment in a township that has produced the most oil, or the township that produces the most oil per well drilled?
 
 ## Wrap Up:
 Here we have covered several tools that can be used data analysis using oil and gas production data. There is a wealth of information publicly avaliable for the Williston Basin that yields insight into performance (and investment) drivers around the basin. 
