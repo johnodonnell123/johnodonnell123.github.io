@@ -38,7 +38,7 @@ View shape of table and random sample
 SELECT * 
 FROM prod_table
 ```
-<img src="/images/SQL/Select all from table2.png?raw=true" height='40%' width='40%'>
+<img src="/images/SQL/Select all from table2.png?raw=true" height='50%' width='50%'>
 <br>
 
 ## Select First 5 Rows
@@ -131,7 +131,7 @@ GROUP BY Well_Name
 ORDER BY Cumulative_Oil desc
 LIMIT 5
 ```
-<img src="/images/SQL/Top Producing Wells2.png?raw=true" height='70%' width='70%'>
+<img src="/images/SQL/Top Producing Wells2.png?raw=true" height='60%' width='60%'>
 <br>
 
 ## Group By: <br> What are the top producing wells for a particular operator? 
@@ -162,5 +162,5 @@ HAVING Cumulative_Water < 100000
 ORDER BY Cumulative_Oil desc
 LIMIT 5
 ```
-<img src="/images/SQL/Top Producing Wells Water Filter2.png?raw=true" height='60%' width='60%'>
+<img src="/images/SQL/Top Producing Wells Water Filter2.png?raw=true" height='75%' width='75%'>
 
