@@ -1,26 +1,26 @@
 # Cluster Analysis for Rock Typing
 
 **Description:** K-means clustering is used to discover primary rock types in a deep well drilled in the Williston Basin. At first the entire column of rock is viewed, 
-then we focus in on the primary formations of interestin in the basin.
+then we focus in on the primary formations of interest in the basin.
 
 ### Data Context: 
-Operators drilling for oil and gas want to understand the subsurface reservoirs that they are trying to produce from, and one of the most common ways of doing so is by "logging" a well. A well is drilled vertically to some depth, and a tool is run inside the hole with sensors as measurements are taken. From these measurements, we infer properties about the rock. Different rock types such as sandstone, limestone, and clay have very different readings on these tools. Here I hope to provide a **very** high level overview of 
-some of the common logs found in North Dakotas Williston Basin. 
+Operators drilling for oil and gas want to understand the subsurface reservoirs that they are trying to produce from, and one of the most common ways of doing so is by "logging" a well. A well is drilled vertically to some depth, and a tool is run inside the hole with sensors and measurements are taken. From these measurements, we infer properties about the rock. Different rock types such as sandstone, limestone, and clay have very different readings on these tools. Here I hope to provide a **very** high level overview of 
+some of the common logs. 
 
 - Gamma Ray (GR): Measures the natural radioactivity of the rock
-- Density (RHOZ): Measures the electron density of the sample, which is closely tied to the bulk density
+- Density (RHOZ): Measures electron density, which is closely tied to bulk density
 - Neutron (NPHI): Measures the hydrogen content of the formation which is related to its porosity or mineralogy
 
-If you are interested in learning more, [here](/pdf/Atlas_of_Log_Responses_Atlas_of_Log_Resp.pdf) is a useful quick-look chart that shows many more logs and their typical response in different rock types!
+If you are interested in learning more, [here](/pdf/Atlas_of_Log_Responses_Atlas_of_Log_Resp.pdf) is a useful quick-look chart that shows many more logs and their typical responses in different rock types.
 
-### Machine Learning Context: What is K-Means Clustering? What is the value?
-K-Means clustering is an unsupervised learning algorithm that attempts to uncover structures within the dataset it is provided. In one sentence: the algorithm will cross plot all of our variables against each other, and see if there are any obvious groups (clusters) in which the points can then be categorized. In the context of this project we will be looking to see if different rock types (sandstone, carbonate, salt) are easily discernable with this methodology. This is something that petrophysicists have been doing for decades manually and has proven incredibly valuable. Why use machine learning instead of doing this manually?
+### Machine Learning Context: What is K-Means Clustering? Why Bother?
+K-Means clustering is an unsupervised learning algorithm that attempts to uncover structures within the dataset it is provided. In one sentence: the algorithm will cross plot all of our variables against each other, and see if there are any obvious groups (clusters) in which the points can then be categorized. In the context of this project we will be looking to see if different rock types are discernable with this methodology. This is something that [petrophysicists](https://petrowiki.spe.org/Petrophysics) have been doing for decades manually and has proven incredibly valuable. Why use machine learning instead of doing this manually?
 
-- Time: This process can be done for thousands of wells, millions of feet of data, in a matter of minutes. This type of projects would take weeks if not months traditionally.
+- Time: This process can be done for thousands of wells, millions of rows of data, in a matter of minutes. This type of project would take weeks if not months traditionally.
 
-- Bias: It is repeatable, the subjectivity of the interpreter is minimized. 
+- Bias: It is repeatable, the subjectivity of the interpreter is minimized. There is still room for interpretation however it is bounded and explainable. 
 
-- Exploration: In many cases, the algorithm will find relationships that we didn't know existed, but make sense and can be very valuable once we are aware of them. 
+- Exploration: In many cases, the algorithm will find relationships that we didn't know existed, but make sense in a physical space and can be very valuable once we are aware of them. 
 
 
 ### Reading a well log (.las file) into  Pandas DataFrame:
@@ -34,12 +34,12 @@ las = lasio.read(r"C:\Users\johno\Python\Logs\single-30933-AIG-CND-CAL.las.txt")
 df = las.df()
 
 # Observe DataFrame
-df.info()
+df.head()
 ```
 <img src="/images/Cluster/Lasio Import Log.PNG?raw=true"/>
 
 ## Trimming our DataFrame
-We won't be using 55 logs in our analysis, as most of them are either irrelevant for this study or are highly correlated with another log. We can achieve very good results with the 3 most fundamental logs that were mentioned earlier (GR, RHOZ, NPHI). The RHOZ log is trimmed to reasonable values, and fortunately this removes all of the other bad data as it occurs over the same interval. We are also dropping the first 2000' of data as it is a homogenous unit, and is simply not interesting for this project.
+We won't be using 55 logs in our analysis, as most of them are either irrelevant for this study or are highly correlated with another log (providing no unique information). We can achieve very good results with the 3 most fundamental logs that were mentioned earlier (GR, RHOZ, NPHI). The RHOZ log is trimmed to reasonable values, and fortunately this removes all of the other bad data as it occurs over the same interval. We are also dropping the first 2000' of data as it covers a homogenous unit, and is simply not interesting for this project.
 
 ```javascript
 # Create a copy to manipulate
