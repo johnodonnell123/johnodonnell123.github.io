@@ -62,9 +62,9 @@ def parse(self, response):
 ## Pipelines
 Two pipelines are defined allowing for the creation of two separate tables in our database. Below is the Production pipeline, which is nearly identical to the Header pipeline but shorter (fewer fields). A new class is defined with 3 methods. 
 
-1) `Open_spider` creates the connection to our database (and creates the database if it does not exist), it creates the table with the specified fields and data types, then commits those changes. 
+1) `open_spider` creates the connection to our database (and creates the database if it does not exist), it creates the table with the specified fields and data types, then commits those changes. 
 
-2) close_spider is called at the very end and closes our connection to the database. 
+2) ``close_spider`` is called at the very end and closes our connection to the database. 
 
 ```javascript
 import sqlite3
