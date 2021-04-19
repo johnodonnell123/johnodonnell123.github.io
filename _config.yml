@@ -3,9 +3,9 @@ logo: "images/Head_Shot.jpg" # your photo (or logo) here
 description: > # your text below (remove <br> elements if you don't need line breaks)
   A home page to expand on my data science projects. All source code can be found on my GitHub profile!
   <br><br>  
-  <a href="https://github.com/johnodonnell123/johnodonnell123.github.io/blob/main/pdf/John%20ODonnell%20Resume.pdf">View My Resume</a>
+  <a href="https://github.com/johnodonnell123/johnodonnell123.github.io/blob/main/pdf/John%20ODonnell%20Resume.pdf">View Resume</a>
   <br><br>
-  <a href="https://www.linkedin.com/in/johnodonnell93">View My LinkedIn Profile</a>   
+  <a href="https://www.linkedin.com/in/johnodonnell93">View LinkedIn Profile</a>   
   
 theme: jekyll-theme-minimal
 classes: wide
