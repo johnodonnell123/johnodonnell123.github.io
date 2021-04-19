@@ -38,7 +38,7 @@ View shape of table and random sample
 SELECT * 
 FROM prod_table
 ```
-<img src="/images/SQL/Select all from table2.png?raw=true" height='60%' width='60%'>
+<img src="/images/SQL/Select all from table2.png?raw=true" height='40%' width='40%'>
 <br>
 
 ## Select First 5 Rows
@@ -116,7 +116,7 @@ ORDER BY Cumulative_Oil desc
 LIMIT 5
 ```
 
-<img src="/images/SQL/Aggregate Operator Oil and Wells2.png?raw=true" height='50%' width='50%'>
+<img src="/images/SQL/Aggregate Operator Oil and Wells2.png?raw=true" height='60%' width='60%'>
 <br>
 
 ## Group By: <br> What Wells have Produced the Most Oil to Date? Who do they belong to? 
@@ -162,5 +162,5 @@ HAVING Cumulative_Water < 100000
 ORDER BY Cumulative_Oil desc
 LIMIT 5
 ```
-<img src="/images/SQL/Top Producing Wells Water Filter2.png?raw=true" >
+<img src="/images/SQL/Top Producing Wells Water Filter2.png?raw=true" height='60%' width='60%'>
 
