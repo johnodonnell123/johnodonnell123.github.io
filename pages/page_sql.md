@@ -28,11 +28,11 @@ SELECT name
 FROM sqlite_master 
 WHERE type ='table'
 ```
-<img src="/images/SQL/View Tables2.png?raw=true" height='75%' width='75%'>
+<img src="/images/SQL/View Tables2.png?raw=true" height='60%' width='60%'>
 <br>
 
 ## Select Entire Table
-View shape of table and random sample
+View shape of table (rows,columns) and a random sample
 ```javascript  
 %%sql 
 SELECT * 
