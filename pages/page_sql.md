@@ -40,7 +40,7 @@ SELECT *
 FROM header_table 
 LIMIT 5
 ```
-<img src="/images/SQL/Select first 5 rows2.png?raw=true" height='70%' width='70%'>
+<img src="/images/SQL/Select first 5 rows2.png?raw=true" height='60%' width='60%'>
 <br>
 
 ## Select Using Conditions
@@ -60,9 +60,10 @@ Using the logical IN operator
 ```javascript
 %%sql 
 
-SELECT UWI, Days, Oil 
+SELECT 
+  p.UWI, p.Days, p.Oil 
 FROM prod_table 
-WHERE UWI IN (33061042810000,33061005070000)
+WHERE p.UWI IN (33061042810000,33061005070000)
 ```
 <img src="/images/SQL/Specific Wells2.png?raw=true" height='30%' width='30%'>
 <br>
@@ -81,7 +82,8 @@ JOIN header_table h
 <img src="/images/SQL/Join Select Specific Columns2.png?raw=true" height='60%' width='60%'>
 <br>
 
-## Group By: <br> What Operators/Companies have Produced the Most Oil to Date?
+## Group By: <br> 
+### What Operators/Companies have Produced the Most Oil to Date?
 It appears Continental Resources has produced > 400 million barrels of oil and drilled just over 1700 wells!
 ```javascript
 %%sql 
@@ -99,31 +101,36 @@ LIMIT 5
 <img src="/images/SQL/Aggregate Operator Oil and Wells2.png?raw=true" height='60%' width='60%'>
 <br>
 
-## Group By: <br> What Wells have Produced the Most Oil to Date? Who do they belong to? 
+## Group By: <br> 
+### What Wells have Produced the Most Oil to Date? Who do they belong to? 
 ```javascript
 %%sql 
 
-SELECT p.UWI, sum(p.Oil) as 'Cumulative_Oil',h.Well_Name ,h.Current_Operator
+SELECT 
+  p.UWI, sum(p.Oil) as 'Cumulative_Oil', h.Well_Name, h.Current_Operator
 FROM prod_table p 
 JOIN header_table h 
-ON p.UWI = h.UWI 
-GROUP BY Well_Name 
+  USING(UWI)  
+GROUP BY h.Well_Name 
 ORDER BY Cumulative_Oil desc
 LIMIT 5
 ```
 <img src="/images/SQL/Top Producing Wells2.png?raw=true" height='60%' width='60%'>
 <br>
 
-## Group By: <br> What are the top producing wells for a particular operator? 
+## Group By: <br> 
+### What are the top producing wells for a particular operator? 
 ```javascript
 %%sql
 
-SELECT p.UWI,h.Current_Operator, sum(p.Oil) as 'Cumulative_Oil',h.Well_Name 
+SELECT 
+  p.UWI, h.Current_Operator, sum(p.Oil) as 'Cumulative_Oil', h.Well_Name 
 FROM prod_table p 
-JOIN header_table h ON p.UWI = h.UWI 
-GROUP BY Well_Name
-HAVING Current_Operator = 'MARATHON OIL COMPANY'
-ORDER BY Cumulative_Oil desc
+JOIN header_table h
+  USING(UWI)  
+WHERE Current_Operator = 'MARATHON OIL COMPANY'
+GROUP BY h.Well_Name
+ORDER BY Cumulative_Oil DESC
 LIMIT 5
 ```
 <img src="/images/SQL/Top Wells by Operator2.png?raw=true" height='60%' width='60%'>
@@ -134,12 +141,14 @@ Wells that produce less water are more favorable, as the water is costly to disp
 ```javascript
 %%sql
 
-SELECT p.UWI,h.Current_Operator, sum(p.Oil) as 'Cumulative_Oil',sum(p.Water) as 'Cumulative_Water',h.Well_Name 
+SELECT 
+  p.UWI, h.Current_Operator, sum(p.Oil) as 'Cumulative_Oil',sum(p.Water) as 'Cumulative_Water', h.Well_Name 
 FROM prod_table p 
-JOIN header_table h ON p.UWI = h.UWI 
+JOIN header_table h 
+  USING(UWI)  
 GROUP BY Well_Name
-HAVING Cumulative_Water < 100000
-ORDER BY Cumulative_Oil desc
+  HAVING Cumulative_Water < 100000
+ORDER BY Cumulative_Oil DESC
 LIMIT 5
 ```
 <img src="/images/SQL/Top Producing Wells Water Filter2.png?raw=true" height='75%' width='75%'>
