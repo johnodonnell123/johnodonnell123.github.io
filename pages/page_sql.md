@@ -68,7 +68,7 @@ WHERE p.UWI IN (33061042810000,33061005070000)
 <img src="/images/SQL/Specific Wells2.png?raw=true" height='30%' width='30%'>
 <br>
 
-## Join: <br> Select Columns from 2 Tables
+## Select Columns from 2 Tables
 Showing shape of table and a random sample
 ```javascript
 %%sql 
@@ -82,8 +82,7 @@ JOIN header_table h
 <img src="/images/SQL/Join Select Specific Columns2.png?raw=true" height='60%' width='60%'>
 <br>
 
-## Group By: <br> 
-### What Operators/Companies have Produced the Most Oil to Date?
+## What Operators/Companies have Produced the Most Oil to Date?
 It appears Continental Resources has produced > 400 million barrels of oil and drilled just over 1700 wells!
 ```javascript
 %%sql 
@@ -98,11 +97,28 @@ ORDER BY Cumulative_Oil DESC
 LIMIT 5
 ```
 
-<img src="/images/SQL/Aggregate Operator Oil and Wells2.png?raw=true" height='50%' width='50%'>
+<img src="/images/SQL/Aggregate Operator Oil and Wells2.png?raw=true" height='45%' width='45%'>
 <br>
 
-## Group By: <br> 
-### What Wells have Produced the Most Oil to Date? Who do they belong to? 
+## Check for duplicate well names
+Well names should be unique, however we know for sure UWI's are unique
+```javascript
+%%sql 
+
+SELECT 
+    p.UWI, h.Current_Operator, h.Well_Name, COUNT(DISTINCT p.UWI) AS 'UWIs'
+FROM prod_table p 
+JOIN header_table h 
+    USING(UWI) 
+GROUP BY Well_Name
+    HAVING UWIs > 1
+```
+
+<img src="/images/SQL/Check Duplicates.png?raw=true" height='45%' width='45%'>
+<br>
+
+
+## What Wells have Produced the Most Oil to Date? Who do they belong to? 
 ```javascript
 %%sql 
 
@@ -118,8 +134,7 @@ LIMIT 5
 <img src="/images/SQL/Top Producing Wells2.png?raw=true" height='60%' width='60%'>
 <br>
 
-## Group By: <br> 
-### What are the top producing wells for a particular operator? 
+## What are the top producing wells for a particular operator? 
 ```javascript
 %%sql
 
@@ -136,8 +151,7 @@ LIMIT 5
 <img src="/images/SQL/Top Wells by Operator2.png?raw=true" height='60%' width='60%'>
 <br>
 
-## Group By: <br> 
-### Top Producing Wells with Cumulative Water Filter
+## Top Producing Wells with Cumulative Water Filter
 Wells that produce less water are more favorable, as the water is costly to dispose of. 
 ```javascript
 %%sql
