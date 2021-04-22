@@ -31,18 +31,8 @@ WHERE type ='table'
 <img src="/images/SQL/View Tables2.png?raw=true" height='60%' width='60%'>
 <br>
 
-## Select Entire Table
-View shape of table (rows,columns) and a random sample
-```javascript  
-%%sql 
-SELECT * 
-FROM prod_table
-```
-<img src="/images/SQL/Select all from table2.png?raw=true" height='50%' width='50%'>
-<br>
-
-## Select First 5 Rows
-Showing shape of table and random sample
+## Select First 5 Rows of a table
+Showing shape of table (rows, columns) and a sample
 ```javascript
 %%sql 
 
@@ -53,26 +43,14 @@ LIMIT 5
 <img src="/images/SQL/Select first 5 rows2.png?raw=true" height='70%' width='70%'>
 <br>
 
-## Select Using Single Condition
-Showing shape of table and random sample
-```javascript
-%%sql 
-SELECT * 
-FROM prod_table 
-WHERE Days > 20 
-
-```
-<img src="/images/SQL/Single Condition2.png?raw=true" height='50%' width='50%'>
-<br>
-
-## Select Using Multiple Conditions
-Using the logical AND operator
+## Select Using Conditions
+Showing shape of table and a random sample
 ```javascript 
 %%sql 
 
 SELECT * 
 FROM prod_table 
-WHERE Days > 20 and Water < 100
+WHERE Days > 20 AND Water < 100
 ```
 <img src="/images/SQL/Multiple Conditions2.png?raw=true" height='50%' width='50%'>
 <br>
