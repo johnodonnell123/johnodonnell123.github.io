@@ -113,6 +113,7 @@ JOIN header_table h
 GROUP BY Well_Name
     HAVING UWIs > 1
 ```
+Surprisingly only one repeat!
 
 <img src="/images/SQL/Check Duplicates.PNG?raw=true" height='45%' width='45%'>
 <br>
@@ -134,7 +135,7 @@ LIMIT 5
 <img src="/images/SQL/Top Producing Wells2.png?raw=true" height='60%' width='60%'>
 <br>
 
-## What are the top producing wells for a particular operator? 
+## What Wells for a Particular Operator have Produced the Most Oil to Date? 
 ```javascript
 %%sql
 
