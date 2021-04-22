@@ -98,7 +98,7 @@ ORDER BY Cumulative_Oil DESC
 LIMIT 5
 ```
 
-<img src="/images/SQL/Aggregate Operator Oil and Wells2.png?raw=true" height='60%' width='60%'>
+<img src="/images/SQL/Aggregate Operator Oil and Wells2.png?raw=true" height='50%' width='50%'>
 <br>
 
 ## Group By: <br> 
