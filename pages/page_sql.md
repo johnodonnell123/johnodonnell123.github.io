@@ -136,7 +136,8 @@ LIMIT 5
 <img src="/images/SQL/Top Wells by Operator2.png?raw=true" height='60%' width='60%'>
 <br>
 
-## Group By: <br> Top Producing Wells with Cumulative Water Filter
+## Group By: <br> 
+### Top Producing Wells with Cumulative Water Filter
 Wells that produce less water are more favorable, as the water is costly to dispose of. 
 ```javascript
 %%sql
