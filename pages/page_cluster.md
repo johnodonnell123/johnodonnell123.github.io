@@ -39,7 +39,7 @@ df.head()
 <img src="/images/Cluster/Lasio Import Log.PNG?raw=true" height = "75%" width = "75%">
 
 ## Trimming our DataFrame
-We won't be using 55 logs in our analysis, as most of them are either irrelevant for this study or are highly correlated with another log (providing no unique information). We can achieve very good results with the 3 most fundamental logs that were mentioned earlier (GR, RHOZ, NPHI). The RHOZ log is trimmed to reasonable values, and fortunately this removes all of the other bad data as it occurs over the same interval. We are also dropping the first 2000' of data as it covers a homogenous unit, and is simply not interesting for this project.
+We won't be using 55 logs in our analysis, as most of them are either irrelevant for this study or are highly correlated with another log (providing no unique information and a increasing dimensionality). We can achieve very good results with the 3 most fundamental logs that were mentioned earlier (GR, RHOZ, NPHI). The RHOZ log is trimmed to reasonable values, and fortunately this removes all of the other bad data as it occurs over the same interval. We are also dropping the first 2000' of data as it covers a homogenous unit, and is simply not interesting for this project.
 
 ```javascript
 # Create a copy to manipulate
@@ -71,7 +71,7 @@ been placed on the same track and their relationship with one antother has been 
 </p>
   
 ## Preparing Data for Clustering:
-We need to scale our data so that they are all on similar scales for comparison. The algorithm will want to make these clusters more/less round in crossplot space, so if the variance among our varaibles are materially different this will lead to the variables with smaller variance getting more weight/being more influential. Our variances here aren't terribly different, but it never hurts to standardize and is considered good practice. 
+We need to scale our data so that they have similar variances. The algorithm will want to make these clusters more/less round in crossplot space, so if the variance among our features are materially different this will lead to the variables with smaller variance getting more weight/being more influential. Our variances here aren't terribly different, but it never hurts to standardize and is considered good practice. 
 
 Scikit-Learn's StandardScaler will transform our distributions to have a mean of 0 and a standard deviation of 1.
 
@@ -123,7 +123,7 @@ These can be very interesting when we have clearly definable groups that separat
 <p align = 'center'>
   <img src="/images/Cluster/Log Preview Cluster2.PNG?raw=true" width="50%" height="50%">
 </p>
-This is a much more intuitive view! We can see visually how some of our log responses are translating into different clusters. Lets zoom in on an area:
+This is a much more intuitive view! We can see visually how some of our log responses are translating into different clusters. Lets zoom in on a section of the column...
 
 ## Interpretation:
 Zooming in on the pink colored clusters, we can see that they have very low gamma readings, and our density log (green) is reading **very** low. This is a common response of salt, these are salt beds and they cause a host of issues for operators all around the world. One of which we can actually see here, note how our green RHOB log appears to read erratically around these beds, this is due to poor borehole conditions caused by these salts.
@@ -132,18 +132,17 @@ Zooming in on the pink colored clusters, we can see that they have very low gamm
   <img src="/images/Cluster/Salt2.PNG?raw=true" width="35%" height="35%">
 </p>
 
-Moving further down section to the primary formation of interest in the basin (Bakken formation), we see some interesting trends. This is the only section of the entire well in which we see this cluster represented by the color black. These are the upper and lower bakken shales, and they are the primary source for all of the oil in the bakken petroleum system. The blue cluster is interpreted to be carbonate rock, which has very low porosity and does not hold notable oil. The yellow cluster defines the primary reservoirs for the petroleum system, which are filled with oil and have produced millions upon millions of barrels of oil.
+Moving further down section to the primary formation of interest in the basin (Bakken formation), we see some interesting trends. This is the only section of the entire well in which we see this cluster represented by the color black. These are the upper and lower bakken shales, and they are the primary source for all of the oil in the bakken petroleum system. The blue cluster is interpreted to be carbonate rock, which has very low porosity and does not hold notable oil. The yellow cluster defines the primary reservoirs for the petroleum system, which are filled with oil and have produced hundreds of millions of barrels of oil.
 
 <p align = 'center'>
   <img src="/images/Cluster/BPS Zoom In2.PNG?raw=true" width="35%" height="35%">
 </p>
 
 ## Further Work / Extrapolation
-This was a gentle introduction of how k-means clustering adds value to the interpretation of rock types. This level of analysis is useful when moving into a new area to quickly get familiar with the different formations and their chracteristics. There are other applications to achieve a more granular result for a particular formation, which I may expand on with a future project. The general workflow would look like this:
+This was a gentle introduction of how k-means clustering adds value to the interpretation of rock types. This level of analysis is useful when moving into a new area to quickly get familiar with the different formations and their chracteristics. There are other applications to achieve a more granular result for a particular formation or group, which I may expand on with a future project. The general workflow would look like this:
 - Import all quality logs in the basin into a master Pandas DataFrame
 - Trim to only contain data for the relevant formation
 - Clean the data for reasonable values
-- Feature Engineering
 - Run K-Means Clustering
 - Export Results back to the wells
 - Map the clusters (rock types) around the basin as an isopach
