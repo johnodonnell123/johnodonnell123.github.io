@@ -7,7 +7,7 @@
 
 
 ### [Rock Typing Using K-Means Clustering](/pages/page_cluster.md)
-<img src="/images/cluster_thimbnail.PNG?raw=true" width="50%" height="50%">
+<img src="/images/cluster_thimbnail.PNG?raw=true" width="45%" height="45%">
 
 
 ### [Scraping Oil Well Production Data and Storing in a RDBS](/pages/page_scrapy.md)
