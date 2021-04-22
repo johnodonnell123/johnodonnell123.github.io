@@ -4,7 +4,7 @@
 then we focus in on the primary formations of interest in the basin.
 
 ### Data Context: 
-Operators drilling for oil and gas want to understand the subsurface reservoirs that they are trying to produce from, and one of the most common ways of doing so is by "logging" a well. A well is drilled vertically to some depth, and a tool is run inside the hole with sensors and measurements are taken. From these measurements, we infer properties about the rock. Different rock types such as sandstone, limestone, and clay have very different readings on these tools. Here I hope to provide a **very** high level overview of 
+Operators drilling for oil and gas want to understand the subsurface reservoirs that they are trying to produce from, and one of the most common ways of doing so is by "logging" a well. A well is drilled vertically to some depth, and a tool is run inside the hole with sensors and measurements are taken. From these measurements, we infer properties about the rock. Different rock types such as sandstones, limestones, and claystones have distinctly different readings on these tools. Here I hope to provide a **very** high level overview of 
 some of the common logs. 
 
 - Gamma Ray (GR): Measures the natural radioactivity of the rock
@@ -13,18 +13,18 @@ some of the common logs.
 
 If you are interested in learning more, [here](/pdf/Atlas_of_Log_Responses_Atlas_of_Log_Resp.pdf) is a useful quick-look chart that shows many more logs and their typical responses in different rock types.
 
-### Machine Learning Context: What is K-Means Clustering? Why Bother?
+### Machine Learning: What is K-Means Clustering? Why Bother?
 K-Means clustering is an unsupervised learning algorithm that attempts to uncover structures within the dataset it is provided. In one sentence: the algorithm will cross plot all of our variables against each other, and see if there are any obvious groups (clusters) in which the points can then be categorized. In the context of this project we will be looking to see if different rock types are discernable with this methodology. This is something that [petrophysicists](https://petrowiki.spe.org/Petrophysics) have been doing for decades manually and has proven incredibly valuable. Why use machine learning instead of doing this manually?
 
-- Time: This process can be done for thousands of wells, millions of rows of data, in a matter of minutes. This type of project would take weeks if not months traditionally.
+- Time: This process can be done for thousands of wells, millions of rows of data, in a matter of minutes. This type of project would take weeks if not months of concentrated effort traditionally.
 
-- Bias: It is repeatable, the subjectivity of the interpreter is minimized. There is still room for interpretation however it is bounded and explainable. 
+- Bias: It is repeatable, the subjectivity of the interpreter is minimized. There is still room for interpretation however it is bounded and more easily explained. 
 
-- Exploration: In many cases, the algorithm will find relationships that we didn't know existed, but make sense in a physical space and can be very valuable once we are aware of them. 
+- Exploration: In many cases, the algorithm will find relationships that we didn't know existed, but make sense in a physical space and can be very valuable once we are aware of them. It important to remember we don't have it all figured out, and remain open to new ideas and learning something. 
 
 
 ### Reading a well log (.las file) into  Pandas DataFrame:
-We see that we have a DataFrame indexed by depth, with data every 0.5 feet. With 21543 rows that leaves us with ~ 10771' of data with 55 logs. 
+We see that we have a DataFrame indexed by depth, with data every 0.5 feet. We have 21543 rows and 55 logs. 
 
 ```javascript  
 # Import .las file into a LASFile object (from lasio package)
@@ -36,7 +36,7 @@ df = las.df()
 # Observe DataFrame
 df.head()
 ```
-<img src="/images/Cluster/Lasio Import Log.PNG?raw=true"/>
+<img src="/images/Cluster/Lasio Import Log.PNG?raw=true" height = "75%" width = "75%">
 
 ## Trimming our DataFrame
 We won't be using 55 logs in our analysis, as most of them are either irrelevant for this study or are highly correlated with another log (providing no unique information). We can achieve very good results with the 3 most fundamental logs that were mentioned earlier (GR, RHOZ, NPHI). The RHOZ log is trimmed to reasonable values, and fortunately this removes all of the other bad data as it occurs over the same interval. We are also dropping the first 2000' of data as it covers a homogenous unit, and is simply not interesting for this project.
