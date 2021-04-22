@@ -101,7 +101,7 @@ LIMIT 5
 <br>
 
 ## Check for duplicate well names
-Well names should be unique, however we know for sure UWI's are unique
+Well names <em>should</em> be unique, however we know for sure UWI's are unique
 ```javascript
 %%sql 
 
