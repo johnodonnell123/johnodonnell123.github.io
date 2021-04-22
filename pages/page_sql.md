@@ -28,7 +28,7 @@ SELECT name
 FROM sqlite_master 
 WHERE type ='table'
 ```
-<img src="/images/SQL/View Tables2.png?raw=true" height='60%' width='60%'>
+<img src="/images/SQL/View Tables2.png?raw=true" height='50%' width='50%'>
 <br>
 
 ## Select First 5 Rows of a table
@@ -68,29 +68,31 @@ WHERE UWI IN (33061042810000,33061005070000)
 <br>
 
 ## Join: <br> Select Columns from 2 Tables
-Showing shape of table and random sample
+Showing shape of table and a random sample
 ```javascript
 %%sql 
 
-SELECT p.UWI,p.Days,p.Oil,h.Current_Operator 
+SELECT 
+  p.UWI, p.Days, p.Oil, h.Current_Operator 
 FROM prod_table p 
 JOIN header_table h 
-ON p.UWI = h.UWI
+  USING(UWI)
 ```
 <img src="/images/SQL/Join Select Specific Columns2.png?raw=true" height='60%' width='60%'>
 <br>
 
 ## Group By: <br> What Operators/Companies have Produced the Most Oil to Date?
-It appears Continental Resources has produced > 400 Million Barrels of Oil and Drilled just over 1700 Wells!
+It appears Continental Resources has produced > 400 million barrels of oil and drilled just over 1700 wells!
 ```javascript
 %%sql 
 
-SELECT p.UWI, COUNT(DISTINCT p.UWI) AS 'Wells', SUM(p.Oil) AS 'Cumulative_Oil', h.Current_Operator
+SELECT 
+  p.UWI, COUNT(DISTINCT p.UWI) AS 'Wells', SUM(p.Oil) AS 'Cumulative_Oil', h.Current_Operator
 FROM prod_table p 
 JOIN header_table h 
-ON p.UWI = h.UWI 
+  USING(UWI) 
 GROUP BY Current_Operator
-ORDER BY Cumulative_Oil desc
+ORDER BY Cumulative_Oil DESC
 LIMIT 5
 ```
 
