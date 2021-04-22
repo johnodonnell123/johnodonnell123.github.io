@@ -114,7 +114,7 @@ GROUP BY Well_Name
     HAVING UWIs > 1
 ```
 
-<img src="/images/SQL/Check Duplicates.png?raw=true" height='45%' width='45%'>
+<img src="/images/SQL/Check Duplicates.PNG?raw=true" height='45%' width='45%'>
 <br>
 
 
