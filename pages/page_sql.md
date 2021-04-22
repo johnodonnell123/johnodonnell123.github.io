@@ -17,7 +17,7 @@ Contains general information about a well such as the name, the location, and de
 Wells produce Oil, Water, and Gas over time. This is our time-series data, which is why it is held in a separate table. They typically have higher rates early time and decline throughout their life. This table contains the UWI, the time stamp, the number of days that well actually flowed for that month, and the coinciding volumes for oil/water/gas.
 
 <p align='center'>
-  /<img src="/images/SQL/prod_table.PNG?raw=true" height='60%' width='60%'>
+  <img src="/images/SQL/prod_table.PNG?raw=true" height='45%' width='45%'>
 </p>
 
 ## View Tables in DataBase
