@@ -50,7 +50,9 @@ Displaying results with Plotly bar chart. Producing more oil with less wells lik
 
 ## Simple Oil Production Plot
 Here we choose 8 wells at random for a given operator, and plot their oil production streams. 
-This is a pre-defined plotting function I have created, which can be found on in the notebook. 
+This is a pre-defined plotting function I have created, which can be found in the notebook. 
+
+We start by defining our two DataFrames we want to use for input (which allows us to filter the data up front), then pass them as arguments to our function along with other options such as `material` and `cumulative` (boolean).
 
 ```javascript
 df9 = df_header[df_header['Current_Operator'].str.contains('XTO')].sample(8)
@@ -66,7 +68,7 @@ STREAM_PLOT(dataframe = df9,
 <img src="/images/EDA/Simple Oil Plot.PNG?raw=true" width="75%" height="75%">
 
 ## Water / Oil Ratio Plot
-Wells that produce less water are more favorable from an economic standpoint, as the water is costly to dispose of. Here we take a random sample of 1500 wells, bin them into groups defined by their Vintage Year, then average their production streams every month (30.4 days). As you can see, over time operators have been producing more and more water!
+Wells that produce less water are more favorable from an economic standpoint, as the water is costly to dispose of. Here we take a random sample of 1500 wells, bin them into groups defined by their Vintage, then average their production streams every month (30.4 days) to create a new stream. As you can see, over time operators have been producing more and more water!
 
 We also limit our production DataFrame to remove WOR's that aren't reasonable. 
 
@@ -107,12 +109,15 @@ STREAM_PLOT(dataframe = df9,
 <img src="/images/EDA/Depth Oil Plot.PNG?raw=true" width="60%" height="60%">
 
 ## What Areas have Produced the Most Oil?
-The basin is divided up into 6mi x 6mi squares called [townships](https://en.wikipedia.org/wiki/Township_(United_States)). This is a convinent way to represent the geologic impact of an area as the geology within a township is more/less the same, most measureable changes happen at a larger scale than 6 miles. Lets see what townships have produced the most oil.
+The basin is divided up into 6mi x 6mi squares called [townships](https://en.wikipedia.org/wiki/Township_(United_States)). This is a convinent way to represent the geologic impact of an area as the geology within a township is more/less the same, most <em>measureable</em> varaiblility exists at a larger scale than 6 miles. Lets see what townships have produced the most oil.
 
 ```javascript
-query = %sql SELECT p.UWI, h.Block, COUNT(DISTINCT p.UWI) AS 'Wells_Per_Block', SUM(p.Oil) AS 'Cumulative_Oil_Per_Block' 
+query = %sql 
+SELECT 
+  p.UWI, h.Block, COUNT(DISTINCT p.UWI) AS 'Wells_Per_Block', SUM(p.Oil) AS 'Cumulative_Oil_Per_Block' 
 FROM prod_table_clean p 
-JOIN header_table_clean h ON p.UWI = h.UWI 
+JOIN header_table_clean h 
+  USING(UWI) 
 GROUP BY Block 
 ORDER BY Cumulative_Oil_Per_Block desc
 
@@ -139,7 +144,7 @@ Lets see what townships have produced the most oil for their well count. More oi
 As you can see, this map looks notably different than the previous, showing that simply the number of wells in a township is in fact a primary driver. Would we want an investment in a township that has produced the most oil, or the township that produces the most oil per well drilled?
 
 ## Wrap Up:
-Here we have covered several tools that can be used data analysis using oil and gas production data. There is a wealth of information publicly avaliable for the Williston Basin that yields insight into performance (and investment) drivers around the basin. 
+Here we have covered several tools that can be used for data analysis on oil and gas production data. This is just the tip of the iceberg when it comes to the analysis that can be completed on this dataset using these tools. There is a wealth of information publicly avaliable for the Williston Basin that yields insight into performance (and investment) drivers around the basin. Knowing how to manipulate, clean, analyze, and visualize it can be overwhelming with traditional methods. Hopefully this short workflow demonstrates the value of these tools and knowing how to use them! 
 
 
 
