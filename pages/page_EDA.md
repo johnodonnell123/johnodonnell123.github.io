@@ -18,7 +18,9 @@ Contains general information about a well such as depth and location. It also co
 #### Production Table (Time-Series)
 Wells produce oil, water, and gas over time. This is our time-series data, which is why it is held in a separate table. Each of our ~15,000 wells has multiple records in this table, making is significantly larger at around 1.1 million rows. This table contains the UWI, the time stamp, the number of days that well actually flowed for that month, and the coinciding volumes for oil/water/gas.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/images/SQL/prod_table.PNG?raw=true">
+<p align="center">
+  <img src="/images/SQL/prod_table.PNG?raw=true">
+</p>
 
 ## What does the basin look like? 
 Here we have all 15,000 wells on a map, colored by the depth of the top perforation. The top perf on a well is typically within ~100' of entering the formation, with this in mind we can use this perf depth as a proxy for formation depth. Looking at our map below it appears to be pretty accurate. The Williston basin has one structural feature that stands out from the others, the nesson [anticline](https://www.glossary.oilfield.slb.com/en/Terms/a/anticline.aspx), which I have annotated here below!
