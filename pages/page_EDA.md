@@ -44,7 +44,7 @@ LIMIT 8
 <img src="/images/EDA/Oil and Wells by Operator Results.PNG?raw=true" width="50%" height="50%">
 
 ## What Operator has Produced the Most Oil for their Well Count?
-Producing more oil with less wells likely translates into better project level economics (and better investments). 
+Displaying results with Plotly bar chart. Producing more oil with less wells likely translates into better project level economics (and better investments). 
 
 <img src="/images/EDA/Oil Per Well by Operator.PNG?raw=true" width="50%" height="50%">
 
