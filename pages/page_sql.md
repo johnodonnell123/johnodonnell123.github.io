@@ -28,7 +28,7 @@ SELECT name
 FROM sqlite_master 
 WHERE type ='table'
 ```
-<img src="/images/SQL/View Tables2.png?raw=true"/>
+<img src="/images/SQL/View Tables2.png?raw=true" height='75%' width='75%'>
 <br>
 
 ## Select Entire Table
