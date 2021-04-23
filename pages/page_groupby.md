@@ -7,7 +7,7 @@ arise such as "how many wells should we drill?" and "how much fluid should we pu
 Land in the Williston basin is divided up into Townships, Ranges, and Sections. A township is 6mi x 6mi, and a section is 1mi x 1 mi. Traditionally, a DSU (Drill Spacing Unit) is two sections, forming a 2mi x 1mi stretch of land (shown in red). Operators will drill a number of wells horizontally in the longer direction (shown in blue).
 
 <p align = 'center'>
-  <img src="/images/GroupBy/DSU Explained.PNG?raw=true" height = "60%" width = "60%">
+  <img src="/images/GroupBy/DSU Explained.PNG?raw=true" height = "50%" width = "50%">
 </p>
 
 The question becomes: to most efficiently recovery the oil that is in the ground inside that DSU, how many wells do we drill and how to we stimulate/frac them? Here are a handful
@@ -15,7 +15,7 @@ possible scenarios to help further represent the problem. Blue sticks represent 
 <br>
 
 <p align = 'center'>
-  <img src="/images/GroupBy/DSU Cartoon.PNG?raw=true" height = "60%" width = "60%">
+  <img src="/images/GroupBy/DSU Cartoon.PNG?raw=true" height = "50%" width = "50%">
 </p>
 
 ## Data: 
@@ -40,7 +40,7 @@ To apply an aggregation function to wells in a DSU they all need to have some so
 - All wells that share the exact same township and range are grouped together, within these groupings all wells that have two section numbers in common are given a unique name. 
 
 <p align = 'center'>
-  <img src="/images/GroupBy/Calculated Coordinates.PNG?raw=true" height = "60%" width = "60%">
+  <img src="/images/GroupBy/Calculated Coordinates.PNG?raw=true" height = "40%" width = "40%">
 </p>
 
 
