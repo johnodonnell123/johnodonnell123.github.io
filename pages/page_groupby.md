@@ -39,6 +39,9 @@ To apply an aggregation function to wells in a DSU they all need to have some so
 - These XYs are converted back to Latitude and Longitude, and finally converted to Township, Range, and Section
 - All wells that share the exact same township and range are grouped together, within these groupings all wells that have two section numbers in common are given a unique name. 
 
+<p align = 'center'>
+  <img src="/images/GroupBy/Calculated Coordinates.PNG?raw=true" height = "60%" width = "60%">
+</p>
 
 
 
