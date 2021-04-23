@@ -62,7 +62,7 @@ df2.describe().transpose()
 <img src="/images/Cluster/DF2 CLEAN.PNG?raw=true"/>
 
 ## Viewing Logs with Matplotlib
-Credit here to [Andy Mcdonald](http://andymcdonald.scot/python-and-petrophysics) and all of the work he has done paving the way doing petrophysics in Python. 
+Credit here to [Andy McDonald](http://andymcdonald.scot/python-and-petrophysics) and all of the work he has done paving the way doing petrophysics in Python. 
 Here we have two tracks. The first has our Gamma Ray log that has been shaded to highlight variablility. The second track contains the NPHI & RHOZ logs. They have
 been placed on the same track and their relationship with one antother has been shaded (a common petrophysical technique). This plotting function can be found on my [GitHub](https://github.com/johnodonnell123/Personal_Projects).
 
