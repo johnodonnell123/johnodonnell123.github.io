@@ -125,6 +125,7 @@ ITEM_PIPELINES = {
 ## Result
 The SQLite database now has 2 tables, one for header data, the other with production/time-series data. Both tables are related by the UWI key and can be combined with a simple SQL JOIN statement. Originally, this data was essentially useless due to its lack of accessability, now it is in a structured, organized, and accessible database. 
 
-<img src="/images/scrapy/database_result.PNG?raw=true"/>
-
+<p align = 'center'>
+    <img src="/GroupBy/DSU Explained.PNG?raw=true">
+</p>
 
