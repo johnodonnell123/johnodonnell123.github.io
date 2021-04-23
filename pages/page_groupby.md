@@ -10,12 +10,12 @@ Land in the Williston basin is divided up into Townships, Ranges, and Sections. 
 two sections, forming a 2mi x 1mi stretch of land (shown in red). Operators will drill a number of wells horizontally in the longer direction (shown in blue).
 
 <p align = 'center'>
-  <img src="/images/GroupBy/DSU Explained.PNG?raw=true"/>
+  <img src="/images/GroupBy/DSU Explained.PNG?raw=true" height = "75%" width = "75%">
 </p>
 
 The question becomes: to most efficiently recovery the oil that is in the ground inside that DSU, how many wells do we drill and how to we stimulate/frac them? Here are a handful
 possible scenarios to help further represent the problem. Blue sticks represent horizontal wells, and the yellow areas represent the area that is being drained. Here we are assuming that this area is primarily a function of the amount of fluid pumped into the well (the frac). This is simplistic view yet it sheds light on the complexity of the problem. 
 
 <p align = 'center'>
-  <img src="/images/GroupBy/DSU Cartoon.PNG?raw=true"/>
+  <img src="/images/GroupBy/DSU Cartoon.PNG?raw=true" height = "75%" width = "75%">
 </p>
