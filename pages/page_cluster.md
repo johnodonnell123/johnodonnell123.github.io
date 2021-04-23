@@ -36,7 +36,7 @@ df = las.df()
 # Observe DataFrame
 df.head()
 ```
-<img src="/images/Cluster/Lasio Import Log.PNG?raw=true" height = "75%" width = "75%">
+<img src="/images/Cluster/Lasio Import Log.PNG?raw=true" height = "50%" width = "50%">
 
 ## Trimming our DataFrame
 We won't be using 55 logs in our analysis, as most of them are either irrelevant for this study or are highly correlated with another log (providing no unique information and a increasing dimensionality). We can achieve very good results with the 3 most fundamental logs that were mentioned earlier (GR, RHOZ, NPHI). The RHOZ log is trimmed to reasonable values, and fortunately this removes all of the other bad data as it occurs over the same interval. We are also dropping the first 2000' of data as it covers a homogenous unit, and is simply not interesting for this project.
