@@ -34,7 +34,7 @@ Wells produce oil, water, and gas over time. This is our time-series data, which
 </p>
 
 ## Grouping the Wells by DSU:
-To apply an aggregation function to wells in a DSU they all need to have some sort of flag to denote which DSU they fall in. This is a project of its own in terms of complexity and length, I will only cover the workflow at a high level here. In short, we want to give a unique name to all wells that share the same township, range, and two section numbers. 
+To apply an aggregation function to wells in a DSU they all need to have some sort of flag to denote which DSU they belong to. This is a project of its own in terms of complexity and length, I will only cover the workflow at a high level here. In short, we want to give a unique name to all wells that share the same township, range, and two section numbers. 
 - For each well we have a surface hole and bottom hole latitude and longitude (a point at each end of our well)
 - The `utm` package in Python can be used to convert lat/long into xy coordinates (meters)
 - XYs are calculated for distances that are 25% and 75% of the distance between our two points (giving us a point in each section)
