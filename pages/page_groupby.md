@@ -24,7 +24,7 @@ possible scenarios to help further represent the problem. Blue sticks represent 
 This data set comes from Enverus, and can be organized into two tables:
 
 #### Header Table
-Contains general information about a well such as the depth, location, and the stimulation of the well. It also contains the UWI (unique well identifier). We have ~ 15,000 rows, each row representing one well. The stimulation of the well can be simplified into two primary components, the fluid pumped and the proppant (sand) pumped. 
+Contains general information about a well such as the depth, location, and the stimulation of the well. It also contains spacing information (how close the next well is). We have ~ 15,000 rows indexed by UWI (Unique Well Identifier), each row representing one well. The stimulation of the well can be simplified into two primary components, the fluid pumped and the proppant (sand) pumped. 
 
 #### Production Table (Time-Series)
 Wells produce oil, water, and gas over time. This is our time-series data, which is why it is held in a separate table. Each of our wells has an entry for every month it produced, making is significantly larger at around 1.1 million rows. This table contains the UWI, the time stamp, the number of days that well actually flowed for that month, and the coinciding volumes for oil/water/gas.
@@ -33,7 +33,7 @@ Wells produce oil, water, and gas over time. This is our time-series data, which
   <img src="/images/SQL/prod_table.PNG?raw=true">
 </p>
 
-## Grouping the Well by DSU:
+## Grouping the Wells by DSU:
 To apply an aggregation function to wells in a DSU they all need to have some sort of flag to denote which DSU they fall in. This is a project of its own in terms of complexity and length, I will only cover the workflow at a high level here. In short, we want to give a unique name to all wells that share the same township, range, and two section numbers. 
 - For each well we have a surface hole and bottom hole latitude and longitude (a point at each end of our well)
 - The `utm` package in Python can be used to convert lat/long into xy coordinates (meters)
