@@ -10,7 +10,7 @@ Land in the Williston basin is divided up into Townships, Ranges, and Sections. 
 two sections, forming a 2mi x 1mi stretch of land (shown in red). Operators will drill a number of wells horizontally in the longer direction (shown in blue).
 
 <p align = 'center'>
-  <img src="/images/GroupBy/DSU Explained.PNG?raw=true" height = "75%" width = "75%">
+  <img src="/images/GroupBy/DSU Explained.PNG?raw=true" height = "60%" width = "60%">
 </p>
 
 The question becomes: to most efficiently recovery the oil that is in the ground inside that DSU, how many wells do we drill and how to we stimulate/frac them? Here are a handful
@@ -18,4 +18,17 @@ possible scenarios to help further represent the problem. Blue sticks represent 
 
 <p align = 'center'>
   <img src="/images/GroupBy/DSU Cartoon.PNG?raw=true" height = "60%" width = "60%">
+</p>
+
+## Data: 
+This data set comes from Enverus, and can be organized into two tables:
+
+#### Header Table
+Contains general information about a well such as the depth, location, and the stimulation of the well. It also contains the UWI (unique well identifier). We have ~ 15,000 rows, each row representing one well. The stimulation of the well can be simplified into two primary components, the fluid pumped and the proppant (sand) pumped. 
+
+#### Production Table (Time-Series)
+Wells produce oil, water, and gas over time. This is our time-series data, which is why it is held in a separate table. Each of our wells has an entry for every month it produced, making is significantly larger at around 1.1 million rows. This table contains the UWI, the time stamp, the number of days that well actually flowed for that month, and the coinciding volumes for oil/water/gas.
+
+<p align="center">
+  <img src="/images/SQL/prod_table.PNG?raw=true">
 </p>
