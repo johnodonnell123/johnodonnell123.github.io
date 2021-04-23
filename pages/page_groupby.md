@@ -12,3 +12,10 @@ two sections, forming a 2mi x 1mi stretch of land (shown in red). Operators will
 <p align = 'center'>
   <img src="/images/GroupBy/DSU Explained.PNG?raw=true"/>
 </p>
+
+The question becomes: to most efficiently recovery the oil that is in the ground inside that DSU, how many wells do we drill and how to we stimulate/frac them? Here are a handful
+possible scenarios to help further represent the problem. Blue sticks represent horizontal wells, and the yellow areas represent the area that is being drained. Here we are assuming that this area is primarily a function of the amount of fluid pumped into the well (the frac). This is simplistic view yet it sheds light on the complexity of the problem. 
+
+<p align = 'center'>
+  <img src="/images/GroupBy/DSU Cartoon.PNG?raw=true"/>
+</p>
