@@ -17,5 +17,5 @@ The question becomes: to most efficiently recovery the oil that is in the ground
 possible scenarios to help further represent the problem. Blue sticks represent horizontal wells, and the yellow areas represent the area that is being drained. Here we are assuming that this area is primarily a function of the amount of fluid pumped into the well (the frac). This is simplistic view yet it sheds light on the complexity of the problem. 
 
 <p align = 'center'>
-  <img src="/images/GroupBy/DSU Cartoon.PNG?raw=true" height = "75%" width = "75%">
+  <img src="/images/GroupBy/DSU Cartoon.PNG?raw=true" height = "60%" width = "60%">
 </p>
