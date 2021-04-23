@@ -44,7 +44,7 @@ To apply an aggregation function to wells in a DSU they all need to have some so
 </p>
 
 ## Calculating Production
-Since we do have calendar date producing months for each well, we could aggregate production for the wells in the DSU on producing month 1, 2, 3 etc. However looking at our table we see that for each month there is a number for the reported producing days that ranges from 0 to 31. If we chose to just use the calendar months our production streams would have influence from their production schedules that could add unnecesary noise to our data. For one well month 3 might represent 90 producing days and for antoher it might represent 4. A better method would be to use the cumulative reported producing days, and represent each month as 30.4 days. The challenge here is that we don't have a data point for exactly every 30.4 days, our solution will be to linearly interpolate betweeen the two bounding points. 
+Since we have calendar date producing months for each well, we could aggregate production for the wells in the DSU on their producing month #1, #2 etc. However looking at our production table we see that for each month there is a number representing the reported producing days that ranges from 0 to 31. If we chose to just use the calendar months our production streams would have influence from their production schedules that will add noise to our data. For one well, month 3 might represent 90 days of production and for another it might represent 7. A better method would be to use the cumulative reported producing days, and represent each month as 30.4 days. The challenge here is that we don't have a data point for exactly every 30.4 days, our solution will be to linearly interpolate betweeen the two bounding points. 
 
 The code below calculates the cumulative and monthly streams for each well in our dataset for months 1 - 60.
 
@@ -67,7 +67,7 @@ for m in range(1,60,1):
 ```
 
 ## GroupBy
-Now that production is represeted by comparable monthly values, we can start to aggregate
+Now that production is represeted by comparable monthly values, we can start to aggregate. This is accomplishe with Pandas GroupBy function, that aggregates data when given a shared column value. For example, all of the wells in a DSU will share the same DSU name and have their own values for production month 1, 2, etc. When we GroupBy DSU name these monthly production values are summed and we now have monthly production values for the DSU. 
 
 
 
