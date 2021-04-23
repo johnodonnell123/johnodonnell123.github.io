@@ -40,10 +40,10 @@ To apply an aggregation function to wells in a DSU they all need to have some so
 - All wells that share the exact same township and range are grouped together, within these groupings all wells that have two section numbers in common are given a unique name. 
 
 <p align = 'center'>
-  <img src="/images/GroupBy/Calculated Coordinates.PNG?raw=true" height = "40%" width = "40%">
+  <img src="/images/GroupBy/Calculated Coordinates.PNG?raw=true" height = "50%" width = "50%">
 </p>
 
-## Aggregating Production
+## Calculating Production
 Since we do have calendar date producing months for each well, we could aggregate production for the wells in the DSU on producing month 1, 2, 3 etc. However looking at our table we see that for each month there is a number for the reported producing days that ranges from 0 to 31. If we chose to just use the calendar months our production streams would have influence from their production schedules that could add unnecesary noise to our data. For one well month 3 might represent 90 producing days and for antoher it might represent 4. A better method would be to use the cumulative reported producing days, and represent each month as 30.4 days. The challenge here is that we don't have a data point for exactly every 30.4 days, our solution will be to linearly interpolate betweeen the two bounding points. 
 
 The code below calculates the cumulative and monthly streams for each well in our dataset for months 1 - 60.
@@ -65,6 +65,10 @@ for m in range(1,60,1):
                 df_headers.loc[uwi,f'{m}m_{stream}_Cum'] = np.interp( m * 30.4 , cum_days , cum_prod_list) 
                 df_headers.loc[uwi,f'{m}m_{stream}_Rate'] = np.interp( m * 30.4 , cum_days , rate_prod_list) 
 ```
+
+## GroupBy
+Now that production is represeted by comparable monthly values, we can start to aggregate
+
 
 
 
