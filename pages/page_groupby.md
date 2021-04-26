@@ -111,6 +111,30 @@ Some DSUs are not fully developed, and may only be partially filled in. These DS
   <img src="/images/GroupBy/Partial Development.PNG?raw=true height = "80%" width = "80%"">
 </p>
 
+Assuming we want to scale our variables, it can be done as shown here below. 
+
+```javascript
+### Calculate scalar to normalized partially developed DSUs to a 5280
+dsu_df['Wells_Scaled'] = 5280 / df_headers[df_headers['Bounded'] == 2].groupby('DSU_NAME')['Average_Neighbor_Distance'].mean()
+dsu_df['Scalar'] = dsu_df['Wells_Scaled'] / dsu_df['Wells']
+
+### Scale total DSU fluid and proppant 
+dsu_df['Fluid_MMBBLS_Scaled'] = (df_headers.groupby('DSU_NAME')['TOTAL_FLUID_BBL'].sum()/1000000) * dsu_df['Scalar']
+dsu_df['Proppant_MMLBS_Scaled'] = (df_headers.groupby('DSU_NAME')['TOTAL_PROP_LBS'].sum()/1000000) * dsu_df['Scalar']
+
+### Calculate and Scale production
+for m in range(1,60,1):
+    for stream in ['Oil','Gas','Water','Fluid']:
+        dsu_df[f'{m}m_{stream}_Cum_Scaled'] = (df_headers.groupby('DSU_NAME')[f'{m}m_{stream}_Nrm_Cum'].sum()) * dsu_df['Scalar']
+        dsu_df[f'{m}m_{stream}_Rate_Scaled'] = (df_headers.groupby('DSU_NAME')[f'{m}m_{stream}_Nrm_Rate'].sum()) * dsu_df['Scalar']
+        
+### Sort the DataFrame by DSU's with the highest 12m Cumulative Oil
+```
+
+<p align="center">
+  <img src="/images/GroupBy/dsu_df production.PNG?raw=true height = "80%" width = "80%"">
+</p>
+
 
 
 
