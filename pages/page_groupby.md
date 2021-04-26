@@ -97,9 +97,6 @@ dsu_df['Operator'] = df_headers.groupby('DSU_NAME')['OPERATOR'].first()
 
 ### Get the number of wells in the DSU by counting the number of well names 
 dsu_df['Wells'] = df_headers.groupby('DSU_NAME')['Well_Name'].count()
-
-### Get the vintage of the DSU by averaging the vintages of its wells
-dsu_df['Vintage'] = df_headers.groupby('DSU_NAME')['VINTAGE'].mean()
 ```
 
 **The resulting DataFrame is indexed by our DSU names, and the columns represent the aggregated metrics we just calculated**
@@ -107,6 +104,12 @@ dsu_df['Vintage'] = df_headers.groupby('DSU_NAME')['VINTAGE'].mean()
   <img src="/images/GroupBy/dsu_df wells.PNG?raw=true height = "45%" width = "45%"">
 </p>
 
+## Calculating a scalar for partially developed DSU's
+Some DSUs are not fully developed, and may only be partially filled in. These DSUs can either be dropped or scaled to represent full development. The logic behind the calculation of the scalar is shown here below. The scaler can be applied to production, well count, stimulation volumes, and costs to normalize DSU's for width. It can also be used to simply remove all partially developed DSU's (they will have a scalar number not ≈ 1. 
+
+<p align="center">
+  <img src="/images/GroupBy/Partial Development.PNG?raw=true height = "45%" width = "45%"">
+</p>
 
 
 
