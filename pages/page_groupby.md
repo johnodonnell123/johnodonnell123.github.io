@@ -102,7 +102,7 @@ dsu_df['Wells'] = df_headers.groupby('DSU_Name')['Well_Name'].count()
 dsu_df['Vintage'] = df_headers.groupby('DSU_Name')['VINTAGE'].mean()
 ```
 <p align="center">
-  <img src="/images/GroupBy/dsu_df wells.PNG?raw=true height = "30%" width = "30%"">
+  <img src="/images/GroupBy/dsu_df wells.PNG?raw=true height = "50%" width = "50%"">
 </p>
 
 
