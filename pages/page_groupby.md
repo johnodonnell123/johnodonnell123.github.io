@@ -130,13 +130,23 @@ for m in range(1,60,1):
         
 ### Sort the DataFrame by DSU's with the highest 12m Cumulative Oil
 ```
-**This yields the DataFrame seen below. Now all of the hard work has been done, we can start to visualize the data**
+**This yields the DataFrame seen below. Now all of the hard work has been done preparing the data, we can begin data visualization and analysis**
 <p align="center">
   <img src="/images/GroupBy/dsu_df production.PNG?raw=true">
 </p>
 
-
-
+## Visualizing Oil Production: Cumulative Oil vs Producing Months
+Here I have selected a random area of the basin and plotted the production for some DSUs. The plotting function can be found in the notebook on my GitHub repository.
+```javascript
+DSU_STREAM_PLOT(dataframe = dsu_df,  
+            material = 'Oil', 
+            cumulative = 1, 
+            line_width = 2
+            )
+```
+<p align="center">
+  <img src="/images/GroupBy/dsu_cum_time.PNG?raw=true">
+</p>
 
 
 
