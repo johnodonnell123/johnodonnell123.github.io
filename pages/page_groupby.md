@@ -130,7 +130,7 @@ for m in range(1,60,1):
         
 ### Sort the DataFrame by DSU's with the highest 12m Cumulative Oil
 ```
-
+**This yields the DataFrame seen below. Now all of the hard work has been done, we can start to visualize the data**
 <p align="center">
   <img src="/images/GroupBy/dsu_df production.PNG?raw=true">
 </p>
