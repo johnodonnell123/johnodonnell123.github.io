@@ -60,15 +60,15 @@ If we chose to just use the calendar months our production streams would have in
 The code below calculates the cumulative and monthly streams for each well in our dataset for months 1 - 60.
 
 ``` javascript
-# For months 1 through 60
+### For months 1 through 60
 for m in range(1,60,1):
-    # For each well in our headers DataFrame
+    ### For each well in our headers DataFrame
     for uwi in df_headers.index.tolist():
-        # Calculate an array of cumulative producing days
+        ### Calculate an array of cumulative producing days
         cum_days = df_production.loc[uwi,'Prod_Days'].cumsum()
-        # Check if we have enough days to calculate the production for the current month
+        ### Check if we have enough days to calculate the production for the current month
         if m * 30.4 < max(cum_days):
-            # For each stream, calculcate cumulative and monthly volumes
+            ### For each stream, calculcate cumulative and monthly volumes
             for stream in ['Oil_Nrm','Water_Nrm','Gas_Nrm','Fluid_Nrm']:
                 rate_prod_list = df_production.loc[uwi,stream].values
                 cum_prod_list = df_production.loc[uwi,stream].cumsum().values
