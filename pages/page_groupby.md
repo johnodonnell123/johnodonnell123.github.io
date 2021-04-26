@@ -114,7 +114,7 @@ Some DSUs are not fully developed, and may only be partially filled in. These DS
 Assuming we want to scale our variables, it can be done as shown here below. 
 
 ```javascript
-### Calculate scalar to normalized partially developed DSUs to a 5280
+### Calculate scalar to normalize partially developed DSUs to a 5280
 dsu_df['Wells_Scaled'] = 5280 / df_headers[df_headers['Bounded'] == 2].groupby('DSU_NAME')['Average_Neighbor_Distance'].mean()
 dsu_df['Scalar'] = dsu_df['Wells_Scaled'] / dsu_df['Wells']
 
@@ -132,7 +132,7 @@ for m in range(1,60,1):
 ```
 
 <p align="center">
-  <img src="/images/GroupBy/dsu_df production.PNG?raw=true height = "80%" width = "80%"">
+  <img src="/images/GroupBy/dsu_df production.PNG?raw=true">
 </p>
 
 
