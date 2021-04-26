@@ -10,7 +10,7 @@ Land in the Williston basin is divided up into Townships, Ranges, and Sections. 
   <img src="/images/GroupBy/DSU Explained.PNG?raw=true" height = "50%" width = "50%">
 </p>
 
-The question becomes: to most efficiently recovery the oil that is in the ground inside that DSU, how many wells do we drill and how to we stimulate/frac them? Here are a handful
+The question becomes: to most efficiently recover the oil that is in the ground inside that DSU, how many wells do we drill and how to we stimulate/frac them? Here are a handful
 possible scenarios to help further represent the problem. Blue sticks represent horizontal wells, and the yellow areas represent the area that is being drained. Here we are assuming that this area is primarily a function of the amount of fluid pumped into the well (the frac). This is a very simplistic view yet it sheds light on the complexity of the problem. 
 <br>
 
