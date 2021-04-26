@@ -80,11 +80,30 @@ for m in range(1,60,1):
 This yields monthly production values for all of our fluid streams (cumulative and monthly) like so:
 
 <p align="center">
-  <img src="/images/GroupBy/Production Computed.PNG?raw=true height = "90%" width = "90%"">
+  <img src="/images/GroupBy/Production Computed.PNG?raw=true height = "85%" width = "85%"">
 </p>
 
 ## GroupBy
-Now that production is represeted by comparable monthly values, we can start to aggregate. This is accomplished with Pandas GroupBy function, which aggregates data when given a shared value. For example, all of the wells in a DSU will share the same DSU name and have their own values for production month 1, 2, etc. When we GroupBy DSU name these monthly production values are summed and we now have monthly production values for the DSU. 
+Now that production is represeted by comparable monthly values, we can start to aggregate. This is accomplished with Pandas GroupBy function, which aggregates data when given a shared value. All wells in a DSU will share the same DSU name and have their own values for our calculated production month 1, 2, etc. When we GroupBy DSU name these monthly production values are summed and we now have monthly production values for the DSU. First we specify the name of the value we want to group by, then grab the column of values we want to aggregate, and provide an aggregation method. 
+
+```javascript
+### Create a new DataFrame
+dsu_df = pd.DataFrame()
+  
+### Calculate DSU level information
+
+### Get the DSU operator by selecting the operator name from one of the wells
+dsu_df['Operator'] = df_headers.groupby('DSU_Name')['OPERATOR'].first()
+
+### Get the number of wells in the DSU by counting the number of well names 
+dsu_df['Wells'] = df_headers.groupby('DSU_Name')['Well_Name'].count()
+
+### Get the vintage of the DSU by averaging the vintages of its wells
+dsu_df['Vintage'] = df_headers.groupby('DSU_Name')['VINTAGE'].mean()
+```
+<p align="center">
+  <img src="/images/GroupBy/dsu_df wells.PNG?raw=true height = "85%" width = "85%"">
+</p>
 
 
 
