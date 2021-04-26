@@ -102,7 +102,7 @@ dsu_df['Wells'] = df_headers.groupby('DSU_NAME')['Well_Name'].count()
 dsu_df['Vintage'] = df_headers.groupby('DSU_NAME')['VINTAGE'].mean()
 ```
 
-## The resulting DataFrame is indexed by our DSU names, and the columns represent the aggregated metrics we just calculated
+**The resulting DataFrame is indexed by our DSU names, and the columns represent the aggregated metrics we just calculated**
 <p align="center">
   <img src="/images/GroupBy/dsu_df wells.PNG?raw=true height = "45%" width = "45%"">
 </p>
