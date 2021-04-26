@@ -108,7 +108,7 @@ dsu_df['Wells'] = df_headers.groupby('DSU_NAME')['Well_Name'].count()
 Some DSUs are not fully developed, and may only be partially filled in. These DSUs can either be dropped or scaled to represent full development. The logic behind the calculation of the scalar is shown here below. The scaler can be applied to production, well count, stimulation volumes, and costs to normalize DSU's for width. It can also be used to simply remove all partially developed DSU's (they will have a scalar number not ≈ 1. 
 
 <p align="center">
-  <img src="/images/GroupBy/Partial Development.PNG?raw=true height = "60%" width = "60%"">
+  <img src="/images/GroupBy/Partial Development.PNG?raw=true height = "80%" width = "80%"">
 </p>
 
 
