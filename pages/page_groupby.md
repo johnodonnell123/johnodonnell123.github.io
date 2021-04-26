@@ -28,7 +28,7 @@ Contains general information about a well such as the depth, location, and the s
 Wells produce oil, water, and gas over time. This is our time-series data, which is why it is held in a separate table. Each of our wells has an entry for every month it produced, making is significantly larger at around 1.1 million rows. This table contains the UWI, the time stamp, the number of days that well actually flowed for that month, and the coinciding volumes for oil/water/gas.
 
 <p align="center">
-  <img src="/images/SQL/prod_table.PNG?raw=true">
+  <img src="/images/SQL/prod_table.PNG?raw=true height = "75%" width = "75%"">
 </p>
 
 ## Grouping the Wells by DSU:
@@ -49,7 +49,11 @@ To apply an aggregation function to wells in a DSU they all need to have some so
 </p>
 
 ## Calculating Production
-Since we have calendar date producing months for each well, we could aggregate production for the wells in the DSU on their producing month #1, #2 etc. However looking at our production table we see that for each month there is a number representing the reported producing days that ranges from 0 to 31. If we chose to just use the calendar months our production streams would have influence from their production schedules that will add noise to our data. For one well, month 3 might represent 90 days of production and for another it might represent 7. A better method would be to use the cumulative reported producing days, and represent each month as 30.4 days. The challenge here is that we don't have a data point for exactly every 30.4 days, our solution will be to linearly interpolate betweeen the two bounding points. 
+Since we have calendar date producing months for each well, we could aggregate production for the wells in the DSU on their producing month #1, #2 etc. However looking at our production table we see that for each month there is a number representing the reported producing days that ranges from 0 to 31. 
+<p align="center">
+  <img src="/images/SQL/prod_table.PNG?raw=true height = "75%" width = "75%"">
+</p>
+If we chose to just use the calendar months our production streams would have influence from their production schedules that will add noise to our data. For one well, month 3 might represent 90 days of production and for another it might represent 7. A better method would be to use the cumulative reported producing days, and represent each month as 30.4 days. The challenge here is that we don't have a data point for exactly every 30.4 days, our solution will be to linearly interpolate betweeen the two bounding points. 
 
 The code below calculates the cumulative and monthly streams for each well in our dataset for months 1 - 60.
 
