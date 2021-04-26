@@ -80,7 +80,7 @@ for m in range(1,60,1):
 This yields monthly production values for all of our fluid streams (cumulative and monthly) like so:
 
 <p align="center">
-  <img src="/images/SQL/Production Computed.PNG?raw=true height = "60%" width = "60%"">
+  <img src="/images/GroupBy/Production Computed.PNG?raw=true height = "60%" width = "60%"">
 </p>
 
 ## GroupBy
