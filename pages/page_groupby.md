@@ -145,7 +145,7 @@ DSU_STREAM_PLOT(dataframe = dsu_df,
             )
 ```
 <p align="center">
-  <img src="/images/GroupBy/dsu_cum_time.PNG?raw=true">
+  <img src="/images/GroupBy/dsu_cum_time.png?raw=true">
 </p>
 
 
