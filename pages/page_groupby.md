@@ -15,7 +15,7 @@ possible scenarios to help further represent the problem. Blue sticks represent 
 <br>
 
 <p align = 'center'>
-  <img src="/images/GroupBy/DSU Cartoon2.PNG?raw=true" height = "60%" width = "60%">
+  <img src="/images/GroupBy/DSU Cartoon2.PNG?raw=true" height = "30%" width = "30%">
 </p>
 
 ## Data: 
