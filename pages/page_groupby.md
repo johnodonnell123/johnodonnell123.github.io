@@ -93,16 +93,18 @@ dsu_df = pd.DataFrame()
 ### Calculate DSU level information
 
 ### Get the DSU operator by selecting the operator name from one of the wells
-dsu_df['Operator'] = df_headers.groupby('DSU_Name')['OPERATOR'].first()
+dsu_df['Operator'] = df_headers.groupby('DSU_NAME')['OPERATOR'].first()
 
 ### Get the number of wells in the DSU by counting the number of well names 
-dsu_df['Wells'] = df_headers.groupby('DSU_Name')['Well_Name'].count()
+dsu_df['Wells'] = df_headers.groupby('DSU_NAME')['Well_Name'].count()
 
 ### Get the vintage of the DSU by averaging the vintages of its wells
-dsu_df['Vintage'] = df_headers.groupby('DSU_Name')['VINTAGE'].mean()
+dsu_df['Vintage'] = df_headers.groupby('DSU_NAME')['VINTAGE'].mean()
 ```
+
+## The resulting DataFrame is indexed by our DSU names, and the columns represent the aggregated metrics we just calculated
 <p align="center">
-  <img src="/images/GroupBy/dsu_df wells.PNG?raw=true height = "50%" width = "50%"">
+  <img src="/images/GroupBy/dsu_df wells.PNG?raw=true height = "45%" width = "45%"">
 </p>
 
 
