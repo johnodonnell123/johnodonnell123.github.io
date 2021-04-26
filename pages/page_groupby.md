@@ -135,7 +135,9 @@ for m in range(1,60,1):
   <img src="/images/GroupBy/dsu_df production.PNG?raw=true">
 </p>
 
-## Visualizing Oil Production: Cumulative Oil vs Producing Months
+# Visualizing DSU Production:
+
+## Cumulative Oil vs Producing Months
 Here I have selected a random area of the basin and plotted the production for some DSUs. The plotting function can be found in the notebook on my GitHub repository.
 ```javascript
 DSU_STREAM_PLOT(dataframe = dsu_df,  
@@ -147,6 +149,34 @@ DSU_STREAM_PLOT(dataframe = dsu_df,
 <p align="center">
   <img src="/images/GroupBy/dsu_cum_time.png?raw=true">
 </p>
+
+## Cumulative Oil vs Monthly Oil Rate
+This plot allows us to see how the production is declining in these different DSUs, and forecast a the ultimat recovery assuming a terminal production rate.
+```javascript
+DSU_STREAM_PLOT(dataframe = dsu_df,  
+            rate_cum = 1,
+            material = 'Oil', 
+            line_width = 2
+            )
+```
+<p align="center">
+  <img src="/images/GroupBy/dsu_rate_cum.png?raw=true">
+</p>
+
+## Economics
+This is where we start to see some truly impactful views. Assigning some cost to the drilling and stimulation of each well, we can also aggregate total DSU cost, which allows us to calculate the total oil produced / capital spent **through time**. Here the Enverus estimation for wells cost is used. This allows for a better understanding of DSU/project level economics and the impact of our development strategy on our capital efficiency.
+```javascript
+DSU_STREAM_PLOT(dataframe = dsu_df,  
+            material = 'Oil', 
+            economics = 1,
+            cumulative = 1, 
+            line_width = 2
+            )
+```
+<p align="center">
+  <img src="/images/GroupBy/dsu_economics.png?raw=true">
+</p>
+
 
 
 
