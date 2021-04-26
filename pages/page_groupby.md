@@ -64,15 +64,15 @@ The code below calculates the cumulative and monthly streams for each well in ou
 for m in range(1,60,1):
     ### For each well in our headers DataFrame
     for uwi in df_headers.index.tolist():
-        ### Calculate an array of cumulative producing days
+        ### Calculate an array of cumulative producing days for this well
         cum_days = df_production.loc[uwi,'Prod_Days'].cumsum()
-        ### Check if we have enough days to calculate the production for the current month
+        ### Check if this well has enough total cumulative producing days to calculate the production for the current month
         if m * 30.4 < max(cum_days):
             ### For each stream, calculcate cumulative and monthly volumes
             for stream in ['Oil_Nrm','Water_Nrm','Gas_Nrm','Fluid_Nrm']:
                 rate_prod_list = df_production.loc[uwi,stream].values
                 cum_prod_list = df_production.loc[uwi,stream].cumsum().values
-                # Use np.interp to calculcate the correcly value for our current month
+                ### Use np.interp to calculcate the correct value for our current month (month number * 30.4)
                 df_headers.loc[uwi,f'{m}m_{stream}_Cum'] = np.interp( m * 30.4 , cum_days , cum_prod_list) 
                 df_headers.loc[uwi,f'{m}m_{stream}_Rate'] = np.interp( m * 30.4 , cum_days , rate_prod_list) 
 ```
