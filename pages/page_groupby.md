@@ -77,6 +77,12 @@ for m in range(1,60,1):
                 df_headers.loc[uwi,f'{m}m_{stream}_Rate'] = np.interp( m * 30.4 , cum_days , rate_prod_list) 
 ```
 
+This yields monthly production values for all of our fluid streams (cumulative and monthly) like so:
+
+<p align="center">
+  <img src="/images/SQL/Production Computed.PNG?raw=true height = "60%" width = "60%"">
+</p>
+
 ## GroupBy
 Now that production is represeted by comparable monthly values, we can start to aggregate. This is accomplished with Pandas GroupBy function, which aggregates data when given a shared value. For example, all of the wells in a DSU will share the same DSU name and have their own values for production month 1, 2, etc. When we GroupBy DSU name these monthly production values are summed and we now have monthly production values for the DSU. 
 
