@@ -24,7 +24,7 @@ As you might have concluded, the issue of capital efficiency becomes one of bala
 This data set comes from Enverus, and can be organized into two tables:
 
 #### Header Table
-Contains general information about a well such as the depth, location, and the stimulation of the well. It also contains spacing information (how close the next well is). We have ~ 15,000 rows indexed by UWI (Unique Well Identifier), each row representing one well. The stimulation of the well can be simplified into two primary components, the fluid pumped and the proppant (sand) pumped. 
+Contains general information about a well such as the depth, location, and the stimulation of the well. It also contains spacing information (how close the next well is). We have ~ 15,000 rows indexed by UWI (Unique Well Identifier), each row representing one well. The stimulation of the well can be simplified into two primary components, the fluid pumped and the proppant (sand) pumped. It can be thought of in this context: the fluid creates the fractures (surface area), and the sand/proppant keeps those fracutes open as pressure declines (converts surface area to drainage area over time).
 
 #### Production Table (Time-Series)
 Wells produce oil, water, and gas over time. This is our time-series data, which is why it is held in a separate table. Each of our wells has an entry for every month it produced, making is significantly larger at around 1.1 million rows. This table contains the UWI, the time stamp, the number of days that well actually flowed for that month, and the coinciding volumes for oil/water/gas.
