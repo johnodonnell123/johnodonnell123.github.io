@@ -4,7 +4,7 @@
 arise such as "how many wells should we drill?" and "how should we stimulate each well?". This is a hot topic of debate in the industry, many operators right next to each other in the same basin are developing their assets very differently. In this project, I step through how to use Python and the Pandas GroupBy function to aggregate the production streams for all wells in a DSU, then visualize the results of different development strategies in an informative manner. Displaying production for individual well has been covered in [another project of mine](https://johnodonnell123.github.io/pages/page_EDA.html), but oil and gas companies don't purchase wells, they purchase land! Different development schemes are compared to one another to determine the DSUs with the most productive capital. 
 
 ## Problem:
-Land in the Williston basin is divided up into Townships, Ranges, and Sections. A township is 6mi x 6mi, and a section is 1mi x 1 mi. Traditionally, a DSU (Drill Spacing Unit) is two sections, forming a 2mi x 1mi stretch of land (shown in red). Operators will drill a number of wells horizontally in the longer direction (shown in blue).
+Land in the Williston basin of North Dakota is divided up into Townships, Ranges, and Sections. A township is 6mi x 6mi, and a section is 1mi x 1 mi. Traditionally, a DSU (Drill Spacing Unit) is two sections, forming a 2mi x 1mi stretch of land (shown in red). Operators will drill a number of wells horizontally in the longer direction (shown in blue).
 
 <p align = 'center'>
   <img src="/images/GroupBy/DSU Explained.PNG?raw=true" height = "50%" width = "50%">
