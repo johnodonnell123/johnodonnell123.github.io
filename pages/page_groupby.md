@@ -150,7 +150,7 @@ DSU_STREAM_PLOT(dataframe = dsu_df,
             )
 ```
 <p align="center">
-  <img src="/images/GroupBy/dsu_cum_time2.PNG?raw=true">
+  <img src="/images/GroupBy/dsu_cum_time2.PNG?raw=true" height = "75%" width = "75%">
 </p>
 
 ## Cumulative Oil vs Monthly Oil Rate
@@ -163,7 +163,7 @@ DSU_STREAM_PLOT(dataframe = dsu_df,
             )
 ```
 <p align="center">
-  <img src="/images/GroupBy/dsu_rate_cum2.PNG?raw=true">
+  <img src="/images/GroupBy/dsu_rate_cum2.PNG?raw=true" height = "75%" width = "75%">
 </p>
 
 ## Economics
@@ -177,7 +177,7 @@ DSU_STREAM_PLOT(dataframe = dsu_df,
             )
 ```
 <p align="center">
-  <img src="/images/GroupBy/dsu_economics2.PNG?raw=true">
+  <img src="/images/GroupBy/dsu_economics2.PNG?raw=true" height = "75%" width = "75%">
 </p>
 
 
