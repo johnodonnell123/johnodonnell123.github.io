@@ -18,7 +18,7 @@ possible scenarios to help further represent the problem. Blue sticks represent 
   <img src="/images/GroupBy/DSU Cartoon2.PNG?raw=true" height = "60%" width = "60%">
 </p>
 
-As you might have concluded, the issue of capital efficiency becomes one of balancing the cost of wells and the costs of stimulation. That being said, we don't fully understand the relationship between the stimulation and the drainage area, as this relationship different across geologic areas. This is why being able to clearly understand the results of previous development patterns is *essential*.
+As you might have concluded, the issue of capital efficiency becomes one of balancing the cost of wells and the costs of stimulation. That being said, we don't fully understand the relationship between the stimulation and the drainage area, as this relationship is likely non-linear and differs across geologic areas. This is why being able to clearly understand the results of previous development patterns is *essential*.
 
 ## Data: 
 This data set comes from Enverus, and can be organized into two tables:
