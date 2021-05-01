@@ -154,7 +154,7 @@ DSU_STREAM_PLOT(dataframe = dsu_df,
 </p>
 
 ## Cumulative Oil vs Monthly Oil Rate
-This plot allows us to see how the production is declining in these different DSUs, and forecast a the ultimat recovery assuming a terminal production rate.
+This plot allows us to see how the production is declining in these different DSUs. A common technique to forecast a the ultimate recovery is to extrapolate a line out from these trends and assume an economic abandonment rate (represented here by the black dashed line).
 ```javascript
 DSU_STREAM_PLOT(dataframe = dsu_df,  
             rate_cum = 1,
@@ -180,9 +180,8 @@ DSU_STREAM_PLOT(dataframe = dsu_df,
   <img src="/images/GroupBy/dsu_economics2.PNG?raw=true" height = "75%" width = "75%">
 </p>
 
-
-
-
+## Wrap Up
+This workflow allows us to take advantage of public data and assess the results of different spacing and completion patterns in the basin. Assessing economics at a project level can yield insight into where resource might be under and over developed, and where operators might be overcapitalized. It allows us to view performance through time, to to estimate the impact of spacing and completions on early time rates, mid life performance, as well as ultimate recovery. 
 
 
 
