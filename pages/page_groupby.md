@@ -132,7 +132,6 @@ for m in range(1,60,1):
         dsu_df[f'{m}m_{stream}_Cum_Scaled'] = (df_headers.groupby('DSU_NAME')[f'{m}m_{stream}_Nrm_Cum'].sum()) * dsu_df['Scalar']
         dsu_df[f'{m}m_{stream}_Rate_Scaled'] = (df_headers.groupby('DSU_NAME')[f'{m}m_{stream}_Nrm_Rate'].sum()) * dsu_df['Scalar']
         
-### Sort the DataFrame by DSU's with the highest 12m Cumulative Oil
 ```
 **This yields the DataFrame seen below. Now all of the hard work has been done preparing the data, we can begin visualizing the data**
 <p align="center">
