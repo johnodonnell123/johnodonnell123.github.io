@@ -59,7 +59,7 @@ Since we have calendar date producing months for each well, we could aggregate p
   <img src="/images/SQL/prod_table.PNG?raw=true height = "40%" width = "40%"">
 </p>
 
-If we chose to just use the calendar months our production streams would have influence from their production schedules that will add noise to our data. For one well, month 3 might represent 90 days of production and for another it might represent 7. A better method would be to use the cumulative reported producing days, and represent each month as 30.4 days. The challenge here is that we don't have a data point for exactly every 30.4 days, our solution will be to linearly interpolate betweeen the two bounding points. 
+If we chose to just use the calendar months our production streams would have influence from their production schedules that will add noise to our data. For one well, month 3 might represent 90 days of production and for another it might represent 7. A better method would be to use the cumulative reported producing days, and represent each month as 30.4 days. The challenge here is that we don't have a data point for exactly every 30.4 days, our solution will be to linearly interpolate betweeen the two bounding points. The `np.interp` function allows us to do this, we pass it two lists of values (days and production) and specify a point at which to interpolate (every 30.4 days). 
 
 The code below calculates the cumulative and monthly streams for each well in our dataset for months 1 - 60.
 
