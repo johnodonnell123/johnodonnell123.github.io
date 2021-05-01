@@ -40,7 +40,6 @@ To apply an aggregation function to wells in a DSU they all need to have some so
 - The `utm` package in Python can be used to convert lat/long into xy coordinates (meters)
 - For each well two new XYs are calculated for distances that are 25% and 75% of the distance between our two points (yielding points in each section, shown in green)
 - These XYs are converted back to Latitude and Longitude, and finally converted to Township, Range, and Section
-  - We now have two points in each section for all of our wells
 - All wells that share the exact same township and range are grouped together, within these groupings all wells that have two points that have two section numbers in common are given a unique name. 
 - Their DSU name is a combination of one of the well names as well as the two section numbers
 
