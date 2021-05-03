@@ -41,7 +41,7 @@ Working with the remaining ~9,500 films I cleaned the following fields:
       df['run_time_min'] = df['run_time'].map(to_minutes)
       df = df.drop(columns=['run_time'])
       ```
-- **`budget`** was a string that needed to be cast to an integer. It had non numeric characters such as `$` and `,` that needed to be removed, and it also has some entries that were prefixed with the acronym for another currency. These entries needed to be evaluated and removed, regex was used to complete this task by generateing a boolean mask that was applied to the data. 
+- **`budget`** was a string that needed to be cast to an integer. It contained non numeric characters such as `$` and `,` that needed to be removed, and it also had some entries that were prefixed with an acronym for a foreign currency. These entries needed to be evaluated and removed, regex was used to complete this task by generating a boolean mask that was applied to the data. 
   - Before:`"$15,151,744"`
   - After: `15151744`
       ```javascript
@@ -52,7 +52,7 @@ Working with the remaining ~9,500 films I cleaned the following fields:
       df['budget'] = df['budget'].str.replace(",","").str.replace("$","").str.rstrip()
       df = df[df['budget'].map(special_match)]
       ```
-- **`genres`** and **`stars`** were string values that needed to be cast to lists. Lists can be tricky to work with as series in DataFrames, but I learned a lot by struggling with them in this project and I feel I've added some useful tools to my toolkit.  
+- **`genres`** and **`stars`** were string values that needed to be cast to lists. Nested lists can be tricky to work with as series in DataFrames, but I learned a lot by struggling with them in this project and I feel I've added some useful tools to my toolkit.  
   - Before:`"Cher,Nicolas Cage,Olympia Dukakis"`
   - After: `[Cher, Nicolas Cage, Olympia Dukakis]`
       ```javascript
@@ -61,10 +61,10 @@ Working with the remaining ~9,500 films I cleaned the following fields:
       ```
       
 ## Analysis:
-I will only cover one of my visualization here, and I have chosen the box plot shown below.
+I will only cover one of my visualizations here, and I have chosen the box plot shown below.
 <img src="/images/Budget vs Revenue Box Plot.PNG?raw=true" height = '75%' width = '75%'>
 
-I chose to display this relationship with boxplots instead of a traditional scatter becuase I feel it provides more insight into the underlying relationship. It also provided some other interesting observations.
+I chose to display this relationship with boxplots instead of a traditional scatter becuase I feel it provides more insight into the underlying relationship. It also provided some other interesting observations:
 - Data density becomes more and more sparse at the higher end
 - The range of outcomes (fences) widen with larger budgets
 - There are stronger performers with low budgets, but they are statistically very uncommon
