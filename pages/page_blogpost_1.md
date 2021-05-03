@@ -41,7 +41,7 @@ Working with the remaining ~9,500 films I cleaned the following fields:
       df['run_time_min'] = df['run_time'].map(to_minutes)
       df = df.drop(columns=['run_time'])
       ```
- - **`budget`** was a string that needed to be cast to an integer. It had non numeric characters such as `$` and `,` that needed to be removed, and it also has some entries that were prefixed with the acronym for another currency. These entries needed to be evaluated and removed, regex was used to complete this task by generateing a boolean mask that was applied to the data. 
+- **`budget`** was a string that needed to be cast to an integer. It had non numeric characters such as `$` and `,` that needed to be removed, and it also has some entries that were prefixed with the acronym for another currency. These entries needed to be evaluated and removed, regex was used to complete this task by generateing a boolean mask that was applied to the data. 
   - Before:`"$15,151,744"`
   - After: `15151744`
       ```javascript
