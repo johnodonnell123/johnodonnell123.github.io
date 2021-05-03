@@ -16,7 +16,7 @@ Once I had all of my data stored in a .csv file, I used the Pandas library to im
 
 Working with the remaining ~9,500 films I cleaned the following fields: 
 - **`date`** was split to remove the country name and then converted into a Pandas datetime object. A new column named `country` was created to capture this information.
-  - Before:`3 April 2009 (South Africa)`
+  - Before:`"3 April 2009 (South Africa)"`
   - After: `2009-04-03`
       ```javascript
       # Remove the country code from the string, then convert to pandas datetime 
@@ -25,7 +25,7 @@ Working with the remaining ~9,500 films I cleaned the following fields:
       df['country'] = date[1].str.replace(")","")
       ```
 - **`run_time`** was split to separate the hours and minutes. Hours were cast to integers, converted to minutes, then added together. What was tricky here was sometimes there were hours and minutes, and other only one of these fields, so I wrote a function to handle these different scenarious with conditionals.
-  - Before:`1h 34min`
+  - Before:`"1h 34min"`
   - After: `94`
       ```javascript
       def to_minutes(string):
@@ -40,6 +40,17 @@ Working with the remaining ~9,500 films I cleaned the following fields:
 
       df['run_time_min'] = df['run_time'].map(to_minutes)
       df = df.drop(columns=['run_time'])
+      ```
+ - **`budget`** was a string that needed to be cast to an integer. It had non numeric characters such as `$` and `,` that needed to be removed, and it also has some entries that were prefixed with the acronym for another currency. These entries needed to be evaluated and removed, regex was used to complete this task by generateing a boolean mask that was applied to the data. 
+  - Before:`"$15,151,744"`
+  - After: `15151744`
+      ```javascript
+      def special_match(strg, search=re.compile(r'[^0-9]').search):
+          ''' Returns False if a string contains any non-nuemric tokens, used as a boolean mask in filtering'''
+          return not bool(search(strg))
+
+      df['budget'] = df['budget'].str.replace(",","").str.replace("$","").str.rstrip()
+      df = df[df['budget'].map(special_match)]
       ```
 
 
