@@ -16,6 +16,8 @@ Once I had all of my data stored in a .csv file, I used the Pandas library to im
 
 Working with the remaining ~9,500 films I cleaned the following fields: 
 - Date was split to remove the country name and then converted into a Pandas datetime object. A new column named `country` was created to capture this information.
+  - Before:`3 April 2009 (South Africa)`
+  - After: `2009-04-03`
 ```javascript
 # Remove the country code from the string, then convert to pandas datetime 
 date = df['date'].str.split("(",n=1,expand=True)
@@ -23,3 +25,7 @@ df['date'] = pd.to_datetime(date[0],infer_datetime_format=True)
 df['country'] = date[1].str.replace(")","")
 df[['title','date','country']].sample(3)
 ```
+
+
+
+
