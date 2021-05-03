@@ -64,4 +64,35 @@ Working with the remaining ~9,500 films I cleaned the following fields:
 I will only cover one of my visualization here, and I have chosen the box plot shown below.
 <img src="/images/Budget vs Revenue Box Plot.PNG?raw=true">
 
+I chose to display this relationship with boxplots instead of a traditional scatter becuase I feel it provides more insight into the underlying relationship. It also provided some other interesting observations.
+- Data density becomes more and more sparse at the higher end
+- The range of outcomes (fences) widen with larger budgets
+- There are stronger performers with low budgets, but they are statistically very uncommon
+- The IQR tells the story here, as budget increase from 25 million to 200 million the IQR consistently shifts upwards. After this threshold we start to lose data density and the linear nature of this relationship starts to be in question
+
+I created this plot by using the `pd.cut()` function to create a new series of data binning budget by intervals of 25 (million). The code can be seen here below:
+```javascript
+df.sort_values(by='budget_MM', inplace=True)
+
+Bins = [b for b in range(0,350,25)]
+Labels = [f"{i}-{i + Bins[2]-Bins[1]}" for i in Bins]
+
+budget_MM_bined = pd.cut(df['budget_MM'], bins= Bins, labels = Labels[:-1])
+
+fig = px.box(df, 
+             x = budget_MM_bined, 
+             y = 'cum_worldwide_gross_MM', 
+             points = 'all',
+             title = "Budget vs. Revenue",
+             labels = {'x':'Budget ($MM)',
+                     "cum_worldwide_gross_MM": "World Wide Gross ($MM)"
+                     },
+             width = 900,
+             height = 450,
+             hover_data = ['budget_MM','title'])
+
+fig.update_layout(yaxis_range=[-100,2300])
+
+fig.show()
+```
 
