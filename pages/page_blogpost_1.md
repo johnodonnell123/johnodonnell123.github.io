@@ -62,6 +62,6 @@ Working with the remaining ~9,500 films I cleaned the following fields:
       
 ## Analysis:
 I will only cover one of my visualization here, and I have chosen the box plot shown below.
-<img src="images/Budget vs Revenue Box Plot.PNG?raw=true">
+<img src="/images/Budget vs Revenue Box Plot.PNG?raw=true">
 
 
