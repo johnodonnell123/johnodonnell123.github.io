@@ -52,6 +52,12 @@ Working with the remaining ~9,500 films I cleaned the following fields:
       df['budget'] = df['budget'].str.replace(",","").str.replace("$","").str.rstrip()
       df = df[df['budget'].map(special_match)]
       ```
-
+- **`genres`** and **`stars`** were string values that needed to be cast to lists. Lists can be tricky to work with as series in DataFrames, but I learned a lot by struggling with them in this project and I feel I've added some useful tools to my toolkit.  
+  - Before:`"Cher,Nicolas Cage,Olympia Dukakis"`
+  - After: `[Cher, Nicolas Cage, Olympia Dukakis]`
+      ```javascript
+      df['genres'] = df['genres'].str.split(",")
+      df['stars'] = df['stars'].str.split(",")
+      ```
 
 
