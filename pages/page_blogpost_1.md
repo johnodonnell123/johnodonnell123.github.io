@@ -23,9 +23,24 @@ Working with the remaining ~9,500 films I cleaned the following fields:
       date = df['date'].str.split("(",n=1,expand=True)
       df['date'] = pd.to_datetime(date[0],infer_datetime_format=True)
       df['country'] = date[1].str.replace(")","")
-      df[['title','date','country']].sample(3)
       ```
+- Run-time was split to separate the hours and minutes. Hours were cast to integers, converted to minutes, then added together. What was tricky here was sometimes there were hours and minutes, and other only one of these fields, so I wrote a function to handle these different scenarious with conditionals.
+  - Before:`1h 34min`
+  - After: `94`
+      ```javascript
+      def to_minutes(string):
+          ''' Returns minutes as an integer given a string containing hours and minutes '''
+          hours_in_minutes = 0
+          minutes = 0
+          if  "h" in string:
+              hours_in_minutes = int(string.split()[0].replace("h",'')) * 60
+          if "min" in string:
+              minutes = int(string.split()[1].replace('min',''))    
+          return hours_in_minutes + minutes
 
+      df['run_time_min'] = df['run_time'].map(to_minutes)
+      df = df.drop(columns=['run_time'])
+      ```
 
 
 
