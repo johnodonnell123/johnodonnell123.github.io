@@ -7,4 +7,19 @@
 4. Present these relationships in a susinct manner to a non-technical audience
 
 ## Web Scraping with Scrapy
+I chose to use Scrapy instead of BS4 becuase in my opinion it is more straightforward and extensible. I ended up retrieving data for more than 80,000 films and followed thousands of links to do so, which would have been very difficult to do with beautiful soup. My crawler started from a predefined URL, which I chose to be all movies sorted by Box Office revenue descending, and from there followed the link to every movie on that page retrieving data. Once it scraped all of the fields from the movies on the first page, it followed the link to the next page and began this cycle again. I used Xpath notation to select the content and the links that I wanted to retrieve and exported all of the data into a csv file. 
 
+I did learn something valuable doing this exercise in webscraping on IMDB. I was trying to apply some cleaning methods (.replace and .strip) on the values returned from my response object inside my script, and when those fields didn't exist for some of the pages the Spider would fail. It could not perform a string operation on `None`, so my spider wasn't returning *any* of the information from that page. I could have nested the operation inside of a conditional (`if/else`), but I found this to get messy very fast and instead I opted to do most of the cleaning in Pandas. In the future I plan to write a function that check is the item is `None` and not them perform some operation. 
+
+## Cleaning and Manipulation with Pandas
+Once I had all of my data stored in a .csv file, I used the Pandas library to import the data into a DataFrame structure for cleaning. I started with the usual looks, `df.info()`, `df.describe()`, and `df.isna()mean()`. I came to realize that although I had scraped information for 80,000+ titles, I only had budget/revenue data for ~9,500. I confirmed this by looking on the IMDB website and performing searches on a handful of films missing these fields to ensure the issue wasn't on my end. I considered trying to find a relationship between star rating and revenue so that I could grow my dataset, however I was not convinced in the strength of that relationship so I ended up droppping most of my data. I wanted to be able to perform a thorough EDA, so I cleaned all of the fields even if I didn't feel they had a great chance at being impactful (such as run-time). 
+
+Working with the remaining ~9,500 films I cleaned the following fields: 
+- Date was split to remove the country name and then converted into a Pandas datetime object. A new column named `country` was created to capture this information.
+```javascript
+# Remove the country code from the string, then convert to pandas datetime 
+date = df['date'].str.split("(",n=1,expand=True)
+df['date'] = pd.to_datetime(date[0],infer_datetime_format=True)
+df['country'] = date[1].str.replace(")","")
+df[['title','date','country']].sample(3)
+```
