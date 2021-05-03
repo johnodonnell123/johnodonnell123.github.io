@@ -15,7 +15,7 @@ I did learn something valuable doing this exercise in webscraping on IMDB. I was
 Once I had all of my data stored in a .csv file, I used the Pandas library to import the data into a DataFrame structure for cleaning. I started with the usual looks, `df.info()`, `df.describe()`, and `df.isna()mean()`. I came to realize that although I had scraped information for 80,000+ titles, I only had budget/revenue data for ~9,500. I confirmed this by looking on the IMDB website and performing searches on a handful of films missing these fields to ensure the issue wasn't on my end. I considered trying to find a relationship between star rating and revenue so that I could grow my dataset, however I was not convinced in the strength of that relationship so I ended up droppping most of my data. I wanted to be able to perform a thorough EDA, so I cleaned all of the fields even if I didn't feel they had a great chance at being impactful (such as run-time). 
 
 Working with the remaining ~9,500 films I cleaned the following fields: 
-- Date was split to remove the country name and then converted into a Pandas datetime object. A new column named `country` was created to capture this information.
+- **`date`** was split to remove the country name and then converted into a Pandas datetime object. A new column named `country` was created to capture this information.
   - Before:`3 April 2009 (South Africa)`
   - After: `2009-04-03`
       ```javascript
@@ -24,7 +24,7 @@ Working with the remaining ~9,500 films I cleaned the following fields:
       df['date'] = pd.to_datetime(date[0],infer_datetime_format=True)
       df['country'] = date[1].str.replace(")","")
       ```
-- Run-time was split to separate the hours and minutes. Hours were cast to integers, converted to minutes, then added together. What was tricky here was sometimes there were hours and minutes, and other only one of these fields, so I wrote a function to handle these different scenarious with conditionals.
+- **`run_time`** was split to separate the hours and minutes. Hours were cast to integers, converted to minutes, then added together. What was tricky here was sometimes there were hours and minutes, and other only one of these fields, so I wrote a function to handle these different scenarious with conditionals.
   - Before:`1h 34min`
   - After: `94`
       ```javascript
