@@ -5,7 +5,7 @@
 ## Getting the URLs (start_urls)
 The links for each subsequent page are not found within the HTML of previous pages, so new responses cannot be generated the traditional way. URLs will need to be explicitly defined in the start_urls attribute. Inspecting our URL, the tail end has a query string parameter with a file number. The website allows for the export of these file numbers with some other useful metrics. The file numbers were exported and filtered as to only keep those for relevant wells, then imported into Python and the master list is created using a list comprehension.
 
-```javascript
+```python
 df = pd.read_csv(r'C:\Users\johno\Python\CSVs\file_numbers.csv')
 file_nums = df['FileNo'].astype(str).tolist()
 
@@ -19,7 +19,7 @@ class HeadersSpider(scrapy.Spider):
 ## Getting Access
 The data scraped here comes from a webpage that requires a subscription, and therefore has sign-in credentials. Default request headers are overwritten in the settings.py file and basic credentials are provided with base64 encoding. These are not working credentials shown here, they have been altered. 
 
-```javascript
+```python
 DEFAULT_REQUEST_HEADERS = {'Authorization': 'Basic am9obm9kb25uZWxsOiNIdW1ibGU0VFg='}
 ```
 
@@ -28,7 +28,7 @@ Each page looks slightly different, fields are missing/out of order etc. The str
 
 After some unsucessful tests in the Scrapy Shell, it was found that some <tbody> elements were left out by the developer, and were added in by Chrome. Replacing these elements with a forward slash was the remedy. 
 
-```javascript
+```python
 def parse(self, response):
         yield {
             'File_Number': response.xpath("(//text()[contains(., 'NDIC File No: ')]//following-sibling::node()/text())[1]").get(),
@@ -44,7 +44,7 @@ def parse(self, response):
 ## Parse Method (for production/time-series data)
 This was more straightforward as this data is organized in a table and is consistent betweeen pages. A variable is created for the collection of table rows, which is then looped through as data for each row is extracted. Another field is scraped from the page outside of the table to become a common key between these two datasets. 
 
-```javascript
+```python
 def parse(self, response):
         rows = response.xpath("//table[@id='largeTableOutput']//tr")
         for row in rows:
@@ -66,7 +66,7 @@ Two pipelines are defined allowing for the creation of two separate tables in ou
 
 2) `close_spider` is called at the very end and closes our connection to the database. 
 
-```javascript
+```python
 import sqlite3
 
 class SQLlitePipeline_Production(object):
@@ -96,7 +96,7 @@ class SQLlitePipeline_Production(object):
 
 3) `process_item` uses our cursor object along with an `INSERT` statement and populates the table. The `.get( )` method is used to avoid key errors. Changes are committed and the item is returned.
 
-```javascript
+```python
 def process_item(self, item, spider):
         self.c.execute('''
             INSERT INTO prod_table (UWI,Pool,Date,Days,Oil,Water,Gas) VALUES(?,?,?,?,?,?,?)
@@ -115,7 +115,7 @@ def process_item(self, item, spider):
 
 Pipelines are activated by definition in the `ITEM_PIPELINES` dictionary with their priority numbers. 
 
-```javascript
+```python
 ITEM_PIPELINES = {
     'NDIC.pipelines.SQLlitePipeline_Production': 300,
     'NDIC.pipelines.SQLlitePipeline_Headers': 200
