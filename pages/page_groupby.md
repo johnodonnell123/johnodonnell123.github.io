@@ -86,7 +86,7 @@ This yields monthly production values for all the fluid streams (cumulative and 
 </p>
 
 ## GroupBy
-Now that production is represented by comparable monthly values, we can start to aggregate. This is accomplished with Pandas GroupBy function, which aggregates data when given a shared value. All wells in a DSU will share the same DSU name and have their own values for our calculated production month 1, 2, etc. When we GroupBy DSU name these monthly production values are summed and we now have monthly production values for the DSU. First we specify the name of the value we want to group by, then grab the column of values we want to aggregate, and provide an aggregation method. 
+Now that production is represented by comparable monthly values, we can start to aggregate. This is accomplished with Pandas GroupBy function, which aggregates data when given a shared value. All wells in a DSU will share the same DSU name and have their own values for our calculated production month 1, 2, etc. When we GroupBy DSU name these monthly production values are aggregated and we can sum them for monthly production values for the DSU. First we specify the name of the value we want to group by, then grab the column of values to aggregate, and provide an aggregation method. 
 
 ```python
 # Create a new DataFrame
@@ -107,7 +107,7 @@ dsu_df['Wells'] = df_headers.groupby('DSU_NAME')['Well_Name'].count()
 </p>
 
 ## Calculating a scalar for partially developed DSU's
-Some DSUs are not fully developed, and may only be partially filled in. These DSUs can either be dropped or scaled to represent full development. The logic behind the calculation of the scalar is shown here below. The scaler can be applied to production, well count, stimulation volumes, and costs to normalize DSU's for width. It can also be used to simply remove all partially developed DSU's (they will have a scalar number not ≈ 1. 
+Some DSUs are not fully developed, and may only be partially filled in. These DSUs can either be dropped or scaled to represent full development. The logic behind the calculation of the scalar is shown here below. The scaler can be applied to production, well count, stimulation volumes, and costs to normalize DSU's for width. It can also be used to simply remove all partially developed DSU's (they will have a scalar number not ≈ 1. This is a matter of opinion, as partially developed DSU's will have a larger influence from half-bounded well performance (wells that are spaced wider *on average*).
 
 <p align="center">
   <img src="/images/GroupBy/Partial Development.PNG?raw=true" height = "80%" width = "80%">
