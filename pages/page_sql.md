@@ -21,7 +21,7 @@ Wells produce Oil, Water, and Gas over time. This is our time-series data, which
 </p>
 
 ## View Tables in DataBase
-```javascript
+```python
 %%sql 
 
 SELECT name 
@@ -33,7 +33,7 @@ WHERE type ='table'
 
 ## Select First 5 Rows of a table
 Showing shape of table (rows, columns) and a sample
-```javascript
+```python
 %%sql 
 
 SELECT * 
@@ -45,7 +45,7 @@ LIMIT 5
 
 ## Select Using Conditions
 Showing shape of table and a random sample
-```javascript 
+```python 
 %%sql 
 
 SELECT * 
@@ -57,7 +57,7 @@ WHERE Days > 20 AND Water < 100
 
 ## Select Specific Wells
 Using the logical IN operator
-```javascript
+```python
 %%sql 
 
 SELECT 
@@ -70,7 +70,7 @@ WHERE p.UWI IN (33061042810000,33061005070000)
 
 ## Select Columns from 2 Tables
 Showing shape of table and a random sample
-```javascript
+```python
 %%sql 
 
 SELECT 
@@ -84,7 +84,7 @@ JOIN header_table h
 
 ## What Operators/Companies have Produced the Most Oil to Date?
 It appears Continental Resources has produced > 400 million barrels of oil and drilled just over 1700 wells!
-```javascript
+```python
 %%sql 
 
 SELECT 
@@ -102,7 +102,7 @@ LIMIT 5
 
 ## Check for duplicate well names
 Well names <em>should</em> be unique, however we know for sure UWI's are unique
-```javascript
+```python
 %%sql 
 
 SELECT 
@@ -120,7 +120,7 @@ Surprisingly only one repeat!
 
 
 ## What Wells have Produced the Most Oil to Date? Who do they belong to? 
-```javascript
+```python
 %%sql 
 
 SELECT 
@@ -136,7 +136,7 @@ LIMIT 5
 <br>
 
 ## What Wells for a Particular Operator have Produced the Most Oil to Date? 
-```javascript
+```python
 %%sql
 
 SELECT 
@@ -154,7 +154,7 @@ LIMIT 5
 
 ## Top Producing Wells with Cumulative Water Filter
 Wells that produce less water are more favorable, as the water is costly to dispose of. 
-```javascript
+```python
 %%sql
 
 SELECT 
