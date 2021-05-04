@@ -26,7 +26,7 @@ K-Means clustering is an unsupervised learning algorithm that attempts to uncove
 ### Reading a well log (.las file) into  Pandas DataFrame:
 We see that we have a DataFrame indexed by depth, with data every 0.5 feet. We have 21543 rows and 55 logs. 
 
-```javascript  
+```python  
 # Import .las file into a LASFile object (from lasio package)
 las = lasio.read(r"C:\Users\johno\Python\Logs\single-30933-AIG-CND-CAL.las.txt")
 
@@ -41,7 +41,7 @@ df.head()
 ## Trimming our DataFrame
 We won't be using 55 logs in our analysis, as most of them are either irrelevant for this study or are highly correlated with another log (providing no unique information and a increasing dimensionality). We can achieve very good results with the 3 most fundamental logs that were mentioned earlier (GR, RHOZ, NPHI). The RHOZ log is trimmed to reasonable values, and fortunately this removes all of the other bad data as it occurs over the same interval. We are also dropping the first 2000' of data as it covers a homogenous unit, and is simply not interesting for this project.
 
-```javascript
+```python
 # Create a copy to manipulate
 df2 = df.copy()
 
@@ -75,7 +75,7 @@ We need to scale our data so that they have similar variances. The algorithm wil
 
 Scikit-Learn's StandardScaler will transform our distributions to have a mean of 0 and a standard deviation of 1.
 
-```javascript
+```python
 from sklearn.preprocessing import StandardScaler
 
 # Create the scaler and standardize the data
@@ -95,7 +95,7 @@ df2_std.describe().transpose()
 ## Create the model
 We create our model and specify how many clusters we want to create. There are methods to determine how many clusters we should look for, however when working with mixed mediums like rocks these methods are less useful. I have found it best to take an iterative approach, and err on the side of too many clusters. If we have too many we can always combine clusters together with simple addition, if too few we may not identify a rock type. We can also specify other hyperparameters here but the defaults meet our needs in this case. 
 
-```javascript
+```python
 # Create model
 cluster_model = KMeans(n_clusters = 6)
 
