@@ -32,7 +32,7 @@ Here we have all 15,000 wells on a map, colored by the depth of the top perforat
 ## What Operator has Produced the Most Oil to Date?
 Using SQL to join and aggregate
 
-```javascript
+```python
 %%sql 
 
 SELECT p.UWI, COUNT(DISTINCT p.UWI) AS 'Wells', SUM(p.Oil) AS 'Cumulative_Oil', h.Current_Operator
@@ -56,7 +56,7 @@ This is a pre-defined plotting function I have created, which can be found in th
 
 We start by defining our two DataFrames we want to use for input (which allows us to filter the data up front), then pass them as arguments to our function along with other options such as `material` and `cumulative` (boolean).
 
-```javascript
+```python
 df9 = df_header[df_header['Current_Operator'].str.contains('XTO')].sample(8)
 df_prod = df_production.copy()
 # ---------------------------------------------------------
@@ -74,7 +74,7 @@ Wells that produce less water are more favorable from an economic standpoint, as
 
 We also limit our production DataFrame to remove WOR's that aren't reasonable. 
 
-```javascript
+```python
 df9 = df_header[df_header['Vintage_Year'] > 2008].sample(1500)
 df_prod = df_production[df_production['WOR'].between(0,10)]
 # ---------------------------------------------------------
@@ -94,7 +94,7 @@ STREAM_PLOT(dataframe = df9,
 ## Oil Production Plot: Averaged by ~ Depth/Pressure
 Here we are binning and averaging by the depth of the top perforation, which is a proxy for depth of the formation. The correlation between depth and pressure is pretty strong in this basin. Higher pressure normally leads to better wells, the relationship shows through clearly in the plot. 
 
-```javascript
+```python
 df9 = df_header.sample(5000)
 df_prod = df_production.copy()
 # ---------------------------------------------------------
@@ -113,7 +113,7 @@ STREAM_PLOT(dataframe = df9,
 ## What Areas have Produced the Most Oil?
 The basin is divided up into 6mi x 6mi squares called [townships](https://en.wikipedia.org/wiki/Township_(United_States)). This is a convinent way to represent the geologic impact of an area as the geology within a township is more/less the same, most <em>measureable</em> varaiblility exists at a larger scale than 6 miles. Lets see what townships have produced the most oil.
 
-```javascript
+```python
 query = %sql 
 SELECT 
   p.UWI, h.Block, COUNT(DISTINCT p.UWI) AS 'Wells_Per_Block', SUM(p.Oil) AS 'Cumulative_Oil_Per_Block' 
