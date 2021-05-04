@@ -89,16 +89,16 @@ This yields monthly production values for all the fluid streams (cumulative and 
 ## GroupBy
 Now that production is represented by comparable monthly values, we can start to aggregate. This is accomplished with Pandas GroupBy function, which aggregates data when given a shared value. All wells in a DSU will share the same DSU name and have their own values for our calculated production month 1, 2, etc. When we GroupBy DSU name these monthly production values are summed and we now have monthly production values for the DSU. First we specify the name of the value we want to group by, then grab the column of values we want to aggregate, and provide an aggregation method. 
 
-```javascript
-### Create a new DataFrame
+```python
+# Create a new DataFrame
 dsu_df = pd.DataFrame()
   
-### Calculate DSU level information
+# Calculate DSU level information
 
-### Get the DSU operator by selecting the operator name from one of the wells
+# Get the DSU operator by selecting the operator name from one of the wells
 dsu_df['Operator'] = df_headers.groupby('DSU_NAME')['OPERATOR'].first()
 
-### Get the number of wells in the DSU by counting the number of well names 
+# Get the number of wells in the DSU by counting the number of well names 
 dsu_df['Wells'] = df_headers.groupby('DSU_NAME')['Well_Name'].count()
 ```
 
@@ -116,16 +116,16 @@ Some DSUs are not fully developed, and may only be partially filled in. These DS
 
 Assuming we want to scale our variables, it can be done as shown here below. 
 
-```javascript
-### Calculate scalar to normalize partially developed DSUs to a 5280
+```python
+# Calculate scalar to normalize partially developed DSUs to a 5280
 dsu_df['Wells_Scaled'] = 5280 / df_headers[df_headers['Bounded'] == 2].groupby('DSU_NAME')['Average_Neighbor_Distance'].mean()
 dsu_df['Scalar'] = dsu_df['Wells_Scaled'] / dsu_df['Wells']
 
-### Scale total DSU fluid and proppant 
+# Scale total DSU fluid and proppant 
 dsu_df['Fluid_MMBBLS_Scaled'] = (df_headers.groupby('DSU_NAME')['TOTAL_FLUID_BBL'].sum()/1000000) * dsu_df['Scalar']
 dsu_df['Proppant_MMLBS_Scaled'] = (df_headers.groupby('DSU_NAME')['TOTAL_PROP_LBS'].sum()/1000000) * dsu_df['Scalar']
 
-### Calculate and Scale production
+# Calculate and Scale production
 for m in range(1,60,1):
     for stream in ['Oil','Gas','Water','Fluid']:
         dsu_df[f'{m}m_{stream}_Cum_Scaled'] = (df_headers.groupby('DSU_NAME')[f'{m}m_{stream}_Nrm_Cum'].sum()) * dsu_df['Scalar']
@@ -141,7 +141,7 @@ for m in range(1,60,1):
 
 ## Cumulative Oil vs Producing Months
 Here I have selected a random area of the basin and plotted the production for some DSUs. The plotting function can be found in the notebook on my GitHub repository.
-```javascript
+```python
 DSU_STREAM_PLOT(dataframe = dsu_df,  
             material = 'Oil', 
             cumulative = 1, 
@@ -154,7 +154,7 @@ DSU_STREAM_PLOT(dataframe = dsu_df,
 
 ## Cumulative Oil vs Monthly Oil Rate
 This plot allows us to see how the production is declining in these different DSUs. A common technique to forecast the ultimate recovery is to extrapolate a line out from these trends and assume an economic abandonment rate (represented here by the black dashed line).
-```javascript
+```python
 DSU_STREAM_PLOT(dataframe = dsu_df,  
             rate_cum = 1,
             material = 'Oil', 
@@ -167,7 +167,7 @@ DSU_STREAM_PLOT(dataframe = dsu_df,
 
 ## Economics
 This is where we start to see some truly impactful views. Assigning some cost to the drilling and stimulation of each well, we can also aggregate total DSU cost, which allows us to calculate the total oil produced / capital spent **through time**. Here the Enverus estimation for wells cost is used. This allows for a better understanding of DSU/project level economics and the impact of our development strategy on our capital efficiency.
-```javascript
+```python
 DSU_STREAM_PLOT(dataframe = dsu_df,  
             material = 'Oil', 
             economics = 1,
