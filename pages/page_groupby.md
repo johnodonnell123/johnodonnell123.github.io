@@ -1,10 +1,9 @@
 # Aggregating Oil Production Streams at a DSU (Project) Level to Visualize the Results of Development Strategy in Python
 
-**Description:** One of the primary concerns of operators developing acreage for oil and gas is how best to spend capital getting the resource out of the ground. Common questions
-arise such as "how many wells should we drill?" and "how should we stimulate each well?". This is a hot topic of debate in the industry, many operators right next to each other in the same basin are developing their assets very differently. In this project, I step through how to use Python and the Pandas GroupBy function to aggregate the production streams for all wells in a DSU, then visualize the results of different development strategies in an informative manner. Displaying production for individual well has been covered in [another project of mine](https://johnodonnell123.github.io/pages/page_EDA.html), and while these viewing data at that level can be useful it’s also important to view the results of multiple wells together. Different development schemes are compared to one another allowing the interpreter to spot the DSUs with the most productive capital. 
+**Description:** One of the primary concerns of operators developing acreage for oil and gas is how best to spend capital getting the resource out of the ground. Gor a given area, operators need to decide how many wells to drill, and how to stimulate/frac them. This is a hot topic of debate in the industry, many operators right next to each other in the same basin are developing their assets very differently, some spending twice as much as their neighbor. In this project, I step through how to use Python and the Pandas GroupBy function to aggregate the production streams for all wells in a DSU, then visualize the results of different development strategies in an informative manner. Displaying production for individual well has been covered in [another project of mine](https://johnodonnell123.github.io/pages/page_EDA.html), and while viewing data at that level can be useful it’s also important to view the results of multiple wells together. Different development schemes are plotted adjacent to one another allowing the interpreter to spot the DSUs with the most productive capital. 
 
 ## Problem:
-Land in the Williston basin of North Dakota is divided up into Townships, Ranges, and Sections. A township is 6mi x 6mi, and a section is 1mi x 1 mi. Traditionally, a DSU (Drill Spacing Unit) is two sections, forming a 2mi x 1mi stretch of land (shown in red). Operators will drill a number of wells horizontally in the longer direction (shown in blue).
+Land in the Williston basin of North Dakota is divided up Townships, Ranges, and Sections. A township is 6mi x 6mi, and a section is 1mi x 1 mi. Traditionally, a DSU (Drill Spacing Unit) is two sections, forming a 2mi x 1mi stretch of land (shown in red). Operators will drill a number of wells horizontally in the longer direction (shown in blue).
 
 <p align = 'center'>
   <img src="/images/GroupBy/DSU Explained.PNG?raw=true" height = "50%" width = "50%">
@@ -17,14 +16,14 @@ The question becomes: to most efficiently recover the oil that is in the ground 
   <img src="/images/GroupBy/DSU Cartoon2.PNG?raw=true" height = "60%" width = "60%">
 </p>
 
-As you might have concluded, the issue of capital efficiency becomes one of balancing the cost of wells and the costs of stimulation. That being said, we don't fully understand the relationship between the stimulation and the drainage area, as this relationship is likely non-linear and differs across geologic areas. This is why being able to clearly understand the results of previous development patterns is *essential*.
+As you might have concluded, the issue of capital efficiency becomes one of balancing the cost of wells and the costs of stimulation. That being said, we don't fully understand the relationship between the stimulation and the drainage area, as this relationship is likely non-linear and differs across geologic areas. This is why being able to clearly understand the results of previous development patterns is *essential*. Think about what a wells production profile might look like for the middle scenario vs. that of a well in the third scenario.
 
 ## Data: 
 This data set comes from Enverus, and can be organized into two tables:
 
 #### Header Table
 Contains general information about a well such as the depth, location, and the stimulation of the well. It also contains spacing information (how close the next well is). We have ~ 15,000 rows indexed by UWI (Unique Well Identifier), each row representing one well. 
-- The stimulation of the well can be simplified into two primary components, the fluid pumped, and the proppant (sand) pumped. It can be thought of in this context: the fluid creates the fractures (surface area), and the sand/proppant keeps those fractures open as pressure declines (maintaining surface area as drainage area over time).
+- The stimulation of the well can be simplified into two primary components, the fluid pumped, and the proppant (sand) pumped. It can be thought of in this context: the fluid creates the fractures (surface area) that was the yellow box in the diagram above, and the sand/proppant keeps those fractures open as pressure declines (maintaining some level of drainage area over time).
 
 #### Production Table (Time-Series)
 Wells produce oil, water, and gas over time. This is our time-series data, which is why it is held in a separate table. Each of our wells has an entry for every month it produced, making is significantly larger at around 1.1 million rows. This table contains the UWI, the time stamp, the number of days that well actually flowed for that month, and the coinciding volumes for oil/water/gas.
@@ -34,20 +33,21 @@ Wells produce oil, water, and gas over time. This is our time-series data, which
 </p>
 
 ## Grouping the Wells by DSU:
-To apply an aggregation function to wells in a DSU they all need to have some sort of flag to denote which DSU they belong to. This is a project of its own in terms of complexity and length, I will only cover the workflow at a high level here. In short, we want to give a unique name to all wells that share the same township, range, and two section numbers. The source code for completing this task can be found [here](broken), this is the logic behind the program. 
+To apply an aggregation function to wells in a DSU they all need to have some sort of flag to denote which DSU they belong to. This is a project of its own in terms of complexity and length, I will only cover the workflow at a high level here. In short, we want to give a unique name to all wells that share the same township, range, and two section numbers. The source code for completing this task can be found [here](broken). This is the logic behind the program. 
 - For each well we have a surface hole and bottom hole latitude and longitude (shown in yellow)
 - The `utm` package in Python can be used to convert lat/long into xy coordinates (meters)
-- For each well two new XYs are calculated for distances that are 25% and 75% of the distance between our two points (yielding points in each section, shown in green)
+- For each well, two new XYs are calculated for distances that are 25% and 75% of the distance between our two points (yielding points in each section, shown in green)
 - These XYs are converted back to Latitude and Longitude, and finally converted to Township, Range, and Section
-- All wells that share the exact same township and range are grouped together, within these groupings all wells that have two points that have two section numbers in common are given a unique name. 
+- All wells whose center (green) points share the same township and range are grouped together, within these groupings all wells that have two points that have section numbers in common are given a unique name. 
 - Their DSU name is a combination of one of the well names as and the two section numbers
 
 <p align = 'center'>
   <img src="/images/GroupBy/Calculated Coordinates.PNG?raw=true" height = "50%" width = "50%">
 </p>
 
-### Our headers DataFrame now contains a DSU tag 
+
 <p align = 'center'>
+  ### Our headers DataFrame now contains a DSU tag 
   <img src="/images/GroupBy/DSU name preview.PNG?raw=true" height = "50%" width = "50%">
 </p>
 
@@ -58,24 +58,24 @@ Since we have calendar date producing months for each well, we could aggregate p
   <img src="/images/SQL/prod_table.PNG?raw=true" height = "40%" width = "40%">
 </p>
 
-If we chose to just use the calendar months our production streams would have influence from their production schedules that will add noise to our data. For one well, month 3 might represent 90 days of production and for another it might represent 7. A better method would be to use the cumulative reported producing days and represent each month as 30.4 days. The challenge here is that we do not have a data point for exactly every 30.4 days, our solution will be to linearly interpolate between the two bounding points. The `np.interp` function allows us to do this, we pass it two lists of values (days and production) and specify a point at which to interpolate (every 30.4 days). 
+If we chose to use calendar months to aggregate, our production streams would have influence from their production management, adding noise. For example: at calendar month 3 one well might have 90 producing days, and another well may only have 13. A better method would be to use the cumulative reported producing days and represent each month as 30.4 days. The challenge here is that we do not have a data point for exactly every 30.4 days, our solution will be to linearly interpolate between the two bounding points. The `np.interp` function allows us to do this, we pass two lists of values (days and production) and specify a point at which to interpolate (every 30.4 days). 
 
 The code below calculates the cumulative and monthly streams for each well in our dataset for months 1 - 60.
 
-``` javascript
-### For months 1 through 60
+``` python
+# For months 1 through 60
 for m in range(1,60,1):
-    ### For each well in our headers DataFrame
+    # For each well in our headers DataFrame
     for uwi in df_headers.index.tolist():
-        ### Calculate an array of cumulative producing days for this well
+        # Calculate an array of cumulative producing days for this well
         cum_days = df_production.loc[uwi,'Prod_Days'].cumsum()
-        ### Check if this well has enough total cumulative producing days to calculate the production for the current month
+        # Check if this well has enough total cumulative producing days to calculate the production for the current month
         if m * 30.4 < max(cum_days):
-            ### For each stream, calculcate cumulative and monthly volumes
+            # For each stream, calculcate cumulative and monthly volumes
             for stream in ['Oil_Nrm','Water_Nrm','Gas_Nrm','Fluid_Nrm']:
                 rate_prod_list = df_production.loc[uwi,stream].values
                 cum_prod_list = df_production.loc[uwi,stream].cumsum().values
-                ### Use np.interp to calculcate the correct value for our current month (month number * 30.4)
+                # Use np.interp to calculcate the correct value for our current month (month number * 30.4)
                 df_headers.loc[uwi,f'{m}m_{stream}_Cum'] = np.interp( m * 30.4 , cum_days , cum_prod_list) 
                 df_headers.loc[uwi,f'{m}m_{stream}_Rate'] = np.interp( m * 30.4 , cum_days , rate_prod_list) 
 ```
