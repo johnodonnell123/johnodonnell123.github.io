@@ -45,9 +45,8 @@ To apply an aggregation function to wells in a DSU they all need to have some so
   <img src="/images/GroupBy/Calculated Coordinates.PNG?raw=true" height = "50%" width = "50%">
 </p>
 
-
-<p align = 'center'>
-  ### Our headers DataFrame now contains a DSU tag 
+### Our headers DataFrame now contains a DSU tag
+<p align = 'center'> 
   <img src="/images/GroupBy/DSU name preview.PNG?raw=true" height = "50%" width = "50%">
 </p>
 
