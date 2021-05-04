@@ -131,7 +131,7 @@ for m in range(1,60,1):
         dsu_df[f'{m}m_{stream}_Rate_Scaled'] = (df_headers.groupby('DSU_NAME')[f'{m}m_{stream}_Nrm_Rate'].sum()) * dsu_df['Scalar']
         
 ```
-**This yields the DataFrame seen below. Now all of the hard work has been done preparing the data, we can begin visualizing the results**
+**This yields the DataFrame seen below. Now we can begin visualizing the results.**
 <p align="center">
   <img src="/images/GroupBy/dsu_df production.PNG?raw=true">
 </p>
@@ -152,7 +152,7 @@ DSU_STREAM_PLOT(dataframe = dsu_df,
 </p>
 
 ## Cumulative Oil vs Monthly Oil Rate
-This plot allows us to see how the production is declining in these different DSUs. A common technique to forecast the ultimate recovery is to extrapolate a line out from these trends and assume an economic abandonment rate (represented here by the black dashed line).
+This plot allows us to see how the production is declining in these different DSUs. A common technique to forecast the EUR (estimated ultimate recovery) is to extrapolate a line out from these trends and assume an economic abandonment rate (represented here by the black dashed line). The intersection of these two lines is our EUR.
 ```python
 DSU_STREAM_PLOT(dataframe = dsu_df,  
             rate_cum = 1,
@@ -165,7 +165,7 @@ DSU_STREAM_PLOT(dataframe = dsu_df,
 </p>
 
 ## Economics
-This is where we start to see some truly impactful views. Assigning some cost to the drilling and stimulation of each well, we can also aggregate total DSU cost, which allows us to calculate the total oil produced / capital spent **through time**. Here the Enverus estimation for wells cost is used. This allows for a better understanding of DSU/project level economics and the impact of our development strategy on our capital efficiency.
+This is where we start to see some truly impactful views. Assigning some cost to the drilling and stimulation of each well, we can also aggregate total DSU cost. This allows us to calculate the total oil produced / capital spent **through time** to see if our capital is just buying us accelerated volumes or EUR. Here the Enverus estimation for well cost is used, and it includes the cost of drilling the well and the stimulation. This allows for a better understanding of DSU/project level economics and the impact of our development strategy on our capital efficiency.
 ```python
 DSU_STREAM_PLOT(dataframe = dsu_df,  
             material = 'Oil', 
