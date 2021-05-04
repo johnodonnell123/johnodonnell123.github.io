@@ -132,7 +132,7 @@ Zooming in on the pink colored clusters, we can see that they have very low gamm
   <img src="/images/Cluster/Salt2.PNG?raw=true" width="35%" height="35%">
 </p>
 
-Moving further down section to the primary formation of interest in the basin (Bakken formation), we see some interesting trends. This is the only section of the entire well in which we see this cluster represented by the color black. These are the upper and lower bakken shales, and they are the primary source for all of the oil in the bakken petroleum system. The blue cluster is interpreted to be carbonate rock, which has very low porosity and does not hold notable oil. The yellow cluster defines the primary reservoirs for the petroleum system, which are filled with oil and have produced hundreds of millions of barrels of oil.
+Moving further down section to the primary formation of interest in the basin (Bakken formation), we see some interesting trends. This is the only section of the entire well in which we see this cluster represented by the color black. These are the upper and lower bakken shales, and they are the primary source for all of the oil in the bakken petroleum system. The blue cluster is interpreted to be carbonate rock, which has very low porosity and does not hold notable oil. The yellow cluster defines the primary reservoirs for the petroleum system, which are filled with hydrocarbons and have produced hundreds of millions of barrels of oil.
 
 <p align = 'center'>
   <img src="/images/Cluster/BPS Zoom In2.PNG?raw=true" width="35%" height="35%">
