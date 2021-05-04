@@ -30,7 +30,7 @@ Contains general information about a well such as the depth, location, and the s
 Wells produce oil, water, and gas over time. This is our time-series data, which is why it is held in a separate table. Each of our wells has an entry for every month it produced, making is significantly larger at around 1.1 million rows. This table contains the UWI, the time stamp, the number of days that well actually flowed for that month, and the coinciding volumes for oil/water/gas.
 
 <p align="center">
-  <img src="/images/SQL/prod_table.PNG?raw=true height = "40%" width = "40%"">
+  <img src="/images/SQL/prod_table.PNG?raw=true" height = "40%" width = "40%">
 </p>
 
 ## Grouping the Wells by DSU:
