@@ -55,7 +55,7 @@ To apply an aggregation function to wells in a DSU they all need to have some so
 Since we have calendar date producing months for each well, we could aggregate production for the wells in the DSU on their producing month #1, #2 etc. However, looking at our production table we see that for each month there is a number representing the reported producing days that ranges from 0 to 31. 
 
 <p align="center">
-  <img src="/images/SQL/prod_table.PNG?raw=true height = "40%" width = "40%"">
+  <img src="/images/SQL/prod_table.PNG?raw=true" height = "40%" width = "40%">
 </p>
 
 If we chose to just use the calendar months our production streams would have influence from their production schedules that will add noise to our data. For one well, month 3 might represent 90 days of production and for another it might represent 7. A better method would be to use the cumulative reported producing days and represent each month as 30.4 days. The challenge here is that we do not have a data point for exactly every 30.4 days, our solution will be to linearly interpolate between the two bounding points. The `np.interp` function allows us to do this, we pass it two lists of values (days and production) and specify a point at which to interpolate (every 30.4 days). 
@@ -83,7 +83,7 @@ for m in range(1,60,1):
 This yields monthly production values for all the fluid streams (cumulative and monthly) like so:
 
 <p align="center">
-  <img src="/images/GroupBy/Production Computed.PNG?raw=true height = "85%" width = "85%"">
+  <img src="/images/GroupBy/Production Computed.PNG?raw=true" height = "85%" width = "85%">
 </p>
 
 ## GroupBy
@@ -104,14 +104,14 @@ dsu_df['Wells'] = df_headers.groupby('DSU_NAME')['Well_Name'].count()
 
 **The resulting DataFrame is indexed by our DSU names, and the columns represent the aggregated metrics we just calculated**
 <p align="center">
-  <img src="/images/GroupBy/dsu_df wells.PNG?raw=true height = "45%" width = "45%"">
+  <img src="/images/GroupBy/dsu_df wells.PNG?raw=true" height = "45%" width = "45%">
 </p>
 
 ## Calculating a scalar for partially developed DSU's
 Some DSUs are not fully developed, and may only be partially filled in. These DSUs can either be dropped or scaled to represent full development. The logic behind the calculation of the scalar is shown here below. The scaler can be applied to production, well count, stimulation volumes, and costs to normalize DSU's for width. It can also be used to simply remove all partially developed DSU's (they will have a scalar number not ≈ 1. 
 
 <p align="center">
-  <img src="/images/GroupBy/Partial Development.PNG?raw=true height = "80%" width = "80%"">
+  <img src="/images/GroupBy/Partial Development.PNG?raw=true" height = "80%" width = "80%">
 </p>
 
 Assuming we want to scale our variables, it can be done as shown here below. 
