@@ -13,6 +13,8 @@
 ### [Scraping Oil Well Production Data and Storing in a RDBS](/pages/page_scrapy.md)
 <img src="/images/scraping_collage_2.PNG?raw=true" width="375" height="188">
 
+### [Aggregating Oil Production at a Project Level to Visualize the Results of Development Strategy](/pages/page_groupby.md)
+<img src="/images/collage_thumbnail_sql.PNG?raw=true" width="300" height="300">
 
 ### [SQL in Jupyter for Data Retrieval and Analysis](/pages/page_sql.md)
 <img src="/images/collage_thumbnail_sql.PNG?raw=true" width="300" height="300">
