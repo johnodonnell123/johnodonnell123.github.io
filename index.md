@@ -6,7 +6,7 @@
 <img src="/images/plotly thumbnail.PNG?raw=true" width="375" height="188">
 
 
-### [K-Means Clustering to Uncover Rock Types](/pages/page_cluster.md)
+### [K-Means Clustering to Define Rock Types](/pages/page_cluster.md)
 <img src="/images/cluster_thimbnail.PNG?raw=true" width="45%" height="45%">
 
 
