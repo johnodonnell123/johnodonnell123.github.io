@@ -35,10 +35,11 @@ Using SQL to join and aggregate
 ```python
 %%sql 
 
-SELECT p.UWI, COUNT(DISTINCT p.UWI) AS 'Wells', SUM(p.Oil) AS 'Cumulative_Oil', h.Current_Operator
+SELECT 
+  p.UWI, COUNT(DISTINCT p.UWI) AS 'Wells', SUM(p.Oil) AS 'Cumulative_Oil', h.Current_Operator
 FROM prod_table p 
 JOIN header_table h 
-ON p.UWI = h.UWI 
+  ON p.UWI = h.UWI 
 GROUP BY Current_Operator
 ORDER BY Cumulative_Oil desc
 LIMIT 8
@@ -103,7 +104,8 @@ STREAM_PLOT(dataframe = df9,
             material = 'Oil', 
             cumulative = 1, 
             variable = 'Top_Perf', 
-            variable_dict = {'0-9000':'grey','9000-1000':'gold','10000-11000':'orange','11000-12000':'red','12000-13000':'blue'},
+            variable_dict = {'0-9000':'grey','9000-1000':'gold','10000-11000':'orange',
+                             '11000-12000':'red','12000-13000':'blue'},
             averages = 1,
             all_streams = 0,
             width = 800, height = 600 )
