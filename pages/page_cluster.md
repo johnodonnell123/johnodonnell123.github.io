@@ -135,7 +135,7 @@ Moving further down section to the primary formation of interest in the basin (B
 </p>
 
 ## Getting Granular
-It can be very valuable to identify the primary rock types for the entire basin using a clustering algorithm on the entire section of rock as detailed above. Another use of this tool is to limit our section of rock to a specific interval and generate clusters to break our this formation into smaller units for classification. In this example I will zoom in on the Middle Bakken reservoir, which is the most prolific formation in the Williston Basin. 
+It can be valuable to identify the primary rock types for the entire basin using a clustering algorithm on the entire section of rock as detailed above, but sometimes we want to get specific. Another use of this tool is to limit our section of rock to a single interval and generate clusters to parse out this formation into smaller units for classification/ranking. In this example I will zoom in on the Middle Bakken reservoir, which is the most prolific formation in the Williston Basin. 
 
 <p align = 'center'>
   <img src="/images/Cluster/Bakken Zoom In.PNG?raw=true" width="75%" height="75%">
@@ -143,8 +143,12 @@ It can be very valuable to identify the primary rock types for the entire basin 
 
 If we were to limit our DataFrame and create a new clustering model on just this small subset of data, we would return what is shown below. 
 <p align = 'center'>
-  <img src="/images/Cluster/Bakken Clusters.PNG?raw=true" width="75%" height="75%">
+  <img src="/images/Cluster/Bakken Clusters.PNG?raw=true" width="100%" height="100%">
 </p>
+
+This is a good example of possibly using too many clusters, in which the interpreter could then combine them! I would interpret the pink and green clusters to both represent a dolomitic rock type, while the yellow and blue clusters represent a less favorable carbonate layer. The orange and black clusters might remain separate clusters, as the orange appears to have slightly lower density, which could be a function of the mineralogy or the porosity (either way it is systematically different). 
+
+This can be incredibly valuable, because different rock types have different reservoir characteristics and lead to more or less production. Knowing that in one area of the basin we see a large amount of the favorable pink facies (dolomite), we would expect to see better performance than in antoher area that is dominated by the carbonate beg (yellow/blue). 
 
 ## Further Work / Extrapolation
 This was a gentle introduction of how k-means clustering adds value to the interpretation of rock types. This level of analysis is useful when moving into a new area to quickly get familiar with the different formations and their chracteristics. There are other applications to achieve a more granular result for a particular formation or group, which I may expand on with a future project. The general workflow would look like this:
