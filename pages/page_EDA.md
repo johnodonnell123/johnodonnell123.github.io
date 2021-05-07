@@ -169,7 +169,7 @@ Let’s see what townships have produced the most oil for their well count. More
 As you can see, this map looks notably different than the previous, showing that simply the number of wells in a township is in fact a primary driver. Would we want an investment in a township that has produced the most oil, or the township that produces the most oil per well drilled?
 
 ## Wrap Up:
-Here we have covered several tools that can be used for data analysis on oil and gas production data. This is just the tip of the iceberg when it comes to the analysis that can be completed on this dataset using these tools. There is a wealth of information publicly available for the Williston Basin that yields insight into performance (and investment) drivers around the basin. Knowing how to manipulate, clean, analyze, and visualize it can be overwhelming with traditional methods. Hopefully, this short workflow demonstrates the value of these tools and knowing how to use them! 
+Here we have covered several tools that can be used for data analysis on oil and gas production data. This is just the tip of the iceberg when it comes to the analysis that can be completed on this dataset using these tools. There is a wealth of information publicly available for the Williston Basin that yields insight into performance (and ROI) drivers around the basin. Knowing how to manipulate, clean, analyze, and visualize it can be overwhelming with traditional methods. Hopefully, this short workflow demonstrates the value of these tools and knowing how to use them! 
 
 
 
