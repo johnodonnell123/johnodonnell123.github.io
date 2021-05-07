@@ -3,7 +3,7 @@
 **Description:** One of the primary concerns of operators developing acreage for oil and gas is how best to spend capital getting the resource out of the ground. Gor a given area, operators need to decide how many wells to drill, and how to stimulate/frac them. This is a hot topic of debate in the industry, many operators right next to each other in the same basin are developing their assets very differently, some spending twice as much as their neighbor. In this project, I step through how to use Python and the Pandas GroupBy function to aggregate the production streams for all wells in a DSU, then visualize the results of different development strategies in an informative manner. Displaying production for individual well has been covered in [another project of mine](https://johnodonnell123.github.io/pages/page_EDA.html), and while viewing data at that level can be useful it’s also important to view the results of multiple wells together. Different development schemes are plotted adjacent to one another allowing the interpreter to spot the DSUs with the most productive capital. 
 
 ## Problem:
-Land in the Williston basin of North Dakota is divided up Townships, Ranges, and Sections. A township is 6mi x 6mi, and a section is 1mi x 1 mi. Traditionally, a DSU (Drill Spacing Unit) is two sections, forming a 2mi x 1mi stretch of land (shown in red). Operators will drill a number of wells horizontally in the longer direction (shown in blue).
+Land in the Williston basin of North Dakota is divided up Townships, Ranges, and Sections. A township is 6mi x 6mi, and a section is 1mi x 1 mi. Traditionally, a DSU (Drill Spacing Unit) is two sections, forming a 2mi x 1mi stretch of land (shown in red). Operators will drill some number of wells horizontally in the longer direction (shown in blue).
 
 <p align = 'center'>
   <img src="/images/GroupBy/DSU Explained.PNG?raw=true" height = "50%" width = "50%">
@@ -86,7 +86,7 @@ This yields monthly production values for all the fluid streams (cumulative and 
 </p>
 
 ## GroupBy
-Now that production is represented by comparable monthly values, we can start to aggregate. This is accomplished with Pandas GroupBy function, which aggregates data when given a shared value. All wells in a DSU will share the same DSU name and have their own values for our calculated production month 1, 2, etc. When we GroupBy DSU name these monthly production values are aggregated and we can sum them for monthly production values for the DSU. First we specify the name of the value we want to group by, then grab the column of values to aggregate, and provide an aggregation method. 
+Now that production is represented by comparable monthly values, we can start to aggregate. This is accomplished with Pandas GroupBy function, which aggregates data when given a shared value. All wells in a DSU will share the same DSU name and have their own values for our calculated production month 1, 2, etc. When we GroupBy DSU name these monthly production values are aggregated and we can sum them for monthly production values for the DSU. First, we specify the name of the value we want to group by, then grab the column of values to aggregate and provide an aggregation method. 
 
 ```python
 # Create a new DataFrame
@@ -179,17 +179,4 @@ DSU_STREAM_PLOT(dataframe = dsu_df,
 </p>
 
 ## Wrap Up
-This workflow allows us to take advantage of public data and assess the results of different spacing and completion patterns in the basin. Assessing economics at a project level can yield insight into where resource might be under and over developed, and where operators might be overcapitalized. It allows us to view performance through time, to estimate the impact of spacing and completions on early time rates, mid life performance, as well as ultimate recovery. 
-
-
-
-
-
-
-
-
-
-
-
-
-
+This workflow allows us to take advantage of public data and assess the results of different spacing and completion patterns in the basin. Assessing economics at a project level can yield insight into where resource might be under and over developed, and where operators might be overcapitalized. It allows us to view performance through time, to estimate the impact of spacing and completions on early time rates, midlife performance, as well as ultimate recovery. 
