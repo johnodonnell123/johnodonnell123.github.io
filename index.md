@@ -3,7 +3,7 @@
 
 
 ### [K-Means Clustering to Define Rock Types](/pages/page_cluster.md)
-<img src="/images/Cluster Thumbnail.PNG?raw=true" width="45%" height="45%">
+<img src="/images/Cluster Thumbnail.PNG?raw=true" width="60%" height="60%">
 
 ### [Oil Production Data EDA with SQL and Plotly](/pages/page_EDA.md)
 <img src="/images/plotly thumbnail.PNG?raw=true" width="375" height="188">
