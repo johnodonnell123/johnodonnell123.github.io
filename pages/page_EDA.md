@@ -57,7 +57,7 @@ This is a pre-defined plotting function I have created, which can be found in th
 
 We start by defining our two DataFrames we want to use for input (which allows us to filter the data up front), then pass them as arguments to our function along with other options such as `material` and `cumulative` (boolean).
 
-This function is capable of handling different streams (oil/water/gas), ratios (WOR/GOR), cumulative or monthly values, as well as cumulative AND monthly values. 
+This function is capable of handling different streams (oil/water/gas), ratios (WOR/GOR), cumulative or monthly values, as well as cumulative AND monthly values. It can also group production by a given varaible and plot averages, as shown later in the project.
 
 ```python
 df9 = df_header[df_header['Current_Operator'].str.contains('XTO')].sample(8)
@@ -73,7 +73,7 @@ STREAM_PLOT(dataframe = df9,
 <img src="/images/EDA/Simple Oil Plot.PNG?raw=true" width="75%" height="75%">
 
 ## Oil Rate vs Cum Plot
-This is a common display used for estimating the ultimate recovery for a well. One method is to extrapolate a stright line out from each trend to an economic abandonment rate. 
+This is a common display used for estimating the ultimate recovery for a well. One method is to extrapolate a straight line out from each trend to some operator specific economic abandonment rate. I chose an arbitrary value for this display, the intersection of the trend line with the black line represents our ultimate recovery.
 ```python
 df9 = df_header.sample(3)
 df_prod = df_production.copy()
@@ -89,7 +89,7 @@ STREAM_PLOT(dataframe = df9,
 <img src="/images/EDA/rate cum.PNG?raw=true" width="75%" height="75%">
 
 ## Water / Oil Ratio Plot
-Wells that produce less water are more favorable from an economic standpoint, as the water is costly to dispose of. Here we take a random sample of 1500 wells, bin them into groups defined by their Vintage, then average their production streams every month (30.4 days) to create a new stream. As you can see, over time operators have been producing more and more water!
+Wells that produce less water are more favorable from an economic standpoint, as the water is costly to dispose of. Here we take a random sample of 1500 wells, bin them into groups defined by their vintage, then average their production streams every month (30.4 days) to create a new stream. As you can see, over time operators have been producing more and more water!
 
 We also limit our production DataFrame to remove WOR's that aren't reasonable. 
 
@@ -102,7 +102,8 @@ STREAM_PLOT(dataframe = df9,
             material = 'WOR', 
             cumulative = 0, 
             variable = 'Vintage_Year', 
-            variable_dict = {'2008-2012':'grey','2012-2014':'gold','2014-2016':'orange','2016-2018':'red','2018-2020':'blue'},
+            variable_dict = {'2008-2012':'grey','2012-2014':'gold','2014-2016':'orange',
+                             '2016-2018':'red','2018-2020':'blue'},
             averages = 1,
             all_streams = 0,
             width = 800, height = 600 )
