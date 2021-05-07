@@ -89,7 +89,7 @@ df2_std.describe().transpose()
 <img src="/images/Cluster/Standardized DF2.PNG?raw=true"/>
 
 ## Create the model
-We create our model and specify how many clusters we want to create. There are methods to determine how many clusters we should look for, however when working with mixed mediums like rocks the decision is rarely straighforward. I have found it best to take an iterative approach, and err on the side of too many clusters. If we have too many we can always combine clusters together with simple addition, if too few we may not identify a rock type. We can also specify other hyperparameters here but the defaults meet our needs in this case. 
+We create our model and specify how many clusters we want to create. There are methods to determine how many clusters we should look for, however when working with mixed mediums like rocks the decision is rarely straighforward. I have found it best to take an iterative approach, and err on the side of too many clusters. If we have too many clusters we can always combine some together, if too few we may not identify an important rock type. We can also specify other hyperparameters here but the defaults meet our needs in this case. 
 
 ```python
 # Create model
@@ -124,6 +124,8 @@ This is a much more intuitive view! We can see visually how some of our log resp
 ## Interpretation:
 Zooming in on the pink colored clusters, we can see that they have very low gamma readings, and our density log (green) is reading **very** low. This is a common response of salt, these are salt beds and they cause a host of issues for operators all around the world. One of which we can actually see here, note how our green RHOB log appears to read erratically around these beds, this is due to poor borehole conditions caused by these salts.
 
+Salt can also lead to well integrity issues, and can cause a well to fail which is not only costly to fix but also halts any production from that well. Identifying these layers and mapping them can help operators plan ahead for special casing designs over these intervals. 
+
 <p align = 'center'>
   <img src="/images/Cluster/Salt2.PNG?raw=true" width="35%" height="35%">
 </p>
@@ -132,6 +134,13 @@ Moving further down section to the primary formation of interest in the basin (B
 
 <p align = 'center'>
   <img src="/images/Cluster/BPS Zoom In2.PNG?raw=true" width="35%" height="35%">
+</p>
+
+## Getting Granular
+It can be very valuable to identify the primary rock types for the entire basin using a clustering algorithm on the entire section of rock as detailed above. Another use of this tool is to limit our section of rock to a specific interval and generate clusters to break our this formation into smaller units for classification. In this example I will zoom in on the Middle Bakken reservoir, which is the most prolific formation in the Williston Basin. 
+
+<p align = 'center'>
+  <img src="/images/Cluster/Bakken Zoom In.PNG?raw=true" width="50%" height="50%">
 </p>
 
 ## Further Work / Extrapolation
