@@ -9,7 +9,7 @@
 <img src="/images/plotly thumbnail.PNG?raw=true" width="60%" height="60%">
 
 ### [Scraping Oil Well Production Data and Storing in a RDBS](/pages/page_scrapy.md)
-<img src="/images/scraping_collage_2.PNG?raw=true" width="375" height="188">
+<img src="/images/scraping_collage_2.PNG?raw=true" width="60%" height="60%">
 
 ### [Aggregating Oil Production at a Project Level to Visualize the Results of Development Strategy](/pages/page_groupby.md)
 <img src="/images/GroupBy/rigs.jpg?raw=true" width="45%" height="45%">
