@@ -6,7 +6,7 @@
 <img src="/images/Cluster Thumbnail.PNG?raw=true" width="60%" height="60%">
 
 ### [Oil Production Data EDA with SQL and Plotly](/pages/page_EDA.md)
-<img src="/images/plotly thumbnail.PNG?raw=true" width="375" height="188">
+<img src="/images/plotly thumbnail.PNG?raw=true" width="60%" height="60%">
 
 ### [Scraping Oil Well Production Data and Storing in a RDBS](/pages/page_scrapy.md)
 <img src="/images/scraping_collage_2.PNG?raw=true" width="375" height="188">
