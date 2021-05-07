@@ -47,7 +47,7 @@ LIMIT 8
 <img src="/images/EDA/Oil and Wells by Operator Results.PNG?raw=true" width="50%" height="50%">
 
 ## What Operator has Produced the Most Oil for their Well Count?
-Displaying results with Plotly bar chart. Producing more oil with less wells likely translates into better project level economics (and better investments). 
+Displaying results with Plotly bar chart. Producing more oil with less wells likely translates into better project level economics (and better investments). This obviously has a temporal influence baked in, as some operators may simply have more wells that have been producing longer. It's an interesting observation nonetheless. 
 
 <img src="/images/EDA/Oil Per Well by Operator.PNG?raw=true" width="50%" height="50%">
 
@@ -56,6 +56,8 @@ Here we choose 8 wells at random for a given operator and plot their oil product
 This is a pre-defined plotting function I have created, which can be found in the notebook. 
 
 We start by defining our two DataFrames we want to use for input (which allows us to filter the data up front), then pass them as arguments to our function along with other options such as `material` and `cumulative` (boolean).
+
+This function is capable of handling different streams (oil/water/gas), cumulative or month values, as well as cumulative AND monthly values (shown later). 
 
 ```python
 df9 = df_header[df_header['Current_Operator'].str.contains('XTO')].sample(8)
