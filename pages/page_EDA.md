@@ -132,10 +132,11 @@ STREAM_PLOT(dataframe = df9,
 <img src="/images/EDA/Depth Oil Plot.PNG?raw=true" width="60%" height="60%">
 
 ## What Areas have Produced the Most Oil?
-The basin is divided up into 6mi x 6mi squares called [townships](https://en.wikipedia.org/wiki/Township_(United_States)). This is a convinent way to represent the geologic impact of an area as the geology within a township is more/less the same, most <em>measurable</em> variability exists at a larger scale than 6 miles. Let’s see what townships have produced the most oil.
+The basin is divided up into 6mi x 6mi squares called [townships](https://en.wikipedia.org/wiki/Township_(United_States)). This is a convinent way to represent the geologic impact of an area as the geology within a township is more/less the same, most <em>consistently measurable</em> variability exists at a larger scale than 6 miles. Let’s see what townships have produced the most oil.
 
 ```python
 query = %sql 
+
 SELECT 
   p.UWI, h.Block, COUNT(DISTINCT p.UWI) AS 'Wells_Per_Block', SUM(p.Oil) AS 'Cumulative_Oil_Per_Block' 
 FROM prod_table_clean p 
@@ -148,6 +149,7 @@ df_block = query.DataFrame()
 df_block.drop(columns='UWI',inplace=True)
 df_block.set_index('Block',inplace=True)
 df_block['Cum_Oil_Per_Well_Block'] = df_block['Cumulative_Oil_Per_Block'] / df_block['Wells_Per_Block']
+
 print(len(df_block))
 df_block.head()
 ```
