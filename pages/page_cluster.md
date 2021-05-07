@@ -1,6 +1,6 @@
 # Cluster Analysis for Rock Typing
 
-**Description:** K-means clustering is used to discover primary rock types in a deep well drilled in the Williston Basin. The project begins by identifying primary rock types for a large section of rock spanning ~9,000', then focuses on a smaller section of rock (~60') to identify specific layers in a reservoir. Three models are built total, however the process is only covered one time as the only difference is the amount of data fed into the model. 
+**Description:** K-means clustering is used to discover primary rock types in a deep well drilled in the Williston Basin. The project begins by identifying primary rock types for a large section of rock spanning ~9,000', then focuses on a smaller section of rock (~60') to identify specific layers in a reservoir. Two models are built total, however the process is only covered one time as the only difference is the amount of data fed into the model. 
 
 ### Data Context: 
 Operators drilling for oil and gas want to understand the subsurface reservoirs that they are trying to produce from, and one of the most common ways of doing so is by "logging" a well. A well is drilled vertically to some depth, and a tool is run inside the hole with sensors and measurements are taken. From these measurements, we infer properties about the rock that cannot be measured directly such as porosity, permeability, and oil saturatoin. Different rock types such as sandstones, limestones, and claystones have distinctly different readings on these tools. Here I hope to provide a **very** high level overview of some of the common logs. 
@@ -115,7 +115,7 @@ These can be very interesting when we have clearly definable groups that separat
 
 ### 2) Log Plot
 <p align = 'center'>
-  <img src="/images/Cluster/Log Preview Cluster2.PNG?raw=true" width="50%" height="50%">
+  <img src="/images/Cluster/Log Preview Cluster2.PNG?raw=true" width="40%" height="40%">
 </p>
 This is a much more intuitive view! We can see visually how some of our log responses are translating into different clusters. Lets zoom in on a section of the column...
 
@@ -134,7 +134,7 @@ Moving further down section to the primary formation of interest in the basin (B
   <img src="/images/Cluster/BPS Zoom In2.PNG?raw=true" width="35%" height="35%">
 </p>
 
-## Getting Granular
+## Getting Granular:
 It can be valuable to identify the primary rock types for the entire basin using a clustering algorithm on the entire section of rock as detailed above, but sometimes we want to get specific. Another use of this tool is to limit our section of rock to a single interval and generate clusters to parse out this formation into smaller units for classification/ranking. In this example I will zoom in on the Middle Bakken reservoir, which is the most prolific formation in the Williston Basin. 
 
 <p align = 'center'>
@@ -150,12 +150,12 @@ This is a good example of possibly using too many clusters, in which the interpr
 
 This can be incredibly valuable, because different rock types have different reservoir characteristics and lead to more or less oil production. Knowing that in one area of the basin we see a large amount of the favorable pink/green cluster (dolomite), we would expect to see better performance here than in another area that is dominated by the carbonate bed (yellow/blue). 
 
-## Expansion:
-This final approach to using this tool that I would like to cover is building a model using data from the just the Middle Bakken formation, **using data from multiple wells**. Why is this valuable? 
+## Expansion / Future Work: 
+This final approach to using this tool that I would like to briefly touch on is building a model using data from the just the Middle Bakken formation, **using data from multiple wells**. Why would that be valuable? 
 - Building a k-means model with data for one well, using 6 clusters, means that 6 groups will be identified in this well (all clusters will be present)
-- What is there are unique rock types in different parts of the basin? Our previously created model will not uniquely identify them and they will be shoehorned into one of existing cluster groups
-- Build a model using the data from multiple wells, then mapping the data spatially **allows up to see where some rock types appear and disapper**. 
-
+- What if there are unique rock types in different parts of the basi, seen in some wells and not in others? Our previously created model will not uniquely identify them and add clusters, they will be shoehorned into one of existing cluster groups
+- Building a model using the data from multiple wells, allows for the identification of all of the unique groups. We would them use this model to predict the clusters for each indiviual well. Some wells may in fact contain all 6 clusters, while others are more homogenous and only have 2-3. 
+- Mapping the data spatially **allows up to see where some rock types appear and disapper** which can be incredibly valuable when comparing two different areas from a business development perspective. 
 
 
 
