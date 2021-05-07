@@ -155,25 +155,6 @@ This final approach to using this tool that I would like to briefly touch on is 
 
 Why would that be valuable? 
 - Building a k-means model with data for one well, using 6 clusters, means that 6 groups will be identified in this well (all clusters will be present)
-- What if there are unique rock types in different parts of the basi, seen in some wells and not in others? Our previously created model will not uniquely identify them and add clusters, they will be shoehorned into one of existing cluster groups
-- Building a model using the data from multiple wells, allows for the identification of all of the unique groups. We would them use this model to predict the clusters for each indiviual well. Some wells may in fact contain all 6 clusters, while others are more homogenous and only have 2-3. 
-- Mapping the data spatially **allows up to see where some rock types appear and disapper** which can be incredibly valuable when comparing two different areas from a business development perspective. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- What if there are unique rock types in different parts of the basin, seen in some wells and not in others? Our previously created model will not uniquely identify them and just know to add a new cluster, they will be shoehorned into one of the existing cluster groups
+- Building a model using the data from *multiple* wells, allows for the identification of all unique groups. We would them use this master model to predict the clusters for each individual well. Some wells may in fact contain all 6 clusters, while others are more homogenous and only have 2-3. 
+- Mapping the data spatially **allows us to see where some rock types thicken, thin, or completely disapper** which can be incredibly valuable when comparing two different areas from a business development perspective. 
