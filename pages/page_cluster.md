@@ -142,7 +142,9 @@ It can be very valuable to identify the primary rock types for the entire basin 
 </p>
 
 If we were to limit our DataFrame and create a new clustering model on just this small subset of data, we would return what is shown below. 
-
+<p align = 'center'>
+  <img src="/images/Cluster/Bakken Clusters.PNG?raw=true" width="75%" height="75%">
+</p>
 
 ## Further Work / Extrapolation
 This was a gentle introduction of how k-means clustering adds value to the interpretation of rock types. This level of analysis is useful when moving into a new area to quickly get familiar with the different formations and their chracteristics. There are other applications to achieve a more granular result for a particular formation or group, which I may expand on with a future project. The general workflow would look like this:
