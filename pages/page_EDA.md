@@ -91,7 +91,7 @@ STREAM_PLOT(dataframe = df9,
 ## Water / Oil Ratio Plot
 Wells that produce less water are more favorable from an economic standpoint, as the water is costly to dispose of. Here we take a random sample of 1500 wells, bin them into groups defined by their vintage, then average their production streams every month (30.4 days) to create a new stream. As you can see, over time operators have been producing more and more water!
 
-We also limit our production DataFrame to remove WOR's that aren't reasonable. 
+We also limit our production DataFrame to remove WOR's that aren't reasonable. This is a public data set and is full of noise!
 
 ```python
 df9 = df_header[df_header['Vintage_Year'] > 2008].sample(1500)
