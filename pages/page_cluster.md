@@ -1,17 +1,15 @@
 # Cluster Analysis for Rock Typing
 
-**Description:** K-means clustering is used to discover primary rock types in a deep well drilled in the Williston Basin. At first the entire column of rock is viewed, 
-then we focus in on the primary formations of interest in the basin.
+**Description:** K-means clustering is used to discover primary rock types in a deep well drilled in the Williston Basin. The project begins by identifying primary rock types for a large section of rock spanning ~9,000', then focuses on a smaller section of rock (~60') to identify specific layers in a reservoir. 
 
 ### Data Context: 
-Operators drilling for oil and gas want to understand the subsurface reservoirs that they are trying to produce from, and one of the most common ways of doing so is by "logging" a well. A well is drilled vertically to some depth, and a tool is run inside the hole with sensors and measurements are taken. From these measurements, we infer properties about the rock. Different rock types such as sandstones, limestones, and claystones have distinctly different readings on these tools. Here I hope to provide a **very** high level overview of 
-some of the common logs. 
+Operators drilling for oil and gas want to understand the subsurface reservoirs that they are trying to produce from, and one of the most common ways of doing so is by "logging" a well. A well is drilled vertically to some depth, and a tool is run inside the hole with sensors and measurements are taken. From these measurements, we infer properties about the rock that cannot be measured directly such as porosity, permeability, and oil saturatoin. Different rock types such as sandstones, limestones, and claystones have distinctly different readings on these tools. Here I hope to provide a **very** high level overview of some of the common logs. 
 
 - Gamma Ray (GR): Measures the natural radioactivity of the rock
 - Density (RHOZ): Measures electron density, which is closely tied to bulk density
-- Neutron (NPHI): Measures the hydrogen content of the formation which is related to its porosity or mineralogy
+- Neutron (NPHI): Measures the hydrogen content of the formation which is related to its porosity and/or mineralogy
 
-If you are interested in learning more, [here](/pdf/Atlas_of_Log_Responses_Atlas_of_Log_Resp.pdf) is a useful quick-look chart that shows many more logs and their typical responses in different rock types.
+If you are interested in learning more, [here](/pdf/Atlas_of_Log_Responses_Atlas_of_Log_Resp.pdf) is a useful quick-look chart that shows many more logs and their expected response in different rock types.
 
 ### Machine Learning: What is K-Means Clustering? Why Bother?
 K-Means clustering is an unsupervised learning algorithm that attempts to uncover structures within the dataset it is provided. In one sentence: the algorithm will cross plot all of our variables against each other, and see if there are any obvious groups (clusters) in which the points can then be categorized. In the context of this project we will be looking to see if different rock types are discernable with this methodology. This is something that [petrophysicists](https://petrowiki.spe.org/Petrophysics) have been doing for decades manually and has proven incredibly valuable. Why use machine learning instead of doing this manually?
@@ -28,7 +26,7 @@ We see that we have a DataFrame indexed by depth, with data every 0.5 feet. We h
 
 ```python  
 # Import .las file into a LASFile object (from lasio package)
-las = lasio.read(r"C:\Users\johno\Python\Logs\single-30933-AIG-CND-CAL.las.txt")
+las = lasio.read(r"path_to_file")
 
 # Create DataFrame
 df = las.df()
@@ -39,7 +37,7 @@ df.head()
 <img src="/images/Cluster/Lasio Import Log.PNG?raw=true" height = "50%" width = "50%">
 
 ## Trimming our DataFrame
-We won't be using 55 logs in our analysis, as most of them are either irrelevant for this study or are highly correlated with another log (providing no unique information and a increasing dimensionality). We can achieve very good results with the 3 most fundamental logs that were mentioned earlier (GR, RHOZ, NPHI). The RHOZ log is trimmed to reasonable values, and fortunately this removes all of the other bad data as it occurs over the same interval. We are also dropping the first 2000' of data as it covers a homogenous unit, and is simply not interesting for this project.
+We won't be using 55 logs in our analysis, as most of them are either irrelevant for this study or are highly correlated with another log (providing no unique information and a increasing dimensionality). We can achieve very good results with the 3 most fundamental logs that were mentioned earlier (GR, RHOZ, NPHI). The RHOZ log is trimmed to reasonable values, and fortunately this removes all of the other suspect data as it occurs over the same interval. We are also dropping the first 2000' of data as it covers a homogenous unit, and is simply not interesting for this project.
 
 ```python
 # Create a copy to manipulate
@@ -62,16 +60,14 @@ df2.describe().transpose()
 <img src="/images/Cluster/DF2 CLEAN.PNG?raw=true"/>
 
 ## Viewing Logs with Matplotlib
-Credit here to [Andy McDonald](http://andymcdonald.scot/python-and-petrophysics) and all of the work he has done paving the way doing petrophysics in Python. 
-Here we have two tracks. The first has our Gamma Ray log that has been shaded to highlight variablility. The second track contains the NPHI & RHOZ logs. They have
-been placed on the same track and their relationship with one antother has been shaded (a common petrophysical technique). This plotting function can be found on my [GitHub](https://github.com/johnodonnell123/Personal_Projects).
+Credit here to [Andy McDonald](http://andymcdonald.scot/python-and-petrophysics) and all of the work he has done with petrophysics in Python. Here in this log plot we have two tracks. The first has our Gamma Ray log that has been shaded to highlight variablility. The second track contains the NPHI & RHOZ logs. They have been placed on the same track and their relationship with one antother has been shaded (a common petrophysical technique). This plotting function can be found on my [GitHub](https://github.com/johnodonnell123/Personal_Projects).
 
 <p align="center">
   <img src="/images/Cluster/Log Preview2.PNG?raw=true" width="30%" height="30%">
 </p>
   
 ## Preparing Data for Clustering:
-We need to scale our data so that they have similar variances. The algorithm will want to make these clusters more/less round in crossplot space, so if the variance among our features are materially different this will lead to the variables with smaller variance getting more weight/being more influential. Our variances here aren't terribly different, but it never hurts to standardize and is considered good practice. 
+We need to scale our data so that they have similar variances. Our clustering algorithm will want to make these clusters more/less circular in crossplot space, so if the variance among our features are materially different this will lead to the variables with smaller variance getting more weight/being more influential. Our variances here aren't terribly different, but it never hurts to standardize and is considered good practice. 
 
 Scikit-Learn's StandardScaler will transform our distributions to have a mean of 0 and a standard deviation of 1.
 
@@ -93,7 +89,7 @@ df2_std.describe().transpose()
 <img src="/images/Cluster/Standardized DF2.PNG?raw=true"/>
 
 ## Create the model
-We create our model and specify how many clusters we want to create. There are methods to determine how many clusters we should look for, however when working with mixed mediums like rocks these methods are less useful. I have found it best to take an iterative approach, and err on the side of too many clusters. If we have too many we can always combine clusters together with simple addition, if too few we may not identify a rock type. We can also specify other hyperparameters here but the defaults meet our needs in this case. 
+We create our model and specify how many clusters we want to create. There are methods to determine how many clusters we should look for, however when working with mixed mediums like rocks the decision is rarely straighforward. I have found it best to take an iterative approach, and err on the side of too many clusters. If we have too many we can always combine clusters together with simple addition, if too few we may not identify a rock type. We can also specify other hyperparameters here but the defaults meet our needs in this case. 
 
 ```python
 # Create model
