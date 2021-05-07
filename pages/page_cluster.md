@@ -108,9 +108,7 @@ There are two ways to view results. One is with crossplots, and the other on our
 
 ### 1) 2D and 3D Crossplots
 <p align = 'center'>
-  <img src="/images/Cluster/2D Crossplot.PNG?raw=true" width="50%" height="50%">
-
-  <img src="/images/Cluster/3D Crossplot.PNG?raw=true" width="50%" height="50%">
+  <img src="/images/Cluster/Crossplots.PNG?raw=true" width="40%" height="40%">
 </p>
 
 These can be very interesting when we have clearly definable groups that separate out nicely, however when we are working with a medium such as a rock formation (highly variable combination of minerals), it might appear we don't have any discernable groups. Lets look at the log plot. 
