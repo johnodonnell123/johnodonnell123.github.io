@@ -1,6 +1,6 @@
 # Cluster Analysis for Rock Typing
 
-**Description:** K-means clustering is used to discover primary rock types in a deep well drilled in the Williston Basin. The project begins by identifying primary rock types for a large section of rock spanning ~9,000', then focuses on a smaller section of rock (~60') to identify specific layers in a reservoir. 
+**Description:** K-means clustering is used to discover primary rock types in a deep well drilled in the Williston Basin. The project begins by identifying primary rock types for a large section of rock spanning ~9,000', then focuses on a smaller section of rock (~60') to identify specific layers in a reservoir. Three models are built total, however the process is only covered one time as the only difference is the amount of data fed into the model. 
 
 ### Data Context: 
 Operators drilling for oil and gas want to understand the subsurface reservoirs that they are trying to produce from, and one of the most common ways of doing so is by "logging" a well. A well is drilled vertically to some depth, and a tool is run inside the hole with sensors and measurements are taken. From these measurements, we infer properties about the rock that cannot be measured directly such as porosity, permeability, and oil saturatoin. Different rock types such as sandstones, limestones, and claystones have distinctly different readings on these tools. Here I hope to provide a **very** high level overview of some of the common logs. 
@@ -148,18 +148,14 @@ If we were to limit our DataFrame and create a new clustering model on just this
 
 This is a good example of possibly using too many clusters, in which the interpreter could then combine them! I would interpret the pink and green clusters to both represent a dolomitic rock type, while the yellow and blue clusters represent a less favorable carbonate layer. The orange and black clusters might remain separate clusters, as the orange appears to have slightly lower density, which could be a function of the mineralogy or the porosity (either way it is systematically different). 
 
-This can be incredibly valuable, because different rock types have different reservoir characteristics and lead to more or less production. Knowing that in one area of the basin we see a large amount of the favorable pink facies (dolomite), we would expect to see better performance than in antoher area that is dominated by the carbonate beg (yellow/blue). 
+This can be incredibly valuable, because different rock types have different reservoir characteristics and lead to more or less oil production. Knowing that in one area of the basin we see a large amount of the favorable pink/green cluster (dolomite), we would expect to see better performance here than in another area that is dominated by the carbonate bed (yellow/blue). 
 
-## Further Work / Extrapolation
-This was a gentle introduction of how k-means clustering adds value to the interpretation of rock types. This level of analysis is useful when moving into a new area to quickly get familiar with the different formations and their chracteristics. There are other applications to achieve a more granular result for a particular formation or group, which I may expand on with a future project. The general workflow would look like this:
-- Import all quality logs in the basin into a master Pandas DataFrame
-- Trim to only contain data for the relevant formation
-- Clean the data for reasonable values
-- Run K-Means Clustering
-- Export Results back to the wells
-- Map the clusters (rock types) around the basin as an isopach
+## Expansion:
+This final approach to using this tool that I would like to cover is building a model using data from the just the Middle Bakken formation, **using data from multiple wells**. Why is this valuable? 
+- Building a k-means model with data for one well, using 6 clusters, means that 6 groups will be identified in this well (all clusters will be present)
+- What is there are unique rock types in different parts of the basin? Our previously created model will not uniquely identify them and they will be shoehorned into one of existing cluster groups
+- Build a model using the data from multiple wells, then mapping the data spatially **allows up to see where some rock types appear and disapper**. 
 
-If our results look geologic/depositional in nature when mapped we can have confidence in our results, and use those maps to explain differential performance around the basin. 
 
 
 
