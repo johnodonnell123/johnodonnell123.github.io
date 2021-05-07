@@ -108,7 +108,7 @@ There are two ways to view results. One is with crossplots, and the other on our
 
 ### 1) 2D and 3D Crossplots
 <p align = 'center'>
-  <img src="/images/Cluster/Crossplots.PNG?raw=true" width="40%" height="40%">
+  <img src="/images/Cluster/Crossplots.PNG?raw=true" width="75%" height="75%">
 </p>
 
 These can be very interesting when we have clearly definable groups that separate out nicely, however when we are working with a medium such as a rock formation (highly variable combination of minerals), it might appear we don't have any discernable groups. Lets look at the log plot. 
@@ -140,6 +140,7 @@ It can be very valuable to identify the primary rock types for the entire basin 
 <p align = 'center'>
   <img src="/images/Cluster/Bakken Zoom In.PNG?raw=true" width="50%" height="50%">
 </p>
+
 
 ## Further Work / Extrapolation
 This was a gentle introduction of how k-means clustering adds value to the interpretation of rock types. This level of analysis is useful when moving into a new area to quickly get familiar with the different formations and their chracteristics. There are other applications to achieve a more granular result for a particular formation or group, which I may expand on with a future project. The general workflow would look like this:
