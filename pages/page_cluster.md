@@ -138,7 +138,7 @@ Moving further down section to the primary formation of interest in the basin (B
 It can be very valuable to identify the primary rock types for the entire basin using a clustering algorithm on the entire section of rock as detailed above. Another use of this tool is to limit our section of rock to a specific interval and generate clusters to break our this formation into smaller units for classification. In this example I will zoom in on the Middle Bakken reservoir, which is the most prolific formation in the Williston Basin. 
 
 <p align = 'center'>
-  <img src="/images/Cluster/Bakken Zoom In.PNG?raw=true" width="60%" height="60%">
+  <img src="/images/Cluster/Bakken Zoom In.PNG?raw=true" width="75%" height="75%">
 </p>
 
 If we were to limit our DataFrame and create a new clustering model on just this small subset of data, we would return what is shown below. 
