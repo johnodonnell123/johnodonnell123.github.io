@@ -151,7 +151,9 @@ This is a good example of possibly using too many clusters, in which the interpr
 This can be incredibly valuable, because different rock types have different reservoir characteristics and lead to more or less oil production. Knowing that in one area of the basin we see a large amount of the favorable pink/green cluster (dolomite), we would expect to see better performance here than in another area that is dominated by the carbonate bed (yellow/blue). 
 
 ## Expansion / Future Work: 
-This final approach to using this tool that I would like to briefly touch on is building a model using data from the just the Middle Bakken formation, **using data from multiple wells**. Why would that be valuable? 
+This final approach to using this tool that I would like to briefly touch on is building a model using data from the just the Middle Bakken formation, **using data from multiple wells**. 
+
+Why would that be valuable? 
 - Building a k-means model with data for one well, using 6 clusters, means that 6 groups will be identified in this well (all clusters will be present)
 - What if there are unique rock types in different parts of the basi, seen in some wells and not in others? Our previously created model will not uniquely identify them and add clusters, they will be shoehorned into one of existing cluster groups
 - Building a model using the data from multiple wells, allows for the identification of all of the unique groups. We would them use this model to predict the clusters for each indiviual well. Some wells may in fact contain all 6 clusters, while others are more homogenous and only have 2-3. 
