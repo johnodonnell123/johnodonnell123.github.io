@@ -63,7 +63,7 @@ dataframe = dataframe.merge(zipcode_dataframe, left_on = 'zipcode', right_index 
 ```
 
 ### Perform other feature engineering/transformations/standardizations
-- I will not go into the detail of these operations here as they are not relevant to the point of the post
+- I will not go into the detail of these operations here as they are not relevant to the lesson of the post
 - I simply log transformed distributions that were log-normally distributed and standardized features 
 
 ### Use our previous splits to create new ones for modelling, test to ensure they are the same
