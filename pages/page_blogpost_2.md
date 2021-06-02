@@ -49,7 +49,7 @@ train_data0 = pd.merge(X_train0, y_train0, left_index = True , right_index = Tru
 
 
 ### Create new DataFrame populated with metrics GroupedBy `zip_code`:
-```python3
+```python
 # Create DataFrame to populate with GroupBy data
 zipcode_dataframe = pd.DataFrame()
 
