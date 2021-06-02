@@ -93,3 +93,6 @@ else:
 ### View Results
 - Here we view the results of the model when features are feature engineered and not feature engineered, as well as log transformed and not log transformed. 
 <img src="/images/model_performance_features_engineered_log_transformed.PNG?raw=true" width="75%" height="75%">
+
+# Conclusion:
+As we can see from the plot above, the feature engineering provides a significant increase in model performance, even more so that the log transform. Ensuring that we don't train a model on testing data required more effort but is very important. We can improve our models performance materially and keep our model performing stronly on unseen data! 
