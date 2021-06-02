@@ -41,10 +41,12 @@ X0 = dataframe.drop(columns=['sale_price'])
 # Train/Test Split
 X_train0, X_test0, y_train0, y_test0 = train_test_split(X0, y0, test_size = 0.25, random_state = 42)
 ```
+
 ### Create DataFrame of training data only
 ```python
 train_data0 = pd.merge(X_train0, y_train0, left_index = True , right_index = True)
 ```
+
 
 ### Create new DataFrame populated with metrics GroupedBy `zip_code`:
 ```python3
@@ -57,14 +59,17 @@ for col in ['sale_price','sqft_living','grade','yr_built']:
     zipcode_dataframe[f'median_{col}_in_zip'] = train_data0.groupby('zipcode')[col].median()
 ```
 
+
 ### Add column to original DataFrame
 ```python
 dataframe = dataframe.merge(zipcode_dataframe, left_on = 'zipcode', right_index = True)
 ```
 
+
 ### Perform other feature engineering/transformations/standardizations
 - I will not go into the detail of these operations here as they are not relevant to the lesson of the post
 - I simply log transformed distributions that were log-normally distributed and standardized features 
+
 
 ### Use our previous splits to create new ones for modelling, test to ensure they are the same
 ```python
@@ -90,9 +95,11 @@ else:
     print('fail')
 ```
 
+
 ### View Results
 - Here we view the results of the model when features are feature engineered and not feature engineered, as well as log transformed and not log transformed. 
 <img src="/images/model_performance_features_engineered_log_transformed.PNG?raw=true" width="50%" height="50%">
+
 
 # Conclusion:
 As we can see from the plot above, the feature engineering provides a significant increase in model performance, even more so that the log transform. Ensuring that we don't train a model on testing data required more effort but is very important. We can improve our models performance materially and keep our model performing stronly on unseen data! 
