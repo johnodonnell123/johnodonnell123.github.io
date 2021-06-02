@@ -99,7 +99,7 @@ else:
 ### View Results
 - Here we view the results of the model when features are feature engineered and not feature engineered, as well as log transformed and not log transformed. 
 
-<img src="/images/model_performance_features_engineered_log_transformed.PNG?raw=true" width="50%" height="50%">
+<img src="/images/model_performance_features_engineered_log_transformed.PNG?raw=true" width="70%" height="70%">
 
 
 # Conclusion:
