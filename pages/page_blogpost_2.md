@@ -75,7 +75,7 @@ dataframe = dataframe.merge(zipcode_dataframe, left_on = 'zipcode', right_index 
 ```python
 # Define X and y
 y = dataframe['sale_price_log']
-X = dataframe.drop(columns=[sale_price_log])
+X = dataframe.drop(columns=['sale_price_log'])
 
 # Create splits using the indexes from the previousy defined splits to ensure they are identical
 X_train = dataframe[dataframe.index.isin(X_train0.index)].drop(columns=[sale_price_log])
