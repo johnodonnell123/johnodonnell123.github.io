@@ -32,7 +32,7 @@ The feature engineering will be grouping features by zipcode, such as the median
 6) Use our previous splits to create new ones for modelling
 7) View results
 
-### Create test/train split and merge
+### Create test/train split 
 ```python3
 # Create our X and y
 y0 = dataframe['sale_price']
@@ -40,7 +40,24 @@ X0 = dataframe.drop(columns=['sale_price'])
 
 # Train/Test Split
 X_train0, X_test0, y_train0, y_test0 = train_test_split(X0, y0, test_size = 0.25, random_state = 42)
-
-# Create DataFrame of training data only
+```
+### Create DataFrame of training data only
+```python
 train_data0 = pd.merge(X_train0, y_train0, left_index = True , right_index = True)
+```
+
+### Create new DataFrame populated with metrics GroupedBy `zip_code`:
+```python3
+# Create DataFrame to populate with GroupBy data
+zipcode_dataframe = pd.DataFrame()
+
+# Create a column in the new DataFrame for each feature grouped by zipcode
+# We are adding data to our primary DataFrame "dataframe", but only extracting data from our train set
+for col in ['sale_price','sqft_living','grade','yr_built']:                
+    zipcode_dataframe[f'median_{col}_in_zip'] = train_data0.groupby('zipcode')[col].median()
+```
+
+# Add column to original DataFrame
+```python
+dataframe = dataframe.merge(zipcode_dataframe, left_on = 'zipcode', right_index = True)
 ```
