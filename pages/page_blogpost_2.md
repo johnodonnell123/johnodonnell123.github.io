@@ -33,7 +33,7 @@ The feature engineering will be grouping features by zipcode, such as the median
 7) View results
 
 ### Create test/train split 
-```python3
+```python
 # Create our X and y
 y0 = dataframe['sale_price']
 X0 = dataframe.drop(columns=['sale_price'])
