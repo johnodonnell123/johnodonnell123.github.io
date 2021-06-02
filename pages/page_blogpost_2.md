@@ -31,3 +31,16 @@ The feature engineering will be grouping features by zipcode, such as the median
 5) Perform other feature engineering/transformations/standardizations
 6) Use our previous splits to create new ones for modelling
 7) View results
+
+### Create test/train split and merge
+```python
+# Create our X and y
+y0 = dataframe['sale_price']
+X0 = dataframe.drop(columns=['sale_price'])
+
+# Train/Test Split
+X_train0, X_test0, y_train0, y_test0 = train_test_split(X0, y0, test_size = 0.25, random_state = 42)
+
+# Create DataFrame of training data only
+train_data0 = pd.merge(X_train0, y_train0, left_index = True , right_index = True)
+```
