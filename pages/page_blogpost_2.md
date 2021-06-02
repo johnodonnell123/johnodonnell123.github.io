@@ -57,7 +57,38 @@ for col in ['sale_price','sqft_living','grade','yr_built']:
     zipcode_dataframe[f'median_{col}_in_zip'] = train_data0.groupby('zipcode')[col].median()
 ```
 
-# Add column to original DataFrame
+### Add column to original DataFrame
 ```python
 dataframe = dataframe.merge(zipcode_dataframe, left_on = 'zipcode', right_index = True)
 ```
+
+### Perform other feature engineering/transformations/standardizations
+- I will not go into the detail of these operations here as they are not relevant to the point of the post
+- I simply log transformed distributions that were log-normally distributed and standardized features 
+
+### Use our previous splits to create new ones for modelling, test to ensure they are the same
+```python
+# Define X and y
+y = dataframe['sale_price_log']
+X = dataframe.drop(columns=[sale_price_log])
+
+# Create splits using the indexes from the previousy defined splits to ensure they are identical
+X_train = dataframe[dataframe.index.isin(X_train0.index)].drop(columns=[sale_price_log])
+X_test = dataframe[dataframe.index.isin(X_test0.index)].drop(columns=[sale_price_log])
+y_train = dataframe[dataframe.index.isin(y_train0.index)][sale_price_log]
+y_test = dataframe[dataframe.index.isin(y_test0.index)][sale_price_log]
+
+# Test to ensure that our splits are the same as before
+test1 = set(X_train.index) == set(X_train0.index)
+test2 = set(X_test.index) == set(X_test0.index)
+test3 = set(y_train.index) == set(y_train0.index)
+test4 = set(y_test.index) == set(y_test0.index)
+
+if np.all([test1, test2, test3, test4]):
+    print('pass')
+else:
+    print('fail')
+```
+
+### View Results
+- Here we view the results of the model when features are feature engineered and not feature engineered, as well as log transformed and not log transformed. 
