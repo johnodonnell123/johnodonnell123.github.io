@@ -43,7 +43,7 @@ In the plot below the growth of a user base through time is shown for different 
 - User base at time 0 = 10,000 users
 - Monthly growth = 700 users/month
 
-<img src="/images/blog_post_3/churn_vs_growth.PNG?raw=true" width="70%" height="70%">
+<img src="/images/blog_post_3/growth_vs_churn.PNG?raw=true" width="70%" height="70%">
 
 
 Starting with the most intuitive case, look at the black dotted line which represents 7% churn (or losing 700 users/month). It is flat becuase our growth is a static addition of 700 user per month, balancing out our gains/losses.
