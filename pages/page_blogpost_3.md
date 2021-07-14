@@ -25,7 +25,7 @@ The lifetime value of a user is the total amount of revenue collected from users
 - ARPU: Average Revenue Per User (monthly) = $50
 - COGS: Average Cost Incurred by User (monthly)  = $40
 - GP: Gross Profit (monthly) = $10
--**LTV = GP * Tenure**
+- **LTV = GP * Tenure**
 
 If $10 is the gross profit monthly from each user, and by reducing churn we increase tenure, the LTV of the average customer is raised.
 
