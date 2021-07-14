@@ -47,7 +47,7 @@ In the plot below the growth of a user base through time is shown for different 
 
 
 Starting with the most intuitive case, look at the black dotted line which represents 7% churn (or losing 700 users/month). It is flat becuase our growth is a static addition of 700 user per month, balancing out our gains/losses.
-- As we move to higher churn rates and down the y-axis of the plot we can see that early time (months 0-10) we see large drops in user count from our baseline case, however the relationship *apears* asymptotic and "dies out" around 5000 users. In fact, we know that the point at which the relationship will stablize and flaten is when our addition of 700 users/month comprises the exact percentage of our total user base as our churn rate. So at 15% churn our asymptotic value would be 4,667. So, we would see some decline from 5000, albeit slow
+- As we move to higher churn rates and into the warmer colors of the plot we can see that in the early time (months 0-10) we see large drops in user count from our baseline case, however the relationship *apears* asymptotic and "dies out" around 5000 users. In fact, we know that the point at which the relationship will stablize and flaten is when our addition of 700 users/month comprises the exact percentage of our total user base as our churn rate. So at 15% churn our asymptotic value would be 4,667. So, we would see some decline from 5000, albeit slow
 
 
 
