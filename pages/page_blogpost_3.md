@@ -1,6 +1,6 @@
 # Understanding the impact of customer churn
 
-**Description: ** In this post I want to share some of the takeaways I've found to be interesting concerning customer churn and the impact it has on a subscription business.
+**Description:** In this post I want to share some of the takeaways I've found to be interesting concerning customer churn and the impact it has on a subscription business.
 
 ### What is churn?
 Customer churn is when a service provider loses a customer. For example, let us say Hulu had 1 million customers at the beginning of the month, and of that 1 million 50,000 cancelled their subscription and are no longer customers. These 50,000 customers are said to have "churned", and the churn rate for this month would be 5%. 50,000 customers *feels* like a large number, however that is a common churn rate to see in any subscription business!
