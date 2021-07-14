@@ -57,3 +57,5 @@ The natural question becomes, with the powerlaw creating all of these asymptotes
 
 This scheme looks much more favorable now and its clear to see how continued growth can be achieved, especially at lower churn rates!
 
+**The takeaway from this post is to better understand the impact of churn on the business as a whole. Having an in depth understanding of churn means understanding your users and your business, allowing for more efficient solutions to be implemented and continued growth.**
+
