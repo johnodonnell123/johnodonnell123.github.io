@@ -62,7 +62,7 @@ Working with the remaining ~9,500 films I cleaned the following fields:
       
 ## Analysis:
 I will only cover one of my visualizations here, and I have chosen the box plot shown below.
-<img src="/images/Budget vs Revenue Box Plot.PNG?raw=true" height = '75%' width = '75%'>
+<img src="/images/flatiron_blog_posts/Budget vs Revenue Box Plot.PNG?raw=true" height = '75%' width = '75%'>
 
 I chose to display this relationship with boxplots instead of a traditional scatter becuase I feel it provides more insight into the underlying relationship. It also provided some other interesting observations:
 - Data density becomes more and more sparse at the higher end
