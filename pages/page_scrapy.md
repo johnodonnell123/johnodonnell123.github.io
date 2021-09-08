@@ -17,7 +17,7 @@ class HeadersSpider(scrapy.Spider):
 ```
 
 ## Getting Access
-The data scraped here comes from a webpage that requires a subscription, and therefore has sign-in credentials. Default request headers are overwritten in the settings.py file and basic credentials are provided with base64 encoding. These are not working credentials shown here, they have been altered. 
+The data scraped here comes from a webpage that requires a subscription, and therefore has sign-in credentials. Default request headers are overwritten in the settings.py file and basic credentials are provided with base64 encoding. ***These are not working credentials shown here, they have been altered.*** 
 
 ```python
 DEFAULT_REQUEST_HEADERS = {'Authorization': 'Basic am9obm9kb25uZWxsOiNIdW1ibGU0VFg='}
