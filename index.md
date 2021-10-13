@@ -13,6 +13,3 @@
 
 ### [Aggregating Oil Production at a Project Level to Visualize the Results of Development Strategy](/pages/page_groupby.md)
 <img src="/images/GroupBy/rigs.jpg?raw=true" width="45%" height="45%">
-
-### [SQL in Jupyter for Data Retrieval and Analysis](/pages/page_sql.md)
-<img src="/images/SQL/collage_thumbnail_sql.PNG?raw=true" width="300" height="300">
