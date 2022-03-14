@@ -21,7 +21,8 @@ So, you are to determine if the new page has a meaningful impact on user behavio
 
 ### The Normal Distribution:
 The normal distribution is a continuous probability distribution, which has a few implications. One being that the area underneath the curve is related to probability, with the total area equal to 1, or 100%. Normal distributions are described by their mean and standard deviation.
-<img src="/images/hypothesis_testing/normal_dist.png?raw=true" height = "100%" width = "100%">
+
+<img src="/images/hypothesis_testing/normal_dist.png?raw=true" height = "75%" width = "75%">
 
 ### Empirical Rule
 Taking this idea further, we arrive at the empirical rule, which helps us relate the area under the curve (probability) to some distance from the mean in standard deviations. The empirical rule states the following:
