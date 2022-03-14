@@ -45,7 +45,7 @@ Looking at a normal distribution, you can see where most of the values live: the
 
 Imagine we are given a single data point with a value of 22.5 (blue line below). That is ½ of a single standard deviation. How confidently can we say it was NOT drawn from this distribution? That value is associated with a relatively high probability here, its close to the mean, so confidence is low. But what if that value was 40 (red line). Thats 4 standard deviations away from our mean! We would be more confident that the a value of 40 did ***NOT*** come from this distribution compared to the value of 22.5. Why? Because it's significantly farther from the mean!
 
-<img src="/images/hypothesis_testing/intuition.png?raw=true" height = "75%" width = "75%">
+<img src="/images/hypothesis_testing/intuitition.png.png?raw=true" height = "75%" width = "75%">
 
 Extend this idea from just a single data point to a sample of size 50. We take 50 samples, and now the mean of those samples is 22.5. With what level of confidence could we say they did NOT come from the above distribution? Confidence may still be pretty low, but intuitively higher than a single point. What if that sample mean was 40? This would provide much more confidence that just a single sample.
 
