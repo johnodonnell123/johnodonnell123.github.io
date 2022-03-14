@@ -30,6 +30,7 @@ Taking this idea further, we arrive at the empirical rule, which helps us relate
 - ~ 95% within ±2 standard deviations
 - ~ 98% within ± 3 standard deviations
 
+<img src="/images/hypothesis_testing/emperical.png?raw=true" height = "75%" width = "75%">
 
 Most of the red area is in the middle, and as we approach the tails there is less. Now we can put numbers to it. Note the distribution is symmetrical around the mean, so we can say that ~34% of the data lives between the mean and +1 standard deviation, or between values 20 and 25.
 
@@ -40,24 +41,30 @@ We can use the empirical rule to determine how probable values are given a distr
 - Example 2: To find the probability of drawing values strictly greater +2 standard deviations, we half the previous answer, leaving us with ~2.5%.
 
 ### Intuition
-Looking at a normal distribution, you can see where most of the values live: the center. Think of this as values closer to the mean being more probable if they come from this distribution. A common theme of statistical testing is when given some distribution and a value, we want to know the probability the value does NOT come from the distribution.
+Looking at a normal distribution, you can see where most of the values live: the center. Think of this as values closer to the mean being more probable *if they come from this distribution*. A common theme of statistical testing is when given some distribution and a value, we want to know the probability the value does NOT come from the distribution.
 
 Imagine we are given a single data point with a value of 22.5 (blue line below). That is ½ of a single standard deviation. How confidently can we say it was NOT drawn from this distribution? That value is associated with a relatively high probability here, its close to the mean, so confidence is low. But what if that value was 40 (red line). Thats 4 standard deviations away from our mean! We would be more confident that the a value of 40 did ***NOT*** come from this distribution compared to the value of 22.5. Why? Because it's significantly farther from the mean!
 
+<img src="/images/hypothesis_testing/intuition.png?raw=true" height = "75%" width = "75%">
+
 Extend this idea from just a single data point to a sample of size 50. We take 50 samples, and now the mean of those samples is 22.5. With what level of confidence could we say they did NOT come from the above distribution? Confidence may still be pretty low, but intuitively higher than a single point. What if that sample mean was 40? This would provide much more confidence that just a single sample.
 
-The probability of drawing one extreme data point is higher than drawing 50 of them. Larger samples sizes contain less sampling error.
-
-The computations for the associated probabilities of single data points and means are a little different, but the concepts are similar. The important ideas here are that distance from the mean (in standard deviations) and our sample size both influence our confidence.
+The probability of drawing one extreme data point is higher than drawing 50 of them. Larger samples sizes contain less sampling error. The computations for the associated probabilities of single data points and means are a little different, but the concepts are similar. The important ideas here are that distance from the mean (in standard deviations) and our sample size both influence our confidence.
 
 ### Z-Scores
 The idea of relating standard deviations to probabilities has been covered, but what if a sample doesn't fall right on one of our unit standard deviations in the empirical rule? We need to know how far a given data point is from the mean in standard deviations. For example, if we want to find the probability of drawing a data point ≥ 27 from this distribution , we need to know how many standard deviations 27 is from the mean. This is called a **Z-Score**.
 
+<img src="/images/hypothesis_testing/z_score_dist.png?raw=true" height = "75%" width = "75%">
 
 We find the distance a given point is from the mean, then to convert into units of standard deviation we divide by the standard deviation.
+
+<img src="/images/hypothesis_testing/zscore_equation.png?raw=true" height = "75%" width = "75%">
+
 Plugging in, we return a z-score of 1.4. We now use a z-table to determine the associated probability.
 
-We return a value of~92%. By default z-tables tell us the cumulative probability up until a z-score, or the area from the tip of the left tail up to the given score. The question was framed as a "greater than" so we are looking for the area to the right of our score, so we subtract this probability from 1. There is roughly an 8% chance of drawing a score ≥ 27 from this distribution.
+<img src="/images/hypothesis_testing/ztable.png?raw=true" height = "75%" width = "75%">
+
+We return a value of ~92%. By default z-tables tell us the cumulative probability up until a z-score, or the area from the tip of the left tail up to the given score. The question was framed as a "greater than" so we are looking for the area to the right of our score, so we subtract this probability from 1. There is roughly an 8% chance of drawing a score ≥ 27 from this distribution.
 Why is this important? We need to understand how to associate probabilities with any distance from the mean.
 
 ***Values further from the mean (in standard deviations) are less probable in the distribution, and more likely to be significantly different.***
