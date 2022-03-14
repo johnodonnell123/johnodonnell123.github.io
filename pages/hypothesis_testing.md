@@ -71,17 +71,32 @@ Why is this important? We need to understand how to associate probabilities with
 
 ### Central Limit Theorem and the Sampling Distribution
 The central limit theorem states that the sampling distribution of a population will be approximately normal, centered around the true population mean, and have a standard deviation equal to the standard error. Let's unpack that.
+
 A sampling distribution is comprised of many sample means. To create a sampling distribution, we take repeated samples from a population, find the mean of that sample, and create a distribution of those means. This distribution will center around the true population mean.
+
 This distribution will always be approximately normal if our sample size is large enough, regardless of the shape of the population sampled from. This is important because as we have seen, with a normal distributions we can easily relate probabilities to standard deviations.
+
 The sampling distribution will have a standard deviation related to the sample standard deviation, but adjusted for sample size. We call this the Standard Error. When sampling from a population, larger samples are likely to be more representative. Smaller samples have some amount of sampling error, represented as the standard error. The formula for standard error is below.
-from Google. Standard Error = Standard Deviation of Sampling DistributionWe are dividing the sample standard deviation by the square root of our sample size to arrive at standard error. So, the standard error will always be smaller than the standard deviation.
+
+<img src="/images/hypothesis_testing/se_equation.png?raw=true" height = "75%" width = "75%">
+
+We are dividing the sample standard deviation by the square root of our sample size to arrive at standard error. So, the standard error will always be smaller than the standard deviation.
+
 Why?
+
 Standard error is related to sample means, not individual data points. This calls back to the idea planted earlier: it is less probable to see extreme values when they are means versus if they are single data points. So with standard error being a measure of dispersion, it makes sense it would be smaller than the standard deviation.
-Normal and Sampling Distribution (for n = 5)It can be useful to think of standard error as a representation of the error between the mean of a sample and the mean of a population given a sample size of n. As sample size grows, our sampling error decreases, and the standard error decreases. This means the standard deviation of the sampling distribution decreases, and the distribution becomes thinner. More area (probability) is concentrated around the mean.
-The Sampling Distribution is important because statistical tests are practically always dealing with means of samples, not individual data points
+
+<img src="/images/hypothesis_testing/sampling_dist.png?raw=true" height = "75%" width = "75%">
+
+It can be useful to think of standard error as a representation of the error between the mean of a sample and the mean of a population given a sample size of n. As sample size grows, our sampling error decreases, and the standard error decreases. This means the standard deviation of the sampling distribution decreases, and the distribution becomes thinner. More area (probability) is concentrated around the mean.
+
+***The Sampling Distribution is important because statistical tests are practically always dealing with means of samples, not individual data points***
 
 ### Combining Random Variables
 Given distribution A and B, what is the probability of the difference between a value from A and a value from B being > 20? To answer a question like this, we create a new normal distribution that represents this difference.
+
+<img src="/images/hypothesis_testing/double_dist.png?raw=true" height = "75%" width = "75%">
+
 To create this distribution of the difference, we need a mean and standard deviation. The mean of the difference is simply the difference of the sample means. The variance of the difference is the of the sum their variances. Recall, the variance is the standard deviation squared. So to arrive at the standard deviation of the difference we square the sum of the variances.
 Distribution of Differences with mean = 10, and standard deviation ≈ 7.1To solve our original problem, we construct our distribution of differences (above in yellow), determine how many standard deviations the value in question is from our mean, and relate that value to a probability. A value of 20 is about 1.41 standard deviations from the mean, and the associated probability from a z-table is 92%. Subtracting that value from 1 leaves us with 8%. So there is an 8% chance of drawing a single value from A and B and their difference being greater than 20.
 That example tests for single data points. What if we wanted to test sample means? We use the Sampling Distribution.
