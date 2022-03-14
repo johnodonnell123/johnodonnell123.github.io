@@ -1,8 +1,5 @@
 # A/B Testing Concepts
 
-##### Namely, the two sample t-test
-
-
 ## What is a Statistical Test?
 Statistical testing is a tool used to determine if there is a statistically significant difference between two groups. If statistically significant doesn't mean anything to you, it will soon!
 Companies are always trying to improve through various initiatives/projects. At times it can be hard to quantify their impact, particularly if it is small. For example, if churn rate decreases by 0.5% after launching a new product feature, how can we confidently say that this change is the result the feature? Proper A/B testing helps us sort this out.
@@ -10,11 +7,11 @@ For a better intuition on how improving churn by 0.5% can be meaningful, read he
 
 ### Overview
 All the concepts required for A/B testing will be covered in this article. Below is a general outline of topics and their relevance.
-The Normal Distribution: allows us to relate standard deviations to probabilities
-The Sampling Distribution and Standard Error: helps create distributions for testing sample means instead of single data points
-The Distribution of Differences: helps create distributions for testing differences between samples
-The T-Distribution: Helps us quantify uncertainty driven by smaller sample sizes
-Bernoulli Trials and the Binomial Distribution: allows us to create distributions for variables with binary outcome (churn / no churn)
+1) The Normal Distribution: allows us to relate standard deviations to probabilities
+2) The Sampling Distribution and Standard Error: helps create distributions for testing sample means instead of single data points
+3) The Distribution of Differences: helps create distributions for testing differences between samples
+4) The T-Distribution: Helps us quantify uncertainty driven by smaller sample sizes
+5) Bernoulli Trials and the Binomial Distribution: allows us to create distributions for variables with binary outcome (churn / no churn)
 
 A common theme exists across many statistical tests, we want to find out how many standard deviations some test value is from the mean. That distance is associated with a probability, which determines statistical significance. Larger distances from the mean in standard deviations are most likely to be significant.
 Our Example:
