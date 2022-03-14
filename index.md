@@ -2,7 +2,7 @@
 
 
 
-### [Hypothesis Testing Basics](/pages/hypothesis_testing.md)
+### [Hypothesis Testing Basics](https://medium.com/@johnodonnell123/a-b-testing-concepts-193e4f6d5b13)
 <img src="/images/hypothesis_testing/Screen Shot 2022-03-14 at 3.11.21 PM.png?raw=true" width="60%" height="60%">
 
 ### [K-Means Clustering to Define Rock Types](/pages/page_cluster.md)
