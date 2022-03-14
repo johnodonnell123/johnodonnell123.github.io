@@ -19,15 +19,17 @@ A common theme exists across many statistical tests, we want to find out how man
 Imagine you work for Netflix. Leadership wants to change the homepage layout, and the plan is to show a new version to a random sample of users. We want to see if there is a significant difference in user behavior when exposed to the new page. This may seem like a small tweak, the impact isn't likely to cut churn in half, but what if it decreases churn by 1%? Or maybe increases total viewings by 1%?
 So, you are to determine if the new page has a meaningful impact on user behavior. To get there, lets cover some foundational concepts.
 
-###The Normal Distribution:
+### The Normal Distribution:
 The normal distribution is a continuous probability distribution, which has a few implications. One being that the area underneath the curve is related to probability, with the total area equal to 1, or 100%. Normal distributions are described by their mean and standard deviation.
-PDF of Normal Distribution with Mean = 20 and Standard Deviation = 5Empirical Rule
+<img src="/images/hypothesis_testing/normal_dist.png?raw=true" height = "50%" width = "50%">
+
+### Empirical Rule
 Taking this idea further, we arrive at the empirical rule, which helps us relate the area under the curve (probability) to some distance from the mean in standard deviations. The empirical rule states the following:
 - ~ 68% of the area falls within ± 1 standard deviation
 - ~ 95% within ±2 standard deviations
 - ~ 98% within ± 3 standard deviations
 
-### The Empirical Rule
+
 Most of the red area is in the middle, and as we approach the tails there is less. Now we can put numbers to it. Note the distribution is symmetrical around the mean, so we can say that ~34% of the data lives between the mean and +1 standard deviation, or between values 20 and 25.
 
 ***Key concept = With the normal distribution, standard deviations have associated probabilities***
