@@ -7,17 +7,19 @@ For a better intuition on how improving churn by 0.5% can be meaningful, read he
 
 ### Overview
 All the concepts required for A/B testing will be covered in this article. Below is a general outline of topics and their relevance.
-1) The Normal Distribution: allows us to relate standard deviations to probabilities
-2) The Sampling Distribution and Standard Error: helps create distributions for testing sample means instead of single data points
-3) The Distribution of Differences: helps create distributions for testing differences between samples
-4) The T-Distribution: Helps us quantify uncertainty driven by smaller sample sizes
-5) Bernoulli Trials and the Binomial Distribution: allows us to create distributions for variables with binary outcome (churn / no churn)
+1) **The Normal Distribution:** allows us to relate standard deviations to probabilities
+2) **The Sampling Distribution and Standard Error:** helps create distributions for testing sample means instead of single data points
+3) **The Distribution of Differences:** helps create distributions for testing differences between samples
+4) **The T-Distribution:** Helps us quantify uncertainty driven by smaller sample sizes
+5) **Bernoulli Trials and the Binomial Distribution:** allows us to create distributions for variables with binary outcome (churn / no churn)
 
 A common theme exists across many statistical tests, we want to find out how many standard deviations some test value is from the mean. That distance is associated with a probability, which determines statistical significance. Larger distances from the mean in standard deviations are most likely to be significant.
-Our Example:
+
+### Our Example
 Imagine you work for Netflix. Leadership wants to change the homepage layout, and the plan is to show a new version to a random sample of users. We want to see if there is a significant difference in user behavior when exposed to the new page. This may seem like a small tweak, the impact isn't likely to cut churn in half, but what if it decreases churn by 1%? Or maybe increases total viewings by 1%?
 So, you are to determine if the new page has a meaningful impact on user behavior. To get there, lets cover some foundational concepts.
-The Normal Distribution:
+
+###The Normal Distribution:
 The normal distribution is a continuous probability distribution, which has a few implications. One being that the area underneath the curve is related to probability, with the total area equal to 1, or 100%. Normal distributions are described by their mean and standard deviation.
 PDF of Normal Distribution with Mean = 20 and Standard Deviation = 5Empirical Rule
 Taking this idea further, we arrive at the empirical rule, which helps us relate the area under the curve (probability) to some distance from the mean in standard deviations. The empirical rule states the following:
@@ -25,19 +27,25 @@ Taking this idea further, we arrive at the empirical rule, which helps us relate
 ~ 95% within ±2 standard deviations
 ~ 98% within ± 3 standard deviations
 
-The Empirical RuleMost of the red area is in the middle, and as we approach the tails there is less. Now we can put numbers to it. Note the distribution is symmetrical around the mean, so we can say that ~34% of the data lives between the mean and +1 standard deviation, or between values 20 and 25.
+### The Empirical Rule
+Most of the red area is in the middle, and as we approach the tails there is less. Now we can put numbers to it. Note the distribution is symmetrical around the mean, so we can say that ~34% of the data lives between the mean and +1 standard deviation, or between values 20 and 25.
 Key concept = With the normal distribution, standard deviations have associated probabilities
 We can use the empirical rule to determine how probable values are given a distribution.
-Example 1: The probability of drawing a value from this distribution outside of ±2 standard deviations is ~5%.
-Example 2: To find the probability of drawing values strictly greater +2 standard deviations, we half the previous answer, leaving us with ~2.5%.
+- Example 1: The probability of drawing a value from this distribution outside of ±2 standard deviations is ~5%.
+- Example 2: To find the probability of drawing values strictly greater +2 standard deviations, we half the previous answer, leaving us with ~2.5%.
 
-Intuition
+### Intuition
 Looking at a normal distribution, you can see where most of the values live: the center. Think of this as values closer to the mean being more probable if they come from this distribution. A common theme of statistical testing is when given some distribution and a value, we want to know the probability the value does NOT come from the distribution.
+
 Imagine we are given a single data point with a value of 22.5 (blue line below). That is ½ of a single standard deviation. How confidently can we say it was NOT drawn from this distribution? That value is associated with a relatively high probability here, its close to the mean, so confidence is low. But what if that value was 40 (red line). Thats 4 standard deviations away from our mean! We would be more confident that the a value of 40 did NOT come from this distribution compared to the value of 22.5. Why? Because it's significantly farther from the mean!
+
 Extend this idea from just a single data point to a sample of size 50. We take 50 samples, and now the mean of those samples is 22.5. With what level of confidence could we say they did NOT come from the above distribution? Confidence may still be pretty low, but intuitively higher than a single point. What if that sample mean was 40? This would provide much more confidence that just a single sample.
+
 The probability of drawing one extreme data point is higher than drawing 50 of them. Larger samples sizes contain less sampling error.
+
 The computations for the associated probabilities of single data points and means are a little different, but the concepts are similar. The important ideas here are that distance from the mean (in standard deviations) and our sample size both influence our confidence.
-Z-Scores
+
+### Z-Scores
 The idea of relating standard deviations to probabilities has been covered, but what if a sample doesn't fall right on one of our unit standard deviations in the empirical rule? We need to know how far a given data point is from the mean in standard deviations. For example, if we want to find the probability of drawing a data point ≥ 27 from this distribution , we need to know how many standard deviations 27 is from the mean. This is called a Z-Score.
 We find the distance a given point is from the mean, then to convert into units of standard deviation we divide by the standard deviation.
 from GooglePlugging in, we return a z-score of 1.4. We now use a z-table to determine the associated probability.
