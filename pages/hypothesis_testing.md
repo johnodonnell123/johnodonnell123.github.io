@@ -1,4 +1,4 @@
-# A/B Testing Concepts
+# The Statistics Behind A/B Testing
 
 ## What is a Statistical Test?
 Statistical testing is a tool used to determine if there is a statistically significant difference between two groups. If statistically significant doesn't mean anything to you, it will soon!
