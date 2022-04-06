@@ -2,6 +2,9 @@
 
 
 
+### [Linear Regression and Gradient Descent in Numpy](https://medium.com/@johnodonnell123/linear-regression-and-gradient-descent-in-numpy-309364866ab0)
+<img src="/images/lr_gd.png?raw=true" width="60%" height="60%">
+
 ### [The Statistics Behind A/B Testing](https://medium.com/@johnodonnell123/a-b-testing-concepts-193e4f6d5b13)
 <img src="/images/hypothesis_testing.png?raw=true" width="60%" height="60%">
 
