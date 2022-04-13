@@ -17,5 +17,6 @@
 ### [Scraping Oil Well Production Data and Storing in a RDBS](/pages/page_scrapy.md)
 <img src="/images/scrapy/scraping_collage_2.PNG?raw=true" width="55%" height="55%">
 
-### [Aggregating Oil Production at a Project Level to Visualize the Results of Development Strategy](/pages/page_groupby.md)
+<!-- ### [Aggregating Oil Production at a Project Level to Visualize the Results of Development Strategy](/pages/page_groupby.md)
 <img src="/images/GroupBy/rigs.jpg?raw=true" width="45%" height="45%">
+ -->
